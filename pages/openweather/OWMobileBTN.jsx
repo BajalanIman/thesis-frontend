@@ -1,6 +1,7 @@
-import { Box, Fab, Typography } from "@mui/material";
+import { Box, Button, Fab, Typography } from "@mui/material";
 import React from "react";
 import * as Icons from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const OWMobileBTN = ({
   size,
@@ -10,38 +11,59 @@ const OWMobileBTN = ({
   text,
   ariaLabel,
   marginLeft,
+  handler,
 }) => {
   const IconComponent = Icons[icon];
   return (
-    <>
-      <Box sx={{ marginLeft: marginLeft, display: "flex", gap: "6px" }}>
+    <div>
+      <Box
+        sx={{
+          marginLeft: marginLeft,
+          display: "flex",
+          gap: "6px",
+        }}
+      >
         <Fab
           size={size}
           style={{
             backgroundColor: bgColor,
             color: Color,
             border: "1px solid",
-            borderColor: Color,
+            borderColor: "green",
           }}
           aria-label={ariaLabel}
         >
           <IconComponent />
         </Fab>
         {text && (
-          <Typography
-            variant="p"
+          <Button
+            onClick={handler}
             sx={{
-              color: "blue",
-              marginTop: "6px",
-              fontWeight: "bold",
-              ":hover": { color: "blue" },
+              bgcolor: "green",
+              color: "white",
+              width: 120,
+              display: "flex",
+              justifyContent: "start",
+              border: "1px solid lightgreen",
+              borderRadius: "15px 0px 15px 0px",
+              ":hover": { bgcolor: "green" },
+              ":active": { color: "green" },
             }}
           >
             {text}
-          </Typography>
+          </Button>
         )}
       </Box>
-    </>
+      {/* <Box
+        sx={{
+          position: "fixed",
+          display: "flex",
+          bottom: 32,
+          left: 12,
+          zIndex: 9999,
+        }}
+      ></Box> */}
+    </div>
   );
 };
 

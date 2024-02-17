@@ -1,3 +1,6 @@
+import AirPollutionForecast from "./airPolution/AirPollutionForecast";
+import Weather from "./Weather";
+
 import React, { useState } from "react";
 import OWMobileBTN from "./OWMobileBTN";
 import { Box } from "@mui/material";
@@ -24,34 +27,52 @@ const OpenweatherMobile = () => {
     setCostumAnimation(false);
   };
 
+  const [changePollution, setChangePollution] = useState(true);
+  const [changeWeather, setChangeWeather] = useState(false);
+
+  const weatherHandler = () => {
+    setChangePollution(true);
+    setChangeWeather(false);
+  };
+
+  const airPolutionHandler = () => {
+    setChangePollution(false);
+    setChangeWeather(true);
+  };
+
   return (
     <div className={btnColor ? " flex flex-col gap-2" : ""}>
+      {changeWeather && <Weather></Weather>}
+      {changePollution && <AirPollutionForecast></AirPollutionForecast>}
       {showMenu && (
         <div
           className={
             costumAnimation
               ? "flex flex-col gap-3 animate-bounce"
-              : "flex flex-col gap-3"
+              : "flex flex-col gap-3 "
           }
         >
           <OWMobileBTN
             marginLeft={"8px"}
             size={"small"}
-            Color={"blue"}
+            Color={"green"}
             bgColor={"white"}
             ariaLabel={"Weather"}
             icon={"WbSunny"}
             text={"Weather"}
+            handler={airPolutionHandler}
+            name={"Air pollution paramaters"}
           />
 
           <OWMobileBTN
             marginLeft={"8px"}
             size={"small"}
-            Color={"blue"}
+            Color={"green"}
             bgColor={"white"}
             ariaLabel={"add"}
             icon={"Co2"}
             text={"Pollutants"}
+            handler={weatherHandler}
           />
         </div>
       )}

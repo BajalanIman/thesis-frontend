@@ -4,7 +4,6 @@ import React from "react";
 const CustomButton = ({ name, handler }) => {
   return (
     <>
-      {" "}
       <Button
         onClick={handler}
         sx={{

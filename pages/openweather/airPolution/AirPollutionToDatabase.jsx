@@ -25,8 +25,8 @@ const AirPollutionToDatabase = ({ stlocation, stName, customWidth }) => {
       setoOpenWeaterLat(response.data.coord.lat);
       setoOpenWeaterLon(response.data.coord.lon);
       setoOpenWeaterAll(response.data.list[0].components);
-      console.log(response);
-      console.log(lat, lon);
+      // console.log(response);
+      // console.log(lat, lon);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

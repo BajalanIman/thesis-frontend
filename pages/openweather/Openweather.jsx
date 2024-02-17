@@ -24,7 +24,7 @@ const Openweather = () => {
       <Box
         sx={{
           flexGrow: 1,
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           flexDirection: "column",
           alignItems: "center",
           position: "relative",
@@ -43,16 +43,17 @@ const Openweather = () => {
         {changeWeather && <Weather></Weather>}
         {changePollution && <AirPollutionForecast></AirPollutionForecast>}
       </Box>
+
       <Box
         sx={{
-          position: "fixed",
+          position: "relative",
           bottom: 12,
           left: 12,
           width: "100%",
           padding: "10px",
           zIndex: 9999, // Adjust the z-index if needed
 
-          display: { xs: "flex", sm: "none" },
+          display: { xs: "flex", md: "none" },
         }}
       >
         <OpenweatherMobile />
