@@ -12,6 +12,8 @@ import StationsAdmin from "./pages/admin/StationsAdmin";
 import Login from "./pages/admin/users/Login";
 import NewUsers from "./pages/admin/users/NewUsers";
 import UserManagement from "./pages/admin/users/UserManagement";
+import About from "./pages/NavigationBar/about/About";
+import Help from "./pages/NavigationBar/help/Help";
 
 export const CartContext = createContext({ 123: 1 });
 
@@ -28,6 +30,8 @@ const router = createBrowserRouter([
       { path: "/newuser", element: <NewUsers /> },
       { path: "/stationsadmin", element: <StationsAdmin /> },
       { path: "/usermanagement", element: <UserManagement /> },
+      { path: "/about", element: <About /> },
+      { path: "/help", element: <Help /> },
     ],
   },
 ]);

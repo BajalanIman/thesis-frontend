@@ -41,4 +41,68 @@ export default {
     "Restez connecté grâce à des informations météorologiques en temps réel adaptées à la foresterie. Surveillez les facteurs cruciaux tels que l’humidité, la température, la vitesse du vent et la pression atmosphérique pour optimiser les stratégies de gestion forestière. Qu'il s'agisse d'évaluer les risques d'incendies de forêt, de planifier des opérations de récolte de bois ou de protéger la biodiversité, disposer de données météorologiques actualisées à portée de main permet de prendre des décisions éclairées. Gardez une longueur d'avance sur les menaces potentielles et maximisez la santé et la résilience de votre écosystème forestier grâce à des informations météorologiques précises et opportunes. Restez à l'écoute des mises à jour en direct pour vous assurer que vos efforts forestiers sont soutenus par les dernières informations météorologiques.",
   onlineInformation:
     "Ce qui suit affiche des informations en ligne sur certaines données climatiques dans",
+  aboutApplication: "À propos de notre application",
+  aboutApplicationP1:
+    "Bienvenue sur notre plateforme dédiée à la fourniture de données météorologiques et environnementales complètes pour divers airs forestiers du Brandebourg, en Allemagne. Au cœur de notre initiative se trouve un engagement à favoriser la sensibilisation à l'environnement et à faciliter une prise de décision éclairée concernant l'écologie et le climat de la région.",
+  ourMission: "Notre mission",
+  ourMissionP1:
+    "Notre mission est d'offrir une plate-forme centralisée où les individus, les chercheurs et les décideurs politiques peuvent accéder à des données historiques et en temps réel concernant la qualité du sol et de l'air, les paramètres climatiques et les polluants dans tout le Brandebourg. En fusionnant les données de stations météorologiques situées dans différentes villes, nous visons à fournir une compréhension globale de la dynamique environnementale au sein de la région.",
+  keyFeatures: "Principales caractéristiques:",
+  interactiveMaps: "Cartes interactives",
+  interactiveMapsP1:
+    "Explorez la situation géographique des villes et des stations météorologiques du Brandebourg. Nos cartes interactives offrent une représentation visuelle de la répartition des stations de surveillance environnementale, aidant les utilisateurs à comprendre le contexte spatial de nos données.",
+  comprehensiveData: "Données complètes",
+  comprehensiveDataP1:
+    "Accédez à une multitude de données météorologiques et environnementales collectées à partir de capteurs installés dans nos stations de surveillance. Des niveaux d'humidité du sol aux indices de qualité de l'air, nous fournissons des informations détaillées sur divers paramètres environnementaux cruciaux pour évaluer la santé écologique de la région.",
+  historicalInsights: "Aperçus historiques",
+  historicalInsightsP1:
+    "Plongez dans les archives de données historiques pour analyser les tendances et les modèles des paramètres environnementaux au fil du temps. Notre plateforme facilite l'exploration des variations climatiques passées, des niveaux de polluants et d'autres mesures pertinentes, permettant ainsi aux utilisateurs de suivre les changements environnementaux à long terme.",
+  focusOnForests: "Focus sur les forêts",
+  focusOnForestsP1:
+    "Reconnaissant l'importance des forêts dans la formation des écosystèmes locaux et l'atténuation du changement climatique, notre plateforme met l'accent sur la surveillance des zones forestières du Brandebourg. En intégrant des données liées aux forêts aux côtés d'autres paramètres environnementaux, nous visons à mettre en évidence le rôle vital des forêts dans le maintien de l'équilibre écologique.",
+  ourCommitment: "Notre engagement envers la durabilité",
+  ourCommitmentp1:
+    "Nous nous engageons à promouvoir la durabilité et la gestion de l'environnement dans le Brandebourg. En fournissant des données environnementales accessibles et exploitables, nous cherchons à inciter les individus et les organisations à prendre des mesures proactives en faveur de la conservation et de la préservation écologique.",
+  getInvolved: "Être impliqué",
+  getInvolvedP1:
+    "Rejoignez-nous dans notre mission de promotion de la sensibilisation à l'environnement et de la durabilité dans le Brandebourg. Que vous soyez un passionné de l'environnement, un chercheur ou un décideur politique, votre engagement auprès de notre plateforme contribue à une communauté plus informée et plus soucieuse de l'environnement.",
+  contactUs: "Contactez-nous",
+  contactUsP1:
+    "Vous avez des questions ou des commentaires ? Nous aimerions recevoir de vos nouvelles! Contactez-nous via bajalaniman@gmail.com pour partager vos réflexions, suggestions ou demandes de renseignements.",
+  contactUsP2:
+    "Merci d'avoir visité notre plateforme et de nous rejoindre dans notre voyage vers un avenir plus vert et plus durable pour le Brandebourg !",
+  helpNavigating: "Aide : Naviguer dans notre application",
+  helpNavigatingP:
+    "Bienvenue dans la section d'aide de notre application ! Que vous soyez nouveau sur notre plateforme ou que vous recherchiez de l'aide sur des fonctionnalités spécifiques, ce guide vise à vous fournir une assistance complète pour améliorer votre expérience utilisateur.",
+  gettingStarted: "Commencer:",
+  gettingStartedP:
+    "Si vous êtes nouveau sur notre application, voici un guide rapide pour vous aider à démarrer :",
+  exploreFeatures: "Explorez nos fonctionnalités :",
+  exploreFeaturesP:
+    "prenez un moment pour vous familiariser avec les différentes caractéristiques et fonctionnalités disponibles sur notre plateforme. Des cartes interactives aux outils complets de visualisation de données, il y a beaucoup à découvrir !",
+  navigatingDashboard: "Navigation dans le tableau de bord :",
+  navigatingDashboardP:
+    "une fois connecté, vous serez accueilli avec notre tableau de bord convivial. Ici, vous pouvez accéder à des données environnementales en temps réel, à des informations historiques et à d'autres informations pertinentes. Utilisez le menu de navigation pour explorer les différentes sections de l'application.",
+  interactiveMapsHelp: "Cartes interactives :",
+  interactiveMapsHelpP1:
+    "nos cartes interactives vous permettent de visualiser la répartition géographique des villes, des stations météorologiques et des paramètres environnementaux à travers le Brandebourg. Cliquez sur les marqueurs pour afficher des informations détaillées sur des emplacements spécifiques.",
+  accessingData: "Accès aux données :",
+  accessingDataP1:
+    "plongez dans nos référentiels de données pour accéder à une multitude d'informations sur la qualité du sol et de l'air, les paramètres climatiques, les polluants et bien plus encore. Utilisez des filtres et des fonctionnalités de recherche pour affiner vos requêtes de données et extraire des informations précieuses.",
+  frequentlyAskedQuestions: "Foire aux questions (FAQ) :",
+  howFrequentlyUpdated:
+    "À quelle fréquence les données sont-elles mises à jour ?",
+  howFrequentlyUpdatedP1:
+    "Notre plateforme reçoit des mises à jour des données en temps réel des stations météorologiques, garantissant ainsi que vous avez accès aux dernières informations environnementales.",
+  canAccessHistoricalData: "Puis-je accéder aux données historiques ?",
+  canAccessHistoricalDataP1:
+    "Oui, notre plateforme propose des archives de données historiques qui permettent aux utilisateurs d'analyser les tendances et les modèles des paramètres environnementaux au fil du temps.",
+  HowCanInterpretDat:
+    "Comment interpréter les données environnementales affichées sur la plateforme ?",
+  HowCanInterpretDatP1:
+    "Nous fournissons des info-bulles et des notes explicatives parallèlement à nos visualisations de données pour aider les utilisateurs à comprendre la signification et l'importance de divers paramètres environnementaux. De plus, n’hésitez pas à vous référer à nos ressources pédagogiques pour plus d’informations.",
+  accessibleMobileDevices:
+    "La plateforme est-elle accessible sur les appareils mobiles ?",
+  accessibleMobileDevicesP1:
+    "Oui, notre application est optimisée pour les appareils mobiles, vous permettant d'accéder aux données environnementales à tout moment et en tout lieu.",
 };

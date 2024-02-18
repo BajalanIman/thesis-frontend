@@ -50,8 +50,12 @@ const NavigationBar = ({ darkModeHandler }) => {
           <Link className="w-18" to={"/"}>
             {localize(language, "Home")}
           </Link>
-          <Link className="w-18">{localize(language, "About")}</Link>
-          <Link className="w-18">{localize(language, "Help")}</Link>
+          <Link className="w-18" to="/about">
+            {localize(language, "About")}
+          </Link>
+          <Link className="w-18" to="/help">
+            {localize(language, "Help")}
+          </Link>
         </Toolbar>
 
         <Toolbar sx={{ width: "700px" }}>

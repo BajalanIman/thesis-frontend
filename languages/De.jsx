@@ -42,4 +42,66 @@ export default {
     "Bleiben Sie in Verbindung mit Echtzeit-Wettereinblicken, die speziell auf die Forstwirtschaft zugeschnitten sind. Überwachen Sie wichtige Faktoren wie Luftfeuchtigkeit, Temperatur, Windgeschwindigkeit und Luftdruck, um Strategien zur Waldbewirtschaftung zu optimieren. Ganz gleich, ob es darum geht, das Risiko von Waldbränden einzuschätzen, Holzernteeinsätze zu planen oder die Artenvielfalt zu schützen: Wenn Sie aktuelle Wetterdaten zur Hand haben, können Sie fundierte Entscheidungen treffen. Bleiben Sie potenziellen Bedrohungen immer einen Schritt voraus und maximieren Sie die Gesundheit und Widerstandsfähigkeit Ihres Waldökosystems mit genauen und aktuellen Wetterinformationen. Bleiben Sie auf dem Laufenden über Live-Updates, um sicherzustellen, dass Ihre forstwirtschaftlichen Bemühungen durch die neuesten meteorologischen Erkenntnisse unterstützt werden.",
   onlineInformation:
     "Im Folgenden werden Online-Informationen zu einigen Klimadaten in ",
+  aboutApplication: "Über unsere Bewerbung",
+  aboutApplicationP1:
+    "Willkommen auf unserer Plattform zur Bereitstellung umfassender meteorologischer und umweltbezogener Daten für verschiedene Waldgebiete in Brandenburg, Deutschland. Im Mittelpunkt unserer Initiative steht die Verpflichtung, das Umweltbewusstsein zu fördern und eine fundierte Entscheidungsfindung in Bezug auf die Ökologie und das Klima der Region zu ermöglichen.",
+  ourMission: "Unsere Aufgabe",
+  ourMissionP1:
+    "Unsere Mission ist es, eine zentrale Plattform anzubieten, auf der Einzelpersonen, Forscher und politische Entscheidungsträger auf Echtzeit- und historische Daten zur Boden- und Luftqualität, Klimaparametern und Schadstoffen in ganz Brandenburg zugreifen können. Durch die Zusammenführung von Daten von Wetterstationen in verschiedenen Städten wollen wir ein ganzheitliches Verständnis der Umweltdynamik in der Region vermitteln.",
+  keyFeatures: "Hauptmerkmale:",
+  interactiveMaps: "Interaktive Karten",
+  interactiveMapsP1:
+    "Erkunden Sie die geografische Lage von Städten und Wetterstationen in ganz Brandenburg. Unsere interaktiven Karten bieten eine visuelle Darstellung der Verteilung von Umweltüberwachungsstationen und helfen Benutzern, den räumlichen Kontext unserer Daten zu verstehen.",
+  comprehensiveData: "Umfassende Daten",
+  comprehensiveDataP1:
+    "Greifen Sie auf eine Fülle meteorologischer und umweltbezogener Daten zu, die von den in unseren Überwachungsstationen installierten Sensoren erfasst werden. Von der Bodenfeuchtigkeit bis hin zu Luftqualitätsindizes bieten wir detaillierte Einblicke in verschiedene Umweltparameter, die für die Beurteilung der ökologischen Gesundheit der Region von entscheidender Bedeutung sind.",
+  historicalInsights: "Historische Einblicke",
+  historicalInsightsP1:
+    "Tauchen Sie in historische Datenarchive ein, um Trends und Muster bei Umweltparametern im Zeitverlauf zu analysieren. Unsere Plattform erleichtert die Erforschung vergangener Klimaschwankungen, Schadstoffwerte und anderer relevanter Kennzahlen und ermöglicht Benutzern die Verfolgung langfristiger Umweltveränderungen.",
+  focusOnForests: "Konzentrieren Sie sich auf Wälder",
+  focusOnForestsP1:
+    "Unsere Plattform erkennt die Bedeutung der Wälder für die Gestaltung lokaler Ökosysteme und die Eindämmung des Klimawandels an und legt den Schwerpunkt auf die Überwachung von Waldgebieten in Brandenburg. Durch die Integration waldbezogener Daten neben anderen Umweltparametern wollen wir die entscheidende Rolle der Wälder für die Aufrechterhaltung des ökologischen Gleichgewichts hervorheben.",
+  ourCommitment: "Unser Engagement für Nachhaltigkeit",
+  ourCommitmentp1:
+    "Wir engagieren uns für die Förderung von Nachhaltigkeit und Umweltschutz in Brandenburg. Durch die Bereitstellung zugänglicher und umsetzbarer Umweltdaten möchten wir Einzelpersonen und Organisationen dazu inspirieren, proaktive Maßnahmen zum Schutz und zur Erhaltung der Umwelt zu ergreifen.",
+  getInvolved: "Machen Sie mit",
+  getInvolvedP1:
+    "Begleiten Sie uns bei unserer Mission, Umweltbewusstsein und Nachhaltigkeit in Brandenburg zu fördern. Egal, ob Sie ein Umweltbegeisterter, ein Forscher oder ein politischer Entscheidungsträger sind, Ihr Engagement auf unserer Plattform trägt zu einer besser informierten und umweltbewussteren Gemeinschaft bei.",
+  contactUs: "Kontaktiere uns",
+  contactUsP1:
+    "Haben Sie Fragen oder Feedback? Wir würden uns freuen, von Ihnen zu hören! Kontaktieren Sie uns über bajalaniman@gmail.com, um Ihre Gedanken, Vorschläge oder Anfragen mitzuteilen.",
+  contactUsP2:
+    "Vielen Dank, dass Sie unsere Plattform besuchen und uns auf unserem Weg in eine grünere, nachhaltigere Zukunft für Brandenburg begleiten!",
+  helpNavigating: "Hilfe: Navigieren in unserer Anwendung",
+  helpNavigatingP:
+    "Willkommen im Hilfebereich unserer Anwendung! Unabhängig davon, ob Sie neu auf unserer Plattform sind oder Hilfe zu bestimmten Funktionen benötigen, soll dieser Leitfaden Ihnen umfassende Unterstützung bieten, um Ihr Benutzererlebnis zu verbessern.",
+  gettingStarted: "Erste Schritte:",
+  gettingStartedP:
+    "Wenn Sie neu bei unserer Anwendung sind, finden Sie hier eine Kurzanleitung, die Ihnen den Einstieg erleichtert:",
+  exploreFeatures: "Entdecken Sie unsere Features:",
+  exploreFeaturesP:
+    "Nehmen Sie sich einen Moment Zeit, um sich mit den verschiedenen Features und Funktionalitäten unserer Plattform vertraut zu machen. Von interaktiven Karten bis hin zu umfassenden Datenvisualisierungstools gibt es viel zu entdecken!",
+  navigatingDashboard: "Navigieren im Dashboard:",
+  navigatingDashboardP:
+    "Nach dem Anmelden werden Sie mit unserem benutzerfreundlichen Dashboard begrüßt. Hier können Sie auf Echtzeit-Umweltdaten, historische Erkenntnisse und andere relevante Informationen zugreifen. Verwenden Sie das Navigationsmenü, um verschiedene Abschnitte der Anwendung zu erkunden.",
+  interactiveMapsHelp: "Interaktive Karten:",
+  interactiveMapsHelpP1:
+    "Mit unseren interaktiven Karten können Sie die geografische Verteilung von Städten, Wetterstationen und Umweltparametern in ganz Brandenburg visualisieren. Klicken Sie auf Markierungen, um detaillierte Informationen zu bestimmten Orten anzuzeigen.",
+  accessingData: "Zugriff auf Daten:",
+  accessingDataP1:
+    "Tauchen Sie in unsere Datenbestände ein, um auf eine Fülle von Informationen über Boden- und Luftqualität, Klimaparameter, Schadstoffe und mehr zuzugreifen. Nutzen Sie Filter und Suchfunktionen, um Ihre Datenabfragen einzugrenzen und wertvolle Erkenntnisse zu gewinnen.",
+  frequentlyAskedQuestions: "Häufig gestellte Fragen (FAQs):",
+  howFrequentlyUpdated: "Wie häufig werden die Daten aktualisiert?",
+  howFrequentlyUpdatedP1:
+    "Unsere Plattform empfängt Echtzeit-Datenaktualisierungen von Wetterstationen und stellt so sicher, dass Sie Zugriff auf die neuesten Umweltinformationen haben.",
+  canAccessHistoricalData: "Kann ich auf historische Daten zugreifen?",
+  canAccessHistoricalDataP1:
+    "Ja, unsere Plattform bietet historische Datenarchive, die es Benutzern ermöglichen, Trends und Muster bei Umweltparametern im Zeitverlauf zu analysieren.",
+  HowCanInterpretDat:
+    "Wie kann ich die auf der Plattform angezeigten Umweltdaten interpretieren?",
+  HowCanInterpretDatP1:
+    "Neben unseren Datenvisualisierungen stellen wir Tooltips und erläuternde Hinweise zur Verfügung, um Benutzern das Verständnis der Bedeutung und Signifikanz verschiedener Umgebungsparameter zu erleichtern. Weitere Einblicke erhalten Sie auch in unseren Bildungsressourcen.",
+  accessibleMobileDevices: "Ist die Plattform auf mobilen Geräten zugänglich?",
+  accessibleMobileDevicesP1:
+    "Ja, unsere Anwendung ist für mobile Geräte optimiert, sodass Sie jederzeit und überall auf Umweltdaten zugreifen können.",
 };
