@@ -17,13 +17,13 @@ const AboutParagraphs = ({
           fontWeight: fontWeight,
           marginTop: marginTop,
           marginBottom: marginBottom,
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1450px",
-          },
+          // width: {
+          //   xs: "400px",
+          //   sm: "450px",
+          //   md: "600px",
+          //   lg: "1000px",
+          //   xl: "1450px",
+          // },
         }}
       >
         {text}

@@ -34,7 +34,7 @@ const AllStations = () => {
   };
 
   return (
-    <Box sx={{ minWidth: { xs: 200, md: 600 } }}>
+    <Box sx={{ minWidth: { xs: 170, md: 600 } }}>
       <FormControl fullWidth>
         <InputLabel sx={{ color: "white" }} id="demo-simple-select-label">
           Station

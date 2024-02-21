@@ -5,7 +5,7 @@ const TextInBody = ({ variant, text, titleStyle }) => {
   return (
     <Typography
       variant={variant}
-      className="font-arial text-xl flex justify-start"
+      className="font-arial flex justify-start"
       sx={{
         ...titleStyle,
         textAlign: { xs: "justify" },

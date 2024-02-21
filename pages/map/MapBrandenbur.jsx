@@ -42,39 +42,26 @@ const MapBrandenbur = () => {
 
   const titleStyle = {
     justifyContent: "center",
-    width: {
-      xs: "400px",
-      sm: "450px",
-      md: "600px",
-      lg: "1000px",
-      xl: "1400px",
-    },
+    // width: {
+    //   xs: "400px",
+    //   sm: "450px",
+    //   md: "600px",
+    //   lg: "1000px",
+    //   xl: "1400px",
+    // },
     paddingY: "1%",
     fontWeight: "bold",
-    fontSize: {
-      xs: "14px",
-      sm: "22px",
-      md: "28px",
-      lg: "34px",
-    },
   };
-
   const paragraphStyle = {
-    width: {
-      xs: "400px",
-      sm: "450px",
-      md: "600px",
-      lg: "1000px",
-      xl: "1400px",
-    },
+    // width: {
+    //   xs: "400px",
+    //   sm: "450px",
+    //   md: "600px",
+    //   lg: "1000px",
+    //   xl: "1400px",
+    // },
 
     fontWeight: "normal",
-    fontSize: {
-      lg: 24,
-      md: 24,
-      sm: 16,
-      xs: 12,
-    },
     paddingTop: "44px",
     font: "Arial",
   };
@@ -104,7 +91,9 @@ const MapBrandenbur = () => {
         flexDirection: "column",
         justifyItems: "center",
         alignItems: "center",
-        paddingBottom: "40px",
+        paddingTop: 3,
+        paddingBottom: 5,
+        paddingX: 3,
       }}
     >
       <TextInBody
@@ -194,13 +183,14 @@ const MapBrandenbur = () => {
           titleStyle={paragraphStyle}
         ></TextInBody>
         <TextInBody
-          variant={`ul`}
+          variant={`h6`}
           text={localize(language, "KeyFeatures")}
           titleStyle={titleInParagraphStyle}
         ></TextInBody>
 
         {informations.map((e, index) => (
           <TextInBody
+            variant={`h6`}
             key={index}
             text={e}
             titleStyle={paragraphStyleTwo}

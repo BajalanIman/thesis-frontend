@@ -34,7 +34,7 @@ const NavigationBar = ({ darkModeHandler }) => {
     <AppBar
       sx={{
         backgroundColor: "darkgreen",
-        position: "sticky",
+        position: { xs: "static", md: "sticky" },
         alignItems: "center",
       }}
     >

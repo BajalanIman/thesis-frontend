@@ -107,7 +107,6 @@ const Panoramas = () => {
           display: "flex",
           justifyContent: "center",
           width: customWidth,
-          bgcolor: "red",
         }}
       >
         <div id="panorama" className="max-w-[1470px] w-[160vh] h-[60vh]">

@@ -11,20 +11,22 @@ import React, { useContext } from "react";
 const About = () => {
   let { language } = useContext(CartContext);
 
-  const customizedWidth = {
-    xs: "400px",
-    sm: "450px",
-    md: "600px",
-    lg: "1000px",
-    xl: "1450px",
-  };
+  // const customizedWidth = {
+  //   xs: "400px",
+  //   sm: "450px",
+  //   md: "600px",
+  //   lg: "1000px",
+  //   xl: "1450px",
+  // };
 
   return (
     <div className="flex justify-center relative">
       <Box
         sx={{
-          width: customizedWidth,
+          // width: customizedWidth,
+          maxWidth: "1450px",
           position: "relative",
+          paddingX: { xs: 2, md: 0 },
           zIndex: 10,
         }}
       >
@@ -155,7 +157,7 @@ const About = () => {
           text={localize(language, "contactUsP2")}
         />
       </Box>
-      <BackgroundHighlight />
+      {/* <BackgroundHighlight /> */}
     </div>
   );
 };

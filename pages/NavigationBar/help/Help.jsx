@@ -14,14 +14,16 @@ const Help = () => {
     <div className="flex justify-center relative">
       <Box
         sx={{
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1450px",
-          },
+          // width: {
+          //   xs: "400px",
+          //   sm: "450px",
+          //   md: "600px",
+          //   lg: "1000px",
+          //   xl: "1450px",
+          // },
+          maxWidth: "1450px",
           position: "relative",
+          paddingX: { xs: 2, md: 0 },
           zIndex: 10,
         }}
       >
@@ -133,7 +135,7 @@ const Help = () => {
           text={localize(language, "accessibleMobileDevicesP1")}
         />
       </Box>
-      <BackgroundHighlight />
+      {/* <BackgroundHighlight /> */}
     </div>
   );
 };

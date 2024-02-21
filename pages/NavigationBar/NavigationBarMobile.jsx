@@ -36,11 +36,10 @@ const NavigationBarMobile = ({ darkModeHandler }) => {
   };
 
   return (
-    <div className="max-w-[680px] flex flex-col mb-1">
+    <div className="sm:max-w-[640px] flex flex-col mb-1 p-x-1">
       <Toolbar
         sx={{
           display: "flex",
-          gap: "20px",
           justifyContent: "space-between",
           marginBottom: 2,
         }}
@@ -67,9 +66,15 @@ const NavigationBarMobile = ({ darkModeHandler }) => {
           <ChangeLanguage />
         </div>
       </Toolbar>
-      <Box sx={{ display: "flex", minWidth: "420px", marginTop: 1 }}>
+      <Box
+        sx={{
+          display: "flex",
+          width: { xs: "400px", sm: "640px" },
+          marginTop: 1,
+        }}
+      >
         <Dashboard></Dashboard>
-        <Toolbar sx={{ width: { xs: "100px", md: "300px" } }}>
+        <Toolbar sx={{ width: { xs: 170, md: 600 } }}>
           <AllStations />
         </Toolbar>
       </Box>
