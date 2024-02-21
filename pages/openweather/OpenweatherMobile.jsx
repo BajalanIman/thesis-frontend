@@ -53,7 +53,6 @@ const OpenweatherMobile = () => {
           }
         >
           <OWMobileBTN
-            marginLeft={"8px"}
             size={"small"}
             Color={"green"}
             bgColor={"white"}
@@ -65,7 +64,6 @@ const OpenweatherMobile = () => {
           />
 
           <OWMobileBTN
-            marginLeft={"8px"}
             size={"small"}
             Color={"green"}
             bgColor={"white"}

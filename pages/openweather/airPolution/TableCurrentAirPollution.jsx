@@ -25,9 +25,9 @@ const TableCurrentAirPollution = ({ openWeaterAll }) => {
   ];
 
   return (
-    <Box sx={{ width: { xs: "400px", md: "450px" } }}>
+    <Box sx={{ width: { xs: "350px", md: "450px" } }}>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 450 }} aria-label="simple table">
+        <Table sx={{ minWidth: 350 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell
@@ -42,7 +42,7 @@ const TableCurrentAirPollution = ({ openWeaterAll }) => {
                 sx={{
                   fontWeight: "bold",
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "start",
                   height: "56px",
                 }}
               >
@@ -54,7 +54,11 @@ const TableCurrentAirPollution = ({ openWeaterAll }) => {
             {rows.map((row) => (
               <TableRow
                 key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                sx={{
+                  "&:last-child td, &:last-child th": {
+                    border: 0,
+                  },
+                }}
               >
                 <TableCell component="th" scope="row">
                   {row.name}
@@ -62,7 +66,8 @@ const TableCurrentAirPollution = ({ openWeaterAll }) => {
                 <TableCell
                   sx={{
                     display: "flex",
-                    justifyContent: "center",
+                    justifyContent: "start",
+                    height: "34px",
                   }}
                 >
                   {row.value}

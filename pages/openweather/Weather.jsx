@@ -103,17 +103,17 @@ const Weather = () => {
   });
 
   return (
-    <Box sx={{ marginX: { xs: 2, md: 0 } }}>
+    <Box sx={{ paddingX: { xs: 2, md: 0 } }}>
       <Typography
         variant="h6"
         sx={{
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1400px",
-          },
+          // width: {
+          //   xs: "400px",
+          //   sm: "450px",
+          //   md: "600px",
+          //   lg: "1000px",
+          //   xl: "1400px",
+          // },
           marginTop: 7,
           textAlign: "justify",
         }}
@@ -126,13 +126,6 @@ const Weather = () => {
         variant="h6"
         sx={{
           marginY: { xs: 3, lg: 7 },
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1400px",
-          },
         }}
       >
         {localize(language, "onlineInformation")}{" "}

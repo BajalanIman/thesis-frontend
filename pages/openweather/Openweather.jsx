@@ -47,10 +47,8 @@ const Openweather = () => {
       <Box
         sx={{
           position: "relative",
-          bottom: 12,
-          left: 12,
+          paddingX: 2,
           width: "100%",
-          padding: "10px",
           zIndex: 9999, // Adjust the z-index if needed
 
           display: { xs: "flex", md: "none" },

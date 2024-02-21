@@ -41,14 +41,6 @@ const MapBrandenbur = () => {
   //
 
   const titleStyle = {
-    justifyContent: "center",
-    // width: {
-    //   xs: "400px",
-    //   sm: "450px",
-    //   md: "600px",
-    //   lg: "1000px",
-    //   xl: "1400px",
-    // },
     paddingY: "1%",
     fontWeight: "bold",
   };
@@ -62,8 +54,7 @@ const MapBrandenbur = () => {
     // },
 
     fontWeight: "normal",
-    paddingTop: "44px",
-    font: "Arial",
+    paddingTop: "22px",
   };
   const titleInParagraphStyle = {
     ...paragraphStyle,
@@ -74,7 +65,7 @@ const MapBrandenbur = () => {
 
   const paragraphStyleTwo = {
     ...paragraphStyle,
-    paddingY: "6px",
+    paddingY: { sx: "3px", md: "12px" },
   };
 
   const informations = [
@@ -87,117 +78,136 @@ const MapBrandenbur = () => {
   return (
     <Box
       sx={{
+        width: "full",
         display: "flex",
         flexDirection: "column",
-        justifyItems: "center",
         alignItems: "center",
-        paddingTop: 3,
-        paddingBottom: 5,
-        paddingX: 3,
       }}
     >
-      <TextInBody
-        text={localize(language, "WelcomeText")}
-        titleStyle={titleStyle}
-      ></TextInBody>
       <Box
         sx={{
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1400px",
-          },
           display: "flex",
           flexDirection: "column",
-          alignContent: "center",
+          justifyItems: "center",
           alignItems: "center",
-          paddingTop: "20px",
+          maxWidth: "1470px",
+          paddingTop: 3,
+          paddingBottom: 5,
+          paddingX: 2,
         }}
       >
-        <MapContainer
-          center={position}
-          zoom={8}
-          scrollWheelZoom={true}
-          style={{
-            width: "100%",
-            height: 750,
-            display: "flex",
-            justifyContent: "center",
-            justifyItems: "center",
-          }}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Polygon pathOptions={limeColor} positions={Brandenburgboundaries} />
-
-          <MarkerClusterGroup
-            autoPan:true
-            onMouseOver={(e) => {
-              const { lat, lng } = e.latlng;
-              setLatInMap(lat);
-              setLngInMap(lng);
-              axios
-                .get(
-                  `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=5&appid=992c20977dbb20bd9b6b36c9a376dc7c`
-                )
-                .then((res) => {
-                  if (res.data && res.data.length > 0) {
-                    const firstLocation = res.data[0];
-                    setCityName(firstLocation.name);
-                    e.propagatedFrom
-                      .bindTooltip(` ${firstLocation.name}`)
-                      .openTooltip();
-                  }
-                })
-                .catch((error) => {
-                  console.error("Error fetching data:", error);
-                });
-            }}
-            onMouseOut={(e) => {
-              e.propagatedFrom.unbindTooltip();
-            }}
-            chunkedLoading
-          >
-            {stationInformation.map((el) => {
-              return (
-                <StationsLocation
-                  key={el.id}
-                  name={el.name}
-                  stlocation={el.location}
-                  panorama={el.panorama}
-                  infoOne={el.infoOne}
-                  infoTwo={el.infoTwo}
-                  infoThree={el.infoThree}
-                ></StationsLocation>
-              );
-            })}
-          </MarkerClusterGroup>
-        </MapContainer>
-        <TextInBody
-          variant={`h6`}
-          text={localize(language, "InfoHomePage")}
-          titleStyle={paragraphStyle}
-        ></TextInBody>
-        <TextInBody
-          variant={`h6`}
-          text={localize(language, "KeyFeatures")}
-          titleStyle={titleInParagraphStyle}
-        ></TextInBody>
-
-        {informations.map((e, index) => (
+        <Box sx={{ width: "100%" }}>
           <TextInBody
-            variant={`h6`}
-            key={index}
-            text={e}
-            titleStyle={paragraphStyleTwo}
+            variant={`h4`}
+            text={localize(language, "WelcomeText")}
+            titleStyle={titleStyle}
           ></TextInBody>
-        ))}
+        </Box>
+        <Box sx={{ maxWidth: "1450px" }}>
+          <Box
+            sx={{
+              // width: {
+              //   xs: "400px",
+              //   sm: "450px",
+              //   md: "600px",
+              //   lg: "1000px",
+              //   xl: "1400px",
+              // },
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              alignItems: "center",
+              paddingTop: "20px",
+            }}
+          >
+            <MapContainer
+              center={position}
+              zoom={8}
+              scrollWheelZoom={true}
+              style={{
+                width: "100%",
+                height: 750,
+                display: "flex",
+                justifyContent: "center",
+                justifyItems: "center",
+              }}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Polygon
+                pathOptions={limeColor}
+                positions={Brandenburgboundaries}
+              />
 
-        {/* <p>{localize(language, "AppCreator")}</p> */}
+              <MarkerClusterGroup
+                autoPan:true
+                onMouseOver={(e) => {
+                  const { lat, lng } = e.latlng;
+                  setLatInMap(lat);
+                  setLngInMap(lng);
+                  axios
+                    .get(
+                      `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=5&appid=992c20977dbb20bd9b6b36c9a376dc7c`
+                    )
+                    .then((res) => {
+                      if (res.data && res.data.length > 0) {
+                        const firstLocation = res.data[0];
+                        setCityName(firstLocation.name);
+                        e.propagatedFrom
+                          .bindTooltip(` ${firstLocation.name}`)
+                          .openTooltip();
+                      }
+                    })
+                    .catch((error) => {
+                      console.error("Error fetching data:", error);
+                    });
+                }}
+                onMouseOut={(e) => {
+                  e.propagatedFrom.unbindTooltip();
+                }}
+                chunkedLoading
+              >
+                {stationInformation.map((el) => {
+                  return (
+                    <StationsLocation
+                      key={el.id}
+                      name={el.name}
+                      stlocation={el.location}
+                      panorama={el.panorama}
+                      infoOne={el.infoOne}
+                      infoTwo={el.infoTwo}
+                      infoThree={el.infoThree}
+                    ></StationsLocation>
+                  );
+                })}
+              </MarkerClusterGroup>
+            </MapContainer>
+            <Box>
+              <TextInBody
+                variant={`h6`}
+                text={localize(language, "InfoHomePage")}
+                titleStyle={paragraphStyle}
+              ></TextInBody>
+              <TextInBody
+                variant={`h5`}
+                text={localize(language, "KeyFeatures")}
+                titleStyle={titleInParagraphStyle}
+              ></TextInBody>
+
+              {informations.map((e, index) => (
+                <TextInBody
+                  variant={`h6`}
+                  key={index}
+                  text={e}
+                  titleStyle={paragraphStyleTwo}
+                ></TextInBody>
+              ))}
+            </Box>
+            {/* <p>{localize(language, "AppCreator")}</p> */}
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

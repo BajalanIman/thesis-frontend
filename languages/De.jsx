@@ -78,16 +78,16 @@ export default {
   gettingStarted: "Erste Schritte:",
   gettingStartedP:
     "Wenn Sie neu bei unserer Anwendung sind, finden Sie hier eine Kurzanleitung, die Ihnen den Einstieg erleichtert:",
-  exploreFeatures: "Entdecken Sie unsere Features:",
+  exploreFeatures: "Entdecken Sie unsere Features: ",
   exploreFeaturesP:
     "Nehmen Sie sich einen Moment Zeit, um sich mit den verschiedenen Features und Funktionalitäten unserer Plattform vertraut zu machen. Von interaktiven Karten bis hin zu umfassenden Datenvisualisierungstools gibt es viel zu entdecken!",
-  navigatingDashboard: "Navigieren im Dashboard:",
+  navigatingDashboard: "Navigieren im Dashboard: ",
   navigatingDashboardP:
     "Nach dem Anmelden werden Sie mit unserem benutzerfreundlichen Dashboard begrüßt. Hier können Sie auf Echtzeit-Umweltdaten, historische Erkenntnisse und andere relevante Informationen zugreifen. Verwenden Sie das Navigationsmenü, um verschiedene Abschnitte der Anwendung zu erkunden.",
-  interactiveMapsHelp: "Interaktive Karten:",
+  interactiveMapsHelp: "Interaktive Karten: ",
   interactiveMapsHelpP1:
     "Mit unseren interaktiven Karten können Sie die geografische Verteilung von Städten, Wetterstationen und Umweltparametern in ganz Brandenburg visualisieren. Klicken Sie auf Markierungen, um detaillierte Informationen zu bestimmten Orten anzuzeigen.",
-  accessingData: "Zugriff auf Daten:",
+  accessingData: "Zugriff auf Daten: ",
   accessingDataP1:
     "Tauchen Sie in unsere Datenbestände ein, um auf eine Fülle von Informationen über Boden- und Luftqualität, Klimaparameter, Schadstoffe und mehr zuzugreifen. Nutzen Sie Filter und Suchfunktionen, um Ihre Datenabfragen einzugrenzen und wertvolle Erkenntnisse zu gewinnen.",
   frequentlyAskedQuestions: "Häufig gestellte Fragen (FAQs):",

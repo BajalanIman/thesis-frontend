@@ -16,7 +16,6 @@ const HelpParagraphs = ({
       <Typography
         variant={variant}
         sx={{
-          textAlign: "justify",
           fontWeight: fontWeight,
           marginTop: marginTop,
           marginBottom: marginBottom,

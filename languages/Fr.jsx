@@ -77,21 +77,21 @@ export default {
   gettingStarted: "Commencer:",
   gettingStartedP:
     "Si vous êtes nouveau sur notre application, voici un guide rapide pour vous aider à démarrer :",
-  exploreFeatures: "Explorez nos fonctionnalités :",
+  exploreFeatures: "Explorez nos fonctionnalités: ",
   exploreFeaturesP:
     "prenez un moment pour vous familiariser avec les différentes caractéristiques et fonctionnalités disponibles sur notre plateforme. Des cartes interactives aux outils complets de visualisation de données, il y a beaucoup à découvrir !",
-  navigatingDashboard: "Navigation dans le tableau de bord :",
+  navigatingDashboard: "Navigation dans le tableau de bord : ",
   navigatingDashboardP:
     "une fois connecté, vous serez accueilli avec notre tableau de bord convivial. Ici, vous pouvez accéder à des données environnementales en temps réel, à des informations historiques et à d'autres informations pertinentes. Utilisez le menu de navigation pour explorer les différentes sections de l'application.",
-  interactiveMapsHelp: "Cartes interactives :",
+  interactiveMapsHelp: "Cartes interactives: ",
   interactiveMapsHelpP1:
     "nos cartes interactives vous permettent de visualiser la répartition géographique des villes, des stations météorologiques et des paramètres environnementaux à travers le Brandebourg. Cliquez sur les marqueurs pour afficher des informations détaillées sur des emplacements spécifiques.",
-  accessingData: "Accès aux données :",
+  accessingData: "Accès aux données: ",
   accessingDataP1:
     "plongez dans nos référentiels de données pour accéder à une multitude d'informations sur la qualité du sol et de l'air, les paramètres climatiques, les polluants et bien plus encore. Utilisez des filtres et des fonctionnalités de recherche pour affiner vos requêtes de données et extraire des informations précieuses.",
-  frequentlyAskedQuestions: "Foire aux questions (FAQ) :",
+  frequentlyAskedQuestions: "Foire aux questions (FAQ):",
   howFrequentlyUpdated:
-    "À quelle fréquence les données sont-elles mises à jour ?",
+    "À quelle fréquence les données sont-elles mises à jour ?",
   howFrequentlyUpdatedP1:
     "Notre plateforme reçoit des mises à jour des données en temps réel des stations météorologiques, garantissant ainsi que vous avez accès aux dernières informations environnementales.",
   canAccessHistoricalData: "Puis-je accéder aux données historiques ?",

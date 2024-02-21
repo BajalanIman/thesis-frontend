@@ -111,13 +111,12 @@ const AirPollutionForecast = () => {
       <Typography
         variant="p"
         sx={{
-          width: customWidth,
           maxWidth: "1450px",
           display: "block",
           paddingY: "24px",
           font: "Arial",
           textAlign: "justify",
-          paddingX: { xs: "12px", lg: "0px" },
+          paddingX: { xs: "3px", lg: "0px" },
         }}
       >
         {localize(language, "pollutingGasesOne")}

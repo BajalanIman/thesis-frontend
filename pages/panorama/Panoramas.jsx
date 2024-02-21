@@ -50,7 +50,6 @@ const Panoramas = () => {
   }
   const titleStyle = {
     fontWeight: "bold",
-    fontSize: "24px",
   };
 
   useEffect(() => {
@@ -79,79 +78,84 @@ const Panoramas = () => {
         alignItems: "center",
         width: "full",
         height: "100%",
-        paddingBottom: "20px",
+        paddingBottom: { xs: "20px", md: "40px" },
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "rows",
-          justifyContent: "start",
-          width: customWidth,
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: "bold",
-            display: "inline",
-            paddingX: 2,
-            paddingY: { xs: "20px", md: "34px" },
-          }}
-        >
-          {localize(language, "Station")}: {name}
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          width: customWidth,
-        }}
-      >
-        <div id="panorama" className="max-w-[1470px] w-[160vh] h-[60vh]">
-          {/* The panorama will be displayed here */}
-        </div>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          maxWidth: "1470px",
-          width: customWidth,
-        }}
-      >
+      <Box sx={{ maxWidth: "1450px", paddingX: { xs: 3, md: 0 } }}>
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "start",
-            textAlign: "justify",
-            gap: "20px",
-            paddingTop: "20px",
+            flexDirection: "rows",
+            justifyContent: "start",
           }}
         >
-          <TextInBody
-            text={localize(language, "Description")}
-            titleStyle={titleStyle}
-          />
-          <TextInBody text={infoOneTr} />
-          {infoOneTr.length && <TextInBody text={infoTwoTr} />}
-          {infoThreeTr.length && (
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              display: "inline",
+              paddingX: 2,
+              paddingY: { xs: "20px", md: "34px" },
+            }}
+          >
+            {localize(language, "Station")}: {name}
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            width: customWidth,
+          }}
+        >
+          <div id="panorama" className="max-w-[1470px] w-[160vh] h-[60vh]">
+            {/* The panorama will be displayed here */}
+          </div>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "start",
+              textAlign: "justify",
+              gap: "20px",
+              paddingTop: "20px",
+            }}
+          >
             <TextInBody
-              text={localize(language, "Equipment")}
+              variant={`h5`}
+              text={localize(language, "Description")}
               titleStyle={titleStyle}
             />
-          )}
-          {infoThreeTr.length && (
-            <Box sx={{ width: "80%" }}>
-              {infoThreeTr.map((el) =>
-                el.map((e) => <Typography key={e}>{e}</Typography>)
-              )}
-            </Box>
-          )}
+            <TextInBody variant={`h6`} text={infoOneTr} />
+            {infoOneTr.length && <TextInBody variant={`h6`} text={infoTwoTr} />}
+            {infoThreeTr.length && (
+              <TextInBody
+                variant={`h5`}
+                text={localize(language, "Equipment")}
+                titleStyle={titleStyle}
+              />
+            )}
+            {infoThreeTr.length && (
+              <Box>
+                {infoThreeTr.map((el) =>
+                  el.map((e) => (
+                    <Typography variant={`h6`} key={e}>
+                      {e}
+                    </Typography>
+                  ))
+                )}
+              </Box>
+            )}
+          </Box>
         </Box>
       </Box>
     </Box>

@@ -81,13 +81,13 @@ export default {
   exploreFeatures: "Explore Our Features: ",
   exploreFeaturesP:
     "Take a moment to familiarize yourself with the various features and functionalities available on our platform. From interactive maps to comprehensive data visualization tools, there's a lot to discover!",
-  navigatingDashboard: "Navigating the Dashboard:",
+  navigatingDashboard: "Navigating the Dashboard: ",
   navigatingDashboardP:
     "Upon logging in, you'll be greeted with our user-friendly dashboard. Here, you can access real-time environmental data, historical insights, and other relevant information. Use the navigation menu to explore different sections of the application.",
-  interactiveMapsHelp: "Interactive Maps:",
+  interactiveMapsHelp: "Interactive Maps: ",
   interactiveMapsHelpP1:
     "Our interactive maps allow you to visualize the geographical distribution of cities, meteorological stations, and environmental parameters across Brandenburg. Click on markers to view detailed information about specific locations.",
-  accessingData: "Accessing Data:",
+  accessingData: "Accessing Data: ",
   accessingDataP1:
     "Dive into our data repositories to access a wealth of information on soil and air quality, climate parameters, pollutants, and more. Use filters and search functionalities to narrow down your data queries and extract valuable insights.",
   frequentlyAskedQuestions: "Frequently Asked Questions (FAQs):",
