@@ -17,6 +17,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import SendIcon from "@mui/icons-material/Send";
 import ColorLensRoundedIcon from "@mui/icons-material/ColorLensRounded";
 import { Instagram, Twitter, YouTube } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 // import { applySolidInversion } from "@mui/joy/colorInversion";
 
 const Footer = () => {
@@ -66,13 +67,25 @@ const Footer = () => {
         </IconButton>
         <Divider orientation="vertical" />
         <IconButton variant="plain">
-          <FacebookRoundedIcon />
+          <a
+            href="https://www.facebook.com/iman.bajalan/friends_all"
+            target="blank"
+          >
+            <FacebookRoundedIcon />
+          </a>
         </IconButton>
         <IconButton variant="plain">
-          <GitHubIcon />
+          <a href="https://github.com/BajalanIman" target="blank">
+            <GitHubIcon />
+          </a>
         </IconButton>
         <IconButton variant="plain">
-          <Instagram />
+          <a
+            href="https://www.instagram.com/imanbajalan1987?igsh=NWZhb3BxNDdhNmE0"
+            target="blank"
+          >
+            <Instagram />
+          </a>
         </IconButton>
         <IconButton variant="plain">
           <Twitter />
@@ -112,31 +125,37 @@ const Footer = () => {
           width: { lg: "1450px" },
         }}
       >
-        <Card
-          variant="soft"
-          size="sm"
-          sx={{
-            flexDirection: { xs: "row", md: "column" },
-            minWidth: { xs: "100%", md: "auto" },
-            gap: 1,
-          }}
+        <a
+          href="https://www.hnee.de/en/Startseite/HNE-Eberswalde-Startseite-E9875.htm"
+          target="blank"
+          className="pointer"
         >
-          <AspectRatio
-            ratio="21/9"
-            minHeight={80}
-            sx={{ flexBasis: { xs: 200, md: "initial" } }}
+          <Card
+            variant="soft"
+            size="sm"
+            sx={{
+              flexDirection: { xs: "row", md: "column" },
+              minWidth: { xs: "100%", md: "auto" },
+              gap: 1,
+            }}
           >
-            <img
-              alt=""
-              src="https://www.tourismus-studieren.de/fileadmin/user_upload/Inhalte/profile/Hochschule-fuer-Nachhaltige-Entwicklung-Eberswalde/Header1_HNEE_20200630.jpg"
-            />
-          </AspectRatio>
-          <CardContent>
-            <Typography level="body-sm" sx={{ fontWeight: "bold" }}>
-              Eberswalde University for Sustainable Development
-            </Typography>
-          </CardContent>
-        </Card>
+            <AspectRatio
+              ratio="21/9"
+              minHeight={80}
+              sx={{ flexBasis: { xs: 200, md: "initial" } }}
+            >
+              <img
+                alt=""
+                src="https://www.tourismus-studieren.de/fileadmin/user_upload/Inhalte/profile/Hochschule-fuer-Nachhaltige-Entwicklung-Eberswalde/Header1_HNEE_20200630.jpg"
+              />
+            </AspectRatio>
+            <CardContent>
+              <Typography level="body-sm" sx={{ fontWeight: "bold" }}>
+                Eberswalde University for Sustainable Development
+              </Typography>
+            </CardContent>
+          </Card>
+        </a>
         <List
           size="sm"
           orientation="horizontal"
@@ -156,16 +175,25 @@ const Footer = () => {
             </ListSubheader>
             <List>
               <ListItem>
-                <ListItemButton>About</ListItemButton>
+                <Link to="/about">
+                  <ListItemButton>About</ListItemButton>
+                </Link>
               </ListItem>
               <ListItem>
-                <ListItemButton>Help</ListItemButton>
+                <Link to="/help">
+                  <ListItemButton>Help</ListItemButton>
+                </Link>
+              </ListItem>
+
+              <ListItem>
+                <Link to="/login">
+                  <ListItemButton>Log in</ListItemButton>
+                </Link>
               </ListItem>
               <ListItem>
-                <ListItemButton>Log in</ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>Contact us</ListItemButton>
+                <Link to="/contact">
+                  <ListItemButton>Contact us</ListItemButton>
+                </Link>
               </ListItem>
             </List>
           </ListItem>

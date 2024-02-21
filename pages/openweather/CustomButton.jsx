@@ -11,11 +11,17 @@ const CustomButton = ({ name, handler }) => {
           color: "white",
           fontWeight: "Bold",
           marginTop: "30px",
-          paddingY: "10px",
-          paddingX: "20px",
-          borderRadius: "20px",
+          paddingY: 3,
+          width: 300,
+          borderTopRightRadius: 22,
+          borderBottomLeftRadius: 22,
           ":hover": { backgroundColor: "lightGreen", color: "black" },
-          ":active": { backgroundColor: "red", color: "black" },
+          ":active": {
+            backgroundColor: "green",
+            color: "white",
+            fontWeight: "bold",
+            opacity: 20,
+          },
         }}
       >
         {name}

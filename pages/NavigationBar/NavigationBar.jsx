@@ -16,9 +16,11 @@ import { CartContext } from "../../App";
 import Dashboard from "./login/Dashboard.jsx";
 import { useContext } from "react";
 
+import AllStations from "./AllStations.jsx";
 import Search from "./Search";
 import ChangeLanguage from "./ChangeLanguage";
 import { useState } from "react";
+import NavigationBarMobile from "./NavigationBarMobile.jsx";
 
 const NavigationBar = ({ darkModeHandler }) => {
   let { language } = useContext(CartContext);
@@ -40,7 +42,7 @@ const NavigationBar = ({ darkModeHandler }) => {
         sx={{
           display: {
             xs: "none",
-            sm: "flex",
+            md: "flex",
           },
           flexDirection: "row",
           paddingY: "8px",
@@ -59,7 +61,8 @@ const NavigationBar = ({ darkModeHandler }) => {
         </Toolbar>
 
         <Toolbar sx={{ width: "700px" }}>
-          <Search />
+          <AllStations />
+          {/* <Search /> */}
         </Toolbar>
 
         <div className="my-1">
@@ -79,6 +82,19 @@ const NavigationBar = ({ darkModeHandler }) => {
           {/* <Link className="w-18">{localize(language, "Login")}</Link>
           <Link className="w-18">{localize(language, "Signin")}</Link> */}
         </Toolbar>
+      </Box>
+      {/* Mobile form */}
+      <Box
+        sx={{
+          display: {
+            xs: "flex",
+            md: "none",
+          },
+          flexDirection: "row",
+          paddingY: "8px",
+        }}
+      >
+        <NavigationBarMobile darkModeHandler={darkModeHandler} />
       </Box>
     </AppBar>
   );

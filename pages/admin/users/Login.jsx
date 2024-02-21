@@ -122,10 +122,7 @@ const Login = () => {
   return (
     <>
       <div className="w-full h-screen justify-center items-center flex flex-col">
-        <Typography
-          variant="h4"
-          sx={{ fontWeight: "bold", marginBottom: "15px" }}
-        >
+        <Typography variant="h4" sx={{ fontWeight: "bold", paddingBottom: 6 }}>
           Log in to your account
         </Typography>
         <Box
@@ -147,6 +144,7 @@ const Login = () => {
             borderRadius: "7px",
             boxShadow: "3px 3px  lightgray",
             position: "relative",
+            paddingTop: 4,
           }}
         >
           <CloseBTN />

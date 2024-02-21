@@ -39,10 +39,12 @@ const Dashboard = () => {
 
   return (
     <>
-      <Box sx={{ Width: "200px" }}>
+      <Box sx={{ Width: { xs: "100px", md: "200px" } }}>
         <Link className="w-18" to={"/"} />
         <FormControl sx={{ width: "200px" }} fullWidth>
-          <InputLabel id="demo-simple-select-label">Daschboard</InputLabel>
+          <InputLabel id="demo-simple-select-label" sx={{ color: "white" }}>
+            Daschboard
+          </InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"

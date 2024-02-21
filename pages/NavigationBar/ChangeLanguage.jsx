@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 import { localize } from "../../Translation";
 import { CartContext } from "../../App";
@@ -25,7 +25,7 @@ const ChangeLanguage = () => {
   ];
 
   return (
-    <FormControl sx={{ height: "14px", width: "300px" }}>
+    <FormControl sx={{ height: "14px", width: { sx: "200px", md: "300px" } }}>
       <InputLabel id="language-select-label">
         {localize(language, "Language")}
       </InputLabel>
@@ -40,13 +40,19 @@ const ChangeLanguage = () => {
       >
         {languages.map((language) => (
           <MenuItem key={language.code} value={language.code}>
-            <div className=" w-full flex gap-2">
+            <div className=" w-full  gap-2 sm:none md:flex">
               <img
                 src={language.flagUrl}
                 alt={language.code}
                 className="w-9 h-6"
               />
-              <span>{language.label}</span>
+              {/* <span>{language.label}</span> */}
+              <Box
+                component="span"
+                sx={{ display: { xs: "none", md: "flex" } }}
+              >
+                {language.label}
+              </Box>
             </div>
           </MenuItem>
         ))}

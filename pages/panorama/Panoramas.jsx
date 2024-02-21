@@ -61,93 +61,101 @@ const Panoramas = () => {
     });
   }, []);
 
-  return (
-    <>
-      <div className="flex flex-col items-center w-full h-screen">
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "rows",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "2024px",
-            maxWidth: "2024px",
-          }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              width: "72%",
-              fontSize: "36px",
-              fontWeight: "bold",
-              display: "inline",
-              paddingY: "24px",
-            }}
-          >
-            {localize(language, "Station")}: {name}
-          </Typography>
-        </Box>
+  const customWidth = {
+    xs: "400px",
+    sm: "450px",
+    md: "600px",
+    lg: "1000px",
+    xl: "1450px",
+  };
 
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyItems: "center",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "full",
+        height: "100%",
+        paddingBottom: "20px",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "rows",
+          justifyContent: "start",
+          width: customWidth,
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "bold",
+            display: "inline",
+            paddingX: 2,
+            paddingY: { xs: "20px", md: "34px" },
+          }}
+        >
+          {localize(language, "Station")}: {name}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          width: customWidth,
+          bgcolor: "red",
+        }}
+      >
+        <div id="panorama" className="max-w-[1470px] w-[160vh] h-[60vh]">
+          {/* The panorama will be displayed here */}
+        </div>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          maxWidth: "1470px",
+          width: customWidth,
+        }}
+      >
         <Box
           sx={{
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
-            width: "100%",
+            alignContent: "center",
+            alignItems: "start",
+            textAlign: "justify",
+            gap: "20px",
+            paddingTop: "20px",
           }}
         >
-          <div
-            id="panorama"
-            style={{
-              width: "85%",
-              maxWidth: "1470px",
-              height: "800px",
-            }}
-          >
-            {/* The panorama will be displayed here */}
-          </div>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            maxWidth: "1470px",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignContent: "center",
-              alignItems: "start",
-              textAlign: "justify",
-              gap: "20px",
-              paddingTop: "20px",
-            }}
-          >
+          <TextInBody
+            text={localize(language, "Description")}
+            titleStyle={titleStyle}
+          />
+          <TextInBody text={infoOneTr} />
+          {infoOneTr.length && <TextInBody text={infoTwoTr} />}
+          {infoThreeTr.length && (
             <TextInBody
-              text={localize(language, "Description")}
+              text={localize(language, "Equipment")}
               titleStyle={titleStyle}
             />
-            <TextInBody text={infoOneTr} />
-            {infoOneTr.length && <TextInBody text={infoTwoTr} />}
-            {infoThreeTr.length && (
-              <TextInBody
-                text={localize(language, "Equipment")}
-                titleStyle={titleStyle}
-              />
-            )}
-            {infoThreeTr.length && (
-              <Box sx={{ width: "80%" }}>
-                {infoThreeTr.map((el) =>
-                  el.map((e) => <Typography key={e}>{e}</Typography>)
-                )}
-              </Box>
-            )}
-          </Box>
+          )}
+          {infoThreeTr.length && (
+            <Box sx={{ width: "80%" }}>
+              {infoThreeTr.map((el) =>
+                el.map((e) => <Typography key={e}>{e}</Typography>)
+              )}
+            </Box>
+          )}
         </Box>
-      </div>
-    </>
+      </Box>
+    </Box>
   );
 };
 
