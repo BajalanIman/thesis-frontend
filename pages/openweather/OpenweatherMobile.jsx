@@ -77,7 +77,6 @@ const OpenweatherMobile = () => {
       <div onClick={showMenuHandeler}>
         {!showMenu && (
           <OWMobileBTN
-            marginLeft={"0px"}
             size={"large"}
             Color={"white"}
             bgColor={"#f73378"}
@@ -89,7 +88,6 @@ const OpenweatherMobile = () => {
       <div onClick={hideMenuHandeler}>
         {showMenu && (
           <OWMobileBTN
-            marginLeft={"0px"}
             size={"large"}
             Color={"white"}
             bgColor={"#f73378"}

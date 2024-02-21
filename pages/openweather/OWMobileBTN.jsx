@@ -10,7 +10,7 @@ const OWMobileBTN = ({
   icon,
   text,
   ariaLabel,
-  marginLeft,
+
   handler,
 }) => {
   const IconComponent = Icons[icon];
@@ -18,7 +18,6 @@ const OWMobileBTN = ({
     <div>
       <Box
         sx={{
-          marginLeft: marginLeft,
           display: "flex",
           gap: "6px",
         }}

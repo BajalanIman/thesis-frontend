@@ -46,7 +46,7 @@ const TableCurrentAirPollution = ({ openWeaterAll }) => {
                   height: "56px",
                 }}
               >
-                Value &nbsp;(μg/m3)
+                Value
               </TableCell>
             </TableRow>
           </TableHead>
@@ -70,7 +70,7 @@ const TableCurrentAirPollution = ({ openWeaterAll }) => {
                     height: "34px",
                   }}
                 >
-                  {row.value}
+                  {row.value} &nbsp;(μg/m3)
                 </TableCell>
               </TableRow>
             ))}

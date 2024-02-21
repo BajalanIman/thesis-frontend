@@ -65,7 +65,7 @@ const Panoramas = () => {
     sm: "450px",
     md: "600px",
     lg: "1000px",
-    xl: "1450px",
+    xl: "1400px",
   };
 
   return (
@@ -81,7 +81,7 @@ const Panoramas = () => {
         paddingBottom: { xs: "20px", md: "40px" },
       }}
     >
-      <Box sx={{ maxWidth: "1450px", paddingX: { xs: 3, md: 0 } }}>
+      <Box sx={{ maxWidth: "1400px", paddingX: { xs: 3, md: 0 } }}>
         <Box
           sx={{
             display: "flex",
@@ -108,7 +108,7 @@ const Panoramas = () => {
             width: customWidth,
           }}
         >
-          <div id="panorama" className="max-w-[1470px] w-[160vh] h-[60vh]">
+          <div id="panorama" className="max-w-[1400px] w-[100vh] h-[60vh]">
             {/* The panorama will be displayed here */}
           </div>
         </Box>
@@ -145,7 +145,7 @@ const Panoramas = () => {
               />
             )}
             {infoThreeTr.length && (
-              <Box>
+              <Box sx={{ paddingX: 2 }}>
                 {infoThreeTr.map((el) =>
                   el.map((e) => (
                     <Typography variant={`h6`} key={e}>

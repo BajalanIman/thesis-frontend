@@ -7,6 +7,7 @@ const TextInBody = ({ variant, text, titleStyle }) => {
       variant={variant}
       sx={{
         ...titleStyle,
+        paddingX: 2,
       }}
     >
       {text}
