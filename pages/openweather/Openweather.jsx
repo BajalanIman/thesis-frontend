@@ -20,7 +20,12 @@ const Openweather = () => {
   };
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <Box
         sx={{
           flexGrow: 1,
@@ -28,6 +33,7 @@ const Openweather = () => {
           flexDirection: "column",
           alignItems: "center",
           position: "relative",
+          maxWidth: "1450px",
         }}
       >
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: "20px" }}>
@@ -46,7 +52,6 @@ const Openweather = () => {
 
       <Box
         sx={{
-          position: "relative",
           paddingX: 2,
           width: "100%",
           zIndex: 9999, // Adjust the z-index if needed
