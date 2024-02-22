@@ -156,7 +156,7 @@ const NewUsers = () => {
 
   return (
     <>
-      <div className="w-full h-screen justify-center items-center flex flex-col">
+      <div className="w-full h-screen justify-center items-center flex flex-col pt-14 pb-24">
         <Typography
           variant="h4"
           sx={{ fontWeight: "bold", marginBottom: "15px" }}
