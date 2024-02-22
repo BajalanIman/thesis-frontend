@@ -19,7 +19,7 @@ const AirPollutionToDatabase = ({ stlocation, stName, customWidth }) => {
   const getData = async () => {
     try {
       let response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=ae1f24cd90993757247d8601739d2cf8`
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=ae1f24cd90993757247d8601739d2cf8`
       );
       setAirPloObject(response.data?.list || []);
       setoOpenWeaterLat(response.data.coord.lat);
@@ -152,7 +152,7 @@ export default AirPollutionToDatabase;
 //   const getData = async () => {
 //     try {
 //       const response = await axios.get(
-//         `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=ae1f24cd90993757247d8601739d2cf8`
+//         `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=ae1f24cd90993757247d8601739d2cf8`
 //       );
 //       setData(response.data);
 //     } catch (error) {

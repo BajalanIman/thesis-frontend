@@ -93,7 +93,7 @@ const PopupMap = (props) => {
                 setLngInMap(lng);
                 axios
                   .get(
-                    `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=5&appid=992c20977dbb20bd9b6b36c9a376dc7c`
+                    `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=5&appid=992c20977dbb20bd9b6b36c9a376dc7c`
                   )
                   .then((res) => {
                     if (res.data && res.data.length > 0) {

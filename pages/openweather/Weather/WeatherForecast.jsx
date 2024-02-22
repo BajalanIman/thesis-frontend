@@ -56,7 +56,7 @@ const WeatherForecast = () => {
   const getData = async () => {
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=ae1f24cd90993757247d8601739d2cf8&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=ae1f24cd90993757247d8601739d2cf8&units=metric`
       );
       setData(response.data);
     } catch (error) {

@@ -28,7 +28,7 @@ const MapBrandenbur = () => {
   // const [data, setData] = useState([]);
   // const getData = async () => {
   //   const { data } = await axios.get(
-  //     `http://api.openweathermap.org/data/2.5/air_pollution?lat=30.489772&lon=-99.771335&appid=ae1f24cd90993757247d8601739d2cf8`
+  //     `https://api.openweathermap.org/data/2.5/air_pollution?lat=30.489772&lon=-99.771335&appid=ae1f24cd90993757247d8601739d2cf8`
   //   );
   //   setData(data);
   // };
@@ -149,7 +149,7 @@ const MapBrandenbur = () => {
                   setLngInMap(lng);
                   axios
                     .get(
-                      `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=5&appid=992c20977dbb20bd9b6b36c9a376dc7c`
+                      `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=5&appid=992c20977dbb20bd9b6b36c9a376dc7c`
                     )
                     .then((res) => {
                       if (res.data && res.data.length > 0) {
