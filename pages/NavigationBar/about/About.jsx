@@ -6,6 +6,7 @@ import { localize } from "../../../Translation.jsx";
 import { CartContext } from "../../../App.jsx";
 
 import React, { useContext } from "react";
+
 // import AboutParagraphs from "./AboutParagraphs.jsx";
 
 const About = () => {

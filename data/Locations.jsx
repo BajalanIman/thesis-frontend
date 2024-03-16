@@ -79,7 +79,7 @@
 const StationsInfo = [
   {
     id: 1,
-    name: "Alt-Madlitz One",
+    name: "Alt-Madlitz: Conventional",
     location: [52.35915, 14.27231],
     panorama: "360° panorama",
     infoOne: {
@@ -100,7 +100,7 @@ const StationsInfo = [
   },
   {
     id: 2,
-    name: "Alt-Madlitz Two",
+    name: "Alt-Madlitz: Clear cut",
     location: [52.360089, 14.268143],
     panorama: "360° panorama",
     infoOne: {
@@ -121,7 +121,7 @@ const StationsInfo = [
   },
   {
     id: 3,
-    name: "Alt-Madlitz Three",
+    name: "Alt-Madlitz: Mikado",
     location: [52.360569, 14.266434],
     panorama: "360° panorama",
     infoOne: {
@@ -142,7 +142,7 @@ const StationsInfo = [
   },
   {
     id: 4,
-    name: "Alt-Madlitz Four",
+    name: "Alt-Madlitz: Syntropic",
     location: [52.366184, 14.273095],
     panorama: "360° panorama",
     infoOne: {
@@ -163,7 +163,7 @@ const StationsInfo = [
   },
   {
     id: 5,
-    name: "Alt-Madlitz Five",
+    name: "Alt-Madlitz: Natural succession dynamics",
     location: [52.366737, 14.263581],
     panorama: "360° panorama",
     infoOne: {
@@ -184,8 +184,8 @@ const StationsInfo = [
   },
   {
     id: 6,
-    name: "Forest Botanical garden",
-    location: [52.825007, 13.79627],
+    name: "Eberswalde: Buche",
+    location: [52.822239, 13.790033],
     panorama: "360° panorama",
     infoOne: {
       En: "In total, there are three stations at the Eberswalde Forest Botanical Garden site, with this being the main station. Based on the analyses conducted, the soil texture reveals that up to 50 cm depth, it is predominantly clay, transitioning to sandy from 50 to 80 cm depth.",
@@ -205,9 +205,9 @@ const StationsInfo = [
   },
   {
     id: 7,
-    name: "Pure Pine Stand Station",
+    name: "Eberwalde: Pure pine station",
     // This location is not correct
-    location: [52.827007, 13.79327],
+    location: [52.819849, 13.7921191],
     panorama: "360° panorama",
     panoName: "PurePineStandStation.jpg",
     infoOne: {
@@ -228,9 +228,9 @@ const StationsInfo = [
   },
   {
     id: 8,
-    name: "Clear cut station",
+    name: "Eberswalde: Clear cut station",
     // This location is not correct
-    location: [52.823007, 13.79627],
+    location: [52.820581, 13.790194],
     panorama: "360° panorama",
     panoName: "ClearCutStation.jpg",
     infoOne: {
@@ -366,6 +366,30 @@ const StationsInfo = [
       En: "The station is equipped with two sensors: one for temperature and another for temperature along with relative humidity. As per HOBOLINK, both sensors are currently offline and lack any signal or connection, despite having fully charged batteries. The most recent data update occurred in May 2021.",
       De: "Die Station ist mit zwei Sensoren ausgestattet: einem für die Temperatur und einem für die Temperatur sowie die relative Luftfeuchtigkeit. Laut HOBOLINK sind beide Sensoren derzeit offline und haben weder ein Signal noch eine Verbindung, obwohl die Batterien vollständig aufgeladen sind. Die letzte Datenaktualisierung erfolgte im Mai 2021.",
       Fr: "La station est équipée de deux capteurs : un pour la température et un autre pour la température et l'humidité relative. Selon HOBOLINK, les deux capteurs sont actuellement hors ligne et manquent de signal ou de connexion, malgré des batteries complètement chargées. La mise à jour des données la plus récente a eu lieu en mai 2021.",
+    },
+    infoThree: {
+      En: "",
+      De: "",
+      Fr: "",
+    },
+  },
+  {
+    id: 13,
+    name: "Haselberg: Digital forest lab",
+    FullName: "",
+    // This location is not correct
+    location: [52.72661, 14.00283],
+    panorama: "360° panorama",
+    panoName: "Agroforst.jpg",
+    infoOne: {
+      En: "",
+      De: "",
+      Fr: " ",
+    },
+    infoTwo: {
+      En: "",
+      De: "",
+      Fr: " ",
     },
     infoThree: {
       En: "",

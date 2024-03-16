@@ -9,6 +9,8 @@ import { useContext } from "react";
 
 import TextInBody from "./TextInBody.jsx";
 
+import ImageViewerCustom from "./ImageViewerCustom.jsx";
+
 const Panoramas = () => {
   let { language } = useContext(CartContext);
 
@@ -55,7 +57,7 @@ const Panoramas = () => {
   useEffect(() => {
     window.pannellum.viewer("panorama", {
       type: "equirectangular",
-      panorama: "/images/Image.jpg",
+      panorama: "/images/Eberwalde_FBG_PurePine_360 (1).jpg",
       autoLoad: true,
     });
   }, []);
@@ -131,11 +133,20 @@ const Panoramas = () => {
             }}
           >
             <TextInBody
-              variant={`h5`}
+              variant={`h4`}
               text={localize(language, "Description")}
               titleStyle={titleStyle}
             />
             <TextInBody variant={`h6`} text={infoOneTr} />
+
+            <Typography
+              variant="h4"
+              sx={{ fontWeight: "bold", paddingLeft: 3 }}
+            >
+              Photo gallery
+            </Typography>
+            <ImageViewerCustom />
+            {/* The below code should be removed */}
             {infoOneTr.length && <TextInBody variant={`h6`} text={infoTwoTr} />}
             {infoThreeTr.length && (
               <TextInBody
