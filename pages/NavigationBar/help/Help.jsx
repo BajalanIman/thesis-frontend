@@ -1,6 +1,4 @@
 import HelpParagraphs from "./HelpParagraphs.jsx";
-import BackgroundHighlight from "./BackgroundHighlight.jsx";
-
 import { Box, Divider, Typography } from "@mui/material";
 import { localize } from "../../../Translation.jsx";
 import { CartContext } from "../../../App.jsx";
@@ -11,7 +9,18 @@ const Help = () => {
   let { language } = useContext(CartContext);
 
   return (
-    <div className="flex justify-center relative">
+    <div className="flex justify-center  relative items-center flex-col ">
+      <Box
+        sx={{
+          height: "800px",
+          width: "1450px",
+          position: "relative",
+          paddingX: { xs: 2, md: 0 },
+          zIndex: 10,
+          marginY: 12,
+        }}
+      ></Box>
+
       <Box
         sx={{
           // width: {
@@ -135,7 +144,6 @@ const Help = () => {
           text={localize(language, "accessibleMobileDevicesP1")}
         />
       </Box>
-      {/* <BackgroundHighlight /> */}
     </div>
   );
 };

@@ -128,7 +128,7 @@ const Weather = () => {
           marginY: { xs: 3, lg: 7 },
         }}
       >
-        {localize(language, "onlineInformation")}{" "}
+        {localize(language, "onlineInformation")}
         <span className="font-bold text-blue-400">{name}</span>
         {/* <span className="text-blue-400 font-bold pl-2">
           ({lat}, {lon})

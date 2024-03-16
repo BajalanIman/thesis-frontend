@@ -281,7 +281,7 @@ const StationOne = ({ dataForStationOne }) => {
   // console.log(TIMESTAMP);
   // console.log(RECORD);
   return (
-    <Box sx={{ width: "1000px" }}>
+    <Box sx={{ maxWidth: "1000px", height: "1500vh", bgcolor: "red" }}>
       <p> 1.TIMESTAMP: {TIMESTAMP}</p>
       <p> 2.RECORD: {RECORD}</p>
       <p> 3.BattV_Avg: {BattV_Avg}</p>

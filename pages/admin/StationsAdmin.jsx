@@ -2,7 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import StationOne from "./StationOne";
 import StationTwo from "./StationTwo";
 import StationThree from "./StationThree";
-import BoselSyntropic from "./BoselSyntropic";
+// import BoselSyntropic from "./BoselSyntropic";
+import BoselSyntropicSt from "./users/sendDataToDatabase/BoselSyntropicSt";
+import BoselMikadoSt from "./users/sendDataToDatabase/BoselMikadoSt";
 
 //  import { localize } from "../../Translation.jsx";
 //  import { CartContext } from "../../App";
@@ -13,6 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button, TextField, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Close } from "@mui/icons-material";
 
 const StationsAdmin = () => {
   //   let { language } = useContext(CartContext);
@@ -33,7 +37,10 @@ const StationsAdmin = () => {
       const modifiedValue = event.target.value.replaceAll(`"2022-`, `,"2022 -`);
       const newValue = modifiedValue.replace(/,("2022-)/g, "$1");
       setTextInput(newValue);
-      console.log(1111);
+    } else if (event.target.value && event.target.value.includes(`"2023-`)) {
+      const modifiedValue = event.target.value.replaceAll(`"2023-`, `,"2023 -`);
+      const newValue = modifiedValue.replace(/,("2023-)/g, "$1");
+      setTextInput(newValue);
     }
   };
 
@@ -43,6 +50,9 @@ const StationsAdmin = () => {
   const [submitDataOne, setsubmitDataOne] = useState([]);
   const [submitDataTwo, setSubmitDataTwo] = useState();
   const [submitDataThree, setSubmitDataThree] = useState();
+  const [boselSyntropicData, setBoselSyntropicData] = useState([]);
+  const [boselMikadoData, setBoselMikadoData] = useState([]);
+  const [thanksMessage, setthanksMessage] = useState("");
 
   function sumbitInputHandler() {
     if (!station) {
@@ -51,15 +61,11 @@ const StationsAdmin = () => {
         setError("");
       }, 5000);
     } else if (!textInput) {
-      setError("Please enter values!");
+      setError("Please enter correct values!");
       setTimeout(() => {
         setError("");
       }, 5000);
-    } else if (station === "Bosel Syntropic" && textInput) {
-      setSubmitdata(textInput);
-      setStation("");
-      setTextInput("");
-    } else if (station === "Station one") {
+    } else if (station === "Station one" && textInput) {
       setsubmitDataOne(textInput);
       setStation("");
       setTextInput("");
@@ -69,6 +75,20 @@ const StationsAdmin = () => {
       setTextInput("");
     } else if (station === "Station three" && textInput) {
       setSubmitDataThree(textInput);
+      setStation("");
+      setTextInput("");
+    } else if (station === "Bosel Syntropic" && textInput) {
+      setBoselSyntropicData(textInput);
+      setStation("");
+      setTextInput("");
+      setthanksMessage(
+        "Thank you for sending the data. You can see a summary of your data below."
+      );
+      setTimeout(() => {
+        setthanksMessage("");
+      }, 7000);
+    } else if (station === "Bosel Mikado" && textInput) {
+      setBoselMikadoData(textInput);
       setStation("");
       setTextInput("");
     }
@@ -83,7 +103,7 @@ const StationsAdmin = () => {
   };
 
   return (
-    <div className="h-screen">
+    <div className="mb-16">
       <Box
         sx={{
           marginTop: "80px",
@@ -112,6 +132,19 @@ const StationsAdmin = () => {
             gap: "20px",
           }}
         >
+          <Link to="/">
+            <Typography
+              sx={{
+                marginTop: "-20px",
+                width: costomWidth,
+                textAlign: "end",
+                position: "absolute",
+                color: "black",
+              }}
+            >
+              <Close />
+            </Typography>
+          </Link>
           <Typography
             sx={{
               width: costomWidth,
@@ -121,6 +154,16 @@ const StationsAdmin = () => {
             }}
           >
             {error}
+          </Typography>
+          <Typography
+            sx={{
+              width: costomWidth,
+              textAlign: "center",
+              position: "absolute",
+              color: "green",
+            }}
+          >
+            {thanksMessage}
           </Typography>
           <Box>
             <FormControl
@@ -146,9 +189,12 @@ const StationsAdmin = () => {
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={"Station one"}>Station One</MenuItem>
-                <MenuItem value={"Station two"}>Station Two</MenuItem>
-                <MenuItem value={"Station three"}>Station Three</MenuItem>
-                <MenuItem value={"Bosel Syntropic"}>Bosel Syntropic</MenuItem>
+                <MenuItem value={"Bosel Syntropic"}>
+                  Alt-Madlitz (Bosel) Syntropic
+                </MenuItem>
+                <MenuItem value={"Bosel Mikado"}>
+                  Alt-Madlitz (Bosel) Mikado
+                </MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -159,7 +205,7 @@ const StationsAdmin = () => {
               width: costomWidth,
             }}
           >
-            Import values for: {station}
+            Import values for: <b> {station}</b>
           </Typography>
           <Box
             sx={{
@@ -217,11 +263,20 @@ const StationsAdmin = () => {
             </Button>
           </Box>
         </Box>
-        <Box sx={{ display: "none" }}>
-          <StationOne dataForStationOne={[submitDataOne]} />
+        <Box
+          sx={{
+            display: "flex",
+            maxWidth: "1450px",
+            marginTop: { xs: 10, md: 20 },
+          }}
+        >
+          <BoselSyntropicSt
+            dataForBoselSyntropic={[boselSyntropicData]}
+          ></BoselSyntropicSt>
+          <BoselMikadoSt dataForBoselMikado={[boselMikadoData]}></BoselMikadoSt>
+          {/*<StationOne dataForStationOne={[submitDataOne]} />
           <StationTwo dataForStationTwo={submitDataTwo} />
-          <StationThree dataForStationThree={submitDataThree} />
-          <BoselSyntropic submitdata={submitdata}></BoselSyntropic>
+          <StationThree dataForStationThree={submitDataThree} />*/}
         </Box>
       </Box>
     </div>
