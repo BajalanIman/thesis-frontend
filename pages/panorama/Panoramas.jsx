@@ -88,19 +88,32 @@ const Panoramas = () => {
           sx={{
             display: "flex",
             flexDirection: "rows",
-            justifyContent: "start",
+            justifyContent: "center",
+            flexDirection: "column",
           }}
         >
           <Typography
             variant="h4"
             sx={{
+              textAlign: "center",
               fontWeight: "bold",
-              display: "inline",
-              paddingX: 2,
+              justifyContent: "center",
               paddingY: { xs: "20px", md: "34px" },
             }}
           >
-            {localize(language, "Station")}: {name}
+            {/* {localize(language, "Station")}:  */}
+            {name}
+          </Typography>
+          <Typography
+            variant={`h6`}
+            sx={{
+              fontWeight: "bold",
+              textAlign: "center",
+              marginButtom: 3,
+              color: "blue",
+            }}
+          >
+            {localize(language, "PanoramaDescription")}
           </Typography>
         </Box>
         <Box
@@ -132,13 +145,24 @@ const Panoramas = () => {
               paddingTop: "20px",
             }}
           >
-            <TextInBody
-              variant={`h4`}
-              text={localize(language, "Description")}
-              titleStyle={titleStyle}
-            />
-            <TextInBody variant={`h6`} text={infoOneTr} />
-
+            {infoOneTr.length && (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  width: customWidth,
+                }}
+              >
+                <Typography
+                  variant={`h4`}
+                  sx={{ fontWeight: "bold", textAlign: "center", marginY: 3 }}
+                >
+                  {localize(language, "Description")}
+                </Typography>
+                <TextInBody variant={`h6`} text={infoOneTr} />
+              </Box>
+            )}
             <Typography
               variant="h4"
               sx={{ fontWeight: "bold", paddingLeft: 3 }}

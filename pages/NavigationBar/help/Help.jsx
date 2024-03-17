@@ -12,17 +12,6 @@ const Help = () => {
     <div className="flex justify-center  relative items-center flex-col ">
       <Box
         sx={{
-          height: "800px",
-          width: "1450px",
-          position: "relative",
-          paddingX: { xs: 2, md: 0 },
-          zIndex: 10,
-          marginY: 12,
-        }}
-      ></Box>
-
-      <Box
-        sx={{
           // width: {
           //   xs: "400px",
           //   sm: "450px",

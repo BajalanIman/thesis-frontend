@@ -1,9 +1,12 @@
 import React, { useState, useCallback } from "react";
 
 // import { render } from "react-dom";
-import ImageViewer from "react-simple-image-viewer";
+// import ImageViewer from "react-simple-image-viewer";
+import { useImageViewer } from "react-image-viewer-hook";
 
 const ImageViewerCustom = () => {
+  const { getOnClick, ImageViewer } = useImageViewer();
+
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const images = [
@@ -26,31 +29,65 @@ const ImageViewerCustom = () => {
   };
 
   return (
-    <div className="flex w-[1450px] flex-wrap justify-center">
-      {images.map((src, index) => (
-        <div
-          key={index}
-          style={{ margin: "2px", flex: "0 0 auto", maxWidth: "500px" }}
-        >
-          <img
-            src={src}
-            onClick={() => openImageViewer(index)}
-            style={{ width: "450px", height: "300px", cursor: "pointer" }}
-            alt=""
-          />
-        </div>
-      ))}
+    <>
+      <div className="flex w-[1450px] flex-wrap justify-center gap-1">
+        {images.map((src, index) => (
+          <div
+            key={index}
+            style={{
+              margin: "2px",
+              flex: "0 0 auto",
+              maxWidth: "450px",
+              cursor: "pointer",
+            }}
+          >
+            <a
+              key={src}
+              href={`${src}?auto=compress&cs=tinysrgb&w=1200`}
+              onClick={getOnClick(`${src}?auto=compress&cs=tinysrgb&w=1200`)}
+            >
+              <img
+                src={`${src}?auto=compress&cs=tinysrgb&w=400`}
+                style={{
+                  width: "450px",
+                  height: "300px",
+                  cursor: "pointer",
+                  gap: 2,
+                }}
+                className="hover:scale-105"
+              />
+            </a>
+          </div>
+        ))}
+      </div>
 
-      {isViewerOpen && (
-        <ImageViewer
-          src={images}
-          currentIndex={currentImage}
-          disableScroll={false}
-          closeOnClickOutside={true}
-          onClose={closeImageViewer}
-        />
-      )}
-    </div>
+      <ImageViewer />
+    </>
+    // <div className="flex w-[1450px] flex-wrap justify-center">
+    //   {images.map((src, index) => (
+    //     <div
+    //       key={index}
+    //       style={{ margin: "2px", flex: "0 0 auto", maxWidth: "500px" }}
+    //     >
+    //       <img
+    //         src={src}
+    //         onClick={() => openImageViewer(index)}
+    //         style={{ width: "450px", height: "300px", cursor: "pointer" }}
+    //         alt=""
+    //       />
+    //     </div>
+    //   ))}
+
+    //   {isViewerOpen && (
+    //     <ImageViewer
+    //       src={images}
+    //       currentIndex={currentImage}
+    //       disableScroll={false}
+    //       closeOnClickOutside={true}
+    //       onClose={closeImageViewer}
+    //     />
+    //   )}
+    // </div>
   );
 };
 

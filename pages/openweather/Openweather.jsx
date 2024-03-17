@@ -53,7 +53,7 @@ const Openweather = () => {
           ></CustomButton>
           <CustomButton
             handler={weatherHandler}
-            name={"Weather variables"}
+            name={"Climate variables"}
           ></CustomButton>
           <CustomButton
             handler={sensorHandler}

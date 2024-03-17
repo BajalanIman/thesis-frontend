@@ -1,4 +1,5 @@
 import SensorsLinechartMulti from "./SensorsLinechartMulti";
+import SensorsLinechartMultiTwoY from "./SensorsLinechartMultiTwoY.jsx";
 
 import { localize } from "../../../Translation.jsx";
 import { CartContext } from "../../../App";
@@ -9,6 +10,10 @@ const Sensors = () => {
 
   return (
     <div className="mt-16 h-full mb-28 flex-cols gap-4">
+      <SensorsLinechartMultiTwoY
+        title={"Soilxxx"}
+        paragraph={localize(language, "soilDifferentDeepxxx")}
+      />
       <SensorsLinechartMulti
         title={"Soil"}
         paragraph={localize(language, "soilDifferentDeep")}

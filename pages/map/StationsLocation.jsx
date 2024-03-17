@@ -59,9 +59,9 @@ const StationsLocation = ({
             className="text-blue-500 pt-2"
             onClick={openweatherClickHandler}
           >
-            Open Weather
+            Sensors, Climate, Pollutants
           </button>
-          <p>Data</p>
+          {/* <p>Data</p> */}
         </Popup>
       </Marker>
       {/* <div className="animate-ping">
