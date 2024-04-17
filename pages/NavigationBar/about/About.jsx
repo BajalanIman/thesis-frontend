@@ -1,27 +1,15 @@
 import AboutParagraphs from "./AboutParagraphs.jsx";
-import BackgroundHighlight from "../help/BackgroundHighlight.jsx";
-
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import { localize } from "../../../Translation.jsx";
 import { CartContext } from "../../../App.jsx";
 
 import React, { useContext } from "react";
 
-// import AboutParagraphs from "./AboutParagraphs.jsx";
-
 const About = () => {
   let { language } = useContext(CartContext);
 
-  // const customizedWidth = {
-  //   xs: "400px",
-  //   sm: "450px",
-  //   md: "600px",
-  //   lg: "1000px",
-  //   xl: "1450px",
-  // };
-
   return (
-    <div className="flex justify-center relative">
+    <div className="flex justify-center relative flex-col items-center">
       <Box
         sx={{
           // width: customizedWidth,
@@ -158,7 +146,6 @@ const About = () => {
           text={localize(language, "contactUsP2")}
         />
       </Box>
-      {/* <BackgroundHighlight /> */}
     </div>
   );
 };

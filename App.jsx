@@ -15,6 +15,7 @@ import UserManagement from "./pages/admin/users/UserManagement";
 import About from "./pages/NavigationBar/about/About";
 import Help from "./pages/NavigationBar/help/Help";
 import ContactForm from "./pages/Footer/ContactForm";
+import AdminDataSender from "./pages/admin/adminDataSender";
 
 export const CartContext = createContext({ 123: 1 });
 
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/help", element: <Help /> },
       { path: "/contact", element: <ContactForm /> },
+      { path: "/admin-data-sender", element: <AdminDataSender /> },
     ],
   },
 ]);

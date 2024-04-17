@@ -163,12 +163,26 @@ const Panoramas = () => {
                 <TextInBody variant={`h6`} text={infoOneTr} />
               </Box>
             )}
-            <Typography
-              variant="h4"
-              sx={{ fontWeight: "bold", paddingLeft: 3 }}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                width: customWidth,
+              }}
             >
-              Photo gallery
-            </Typography>
+              <Typography
+                variant="h4"
+                sx={{
+                  marginTop: 8,
+                  fontWeight: "bold",
+                }}
+              >
+                Photo gallery
+              </Typography>
+            </Box>
             <ImageViewerCustom />
             {/* The below code should be removed */}
             {infoOneTr.length && <TextInBody variant={`h6`} text={infoTwoTr} />}

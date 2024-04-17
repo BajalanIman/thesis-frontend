@@ -58,6 +58,9 @@ const NavigationBar = ({ darkModeHandler }) => {
           <Link className="w-18" to="/help">
             {localize(language, "Help")}
           </Link>
+          <Link className="w-18" to="/admin-data-sender">
+            Data
+          </Link>
         </Toolbar>
 
         <Toolbar sx={{ width: "700px" }}>
