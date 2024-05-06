@@ -35,6 +35,7 @@ const AdminDataSender = () => {
   // };
 
   const [fileContent, setFileContent] = useState([]);
+  const [title, setTitle] = useState([]);
 
   const handleFileChange = (event) => {
     setLoading(true);
@@ -44,6 +45,8 @@ const AdminDataSender = () => {
     reader.onload = (e) => {
       const content = e.target.result;
       const lines = content.split("\n"); // Split content by newline characters
+      let mainTitle = lines.at(1);
+      setTitle(mainTitle);
       const remainingLines = lines.slice(4); // Remove the first three lines
       setFileContent(remainingLines);
     };
@@ -574,6 +577,23 @@ const AdminDataSender = () => {
                   Recordings captured by sensors
                   {/* <span>(Recording numbers: {lastIndex})</span> */}
                 </Typography>
+                {title && (
+                  <Typography
+                    sx={{
+                      textAlign: "start",
+                      bgcolor: "#f6f6f6",
+                      width: "120%",
+                      height: 50,
+
+                      pl: 3,
+                      display: "inline-block",
+                      fontFamily: "serif",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    0:{title}
+                  </Typography>
+                )}
                 <List sx={{ columnCount: 1, gap: 3 }}>
                   {importedData.map((el, index) => (
                     <ListItem
