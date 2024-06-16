@@ -97,11 +97,6 @@ const NewUsers = () => {
           localStorage.setItem("username", emailValue);
           localStorage.setItem("password", passwordValue);
           setOpen(true);
-          // setTimeout(() => {
-          //   setOpen(false);
-          //   navigate("/");
-          //   window.location.reload();
-          // }, 3000);
         }
       });
     }

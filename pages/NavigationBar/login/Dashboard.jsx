@@ -75,7 +75,7 @@ const Dashboard = () => {
               passwordChecker &&
               role &&
               role.length === 5 && (
-                <Link to="/stationsadmin">
+                <Link to="/admin-data-sender">
                   <MenuItem value={"Send Data"}>Send data</MenuItem>
                 </Link>
               )}

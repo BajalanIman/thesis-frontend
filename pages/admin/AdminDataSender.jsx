@@ -1,15 +1,12 @@
-import { Close } from "@mui/icons-material";
 import {
   Box,
   Button,
-  Divider,
   FormControl,
   InputLabel,
   List,
   ListItem,
   MenuItem,
   Select,
-  TextField,
   Typography,
 } from "@mui/material";
 // import { localize } from "../../../Translation.jsx";
@@ -19,27 +16,28 @@ import React, { useState, useContext } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoadingData from "./LoadingData";
+import DataSender from "./users/sendDataToDatabase/DataSender";
+import ShowDataBeforeSend from "./users/sendDataToDatabase/ShowDataBeforeSend";
+import { Close } from "@mui/icons-material";
 
 const AdminDataSender = () => {
   const [station, setStation] = useState("");
   const [loading, setLoading] = useState(false);
+  // let values = [];
 
   //   let { language } = useContext(CartContext);
 
-  // const customizedWidth = {
-  //   xs: "400px",
-  //   sm: "450px",
-  //   md: "600px",
-  //   lg: "1000px",
-  //   xl: "1450px",
-  // };
-
   const [fileContent, setFileContent] = useState([]);
   const [title, setTitle] = useState([]);
+  const [errorMessage, setErrorMessage] = useState();
+  const [fileName, setFileName] = useState();
 
   const handleFileChange = (event) => {
     setLoading(true);
     const file = event.target.files[0];
+    if (file) {
+      setFileName(file.name);
+    }
     const reader = new FileReader();
 
     reader.onload = (e) => {
@@ -53,16 +51,18 @@ const AdminDataSender = () => {
     reader.readAsText(file);
   };
 
+  // useEffect(() => {
+  //   if (fileName && fileName.includes("Conventional")) {
+  //     console.log("Havij");
+  //   }
+  // }, [fileName]);
+
   const [importedData, setImportedData] = useState([]);
 
   useEffect(() => {
     setImportedData(fileContent);
-    // console.log(fileContent);
   }, [fileContent]);
-  // console.table(fileContent.at(2));
-  let values = [];
-  const clear_cut = 31;
-  const Conventional = 16;
+  // let values = [];
   const [TIMESTAMP, setTIMESTAMP] = useState([]);
   const [RECORD, setRECORD] = useState([]);
   const [AirTC_Avg, setAirTC_Avg] = useState([]);
@@ -180,12 +180,14 @@ const AdminDataSender = () => {
       const WaterCont60cm60_AvgValue = [];
       const SoilTemp60cm60_AvgValue = [];
 
-      //   example
-
       importedData.forEach((line) => {
+        let values = [];
         values = line.split(",");
-        if (station === "Alt-Madlitz: Conventional" && values.length == 16) {
-          // This station has been correctly added
+        if (
+          station === "Alt-Madlitz: Conventional" &&
+          fileName.includes("Conventional")
+          // && values.length == 16
+        ) {
           TIMESTAMPValues.push(values[0]);
           RECORDValue.push(values[1]);
           AirTC_AvgValue.push(values[2]);
@@ -202,13 +204,11 @@ const AdminDataSender = () => {
           Permitivity60cm_AvgValue.push(values[13]);
           WaterCont60cm_AvgValue.push(values[14]);
           SoilTemp60cm_AvgValue.push(values[15]);
-          //   console.log("This station is Alt-Madlitz: Conventional");
         } else if (
           station === "Alt-Madlitz: Clear_cut" &&
-          values.length == 31
+          fileName.includes("Clear")
+          // && values.length == 31
         ) {
-          // This station has been correctly added
-          //   console.log("This station is Alt-Madlitz: Clear_cut");
           TIMESTAMPValues.push(values[0]);
           RECORDValue.push(values[1]);
           AirTC_AvgValue.push(values[2]);
@@ -240,8 +240,11 @@ const AdminDataSender = () => {
           Pemitivity60cm_C3_AvgValue.push(values[28]);
           WaterCont60cm_C3_AvgValue.push(values[29]);
           SoilTemp60cm_C3_AvgValue.push(values[30]);
-        } else if (station === "Alt-Madlitz: Mikado" && values.length == 16) {
-          // This station has been correctly added
+        } else if (
+          station === "Alt-Madlitz: Mikado" &&
+          fileName.includes("Mikado")
+          // && values.length == 16
+        ) {
           TIMESTAMPValues.push(values[0]);
           RECORDValue.push(values[1]);
           AirTC_AvgValue.push(values[2]);
@@ -258,12 +261,11 @@ const AdminDataSender = () => {
           Permitivity60cm_AvgValue.push(values[13]);
           WaterCont60cm_AvgValue.push(values[14]);
           SoilTemp60cm_AvgValue.push(values[15]);
-          //   console.log("This station is Alt-Madlitz: Mikado");
         } else if (
           station === "Alt-Madlitz: Syntropic" &&
-          values.length == 41
+          fileName.includes("Syntropic")
+          // && values.length == 41
         ) {
-          // This station has been correctly added
           TIMESTAMPValues.push(values[0]);
           RECORDValue.push(values[1]);
           AirTC_AvgValue.push(values[2]);
@@ -305,9 +307,47 @@ const AdminDataSender = () => {
           Permitivity60cm60_AvgValue.push(values[38]);
           WaterCont60cm60_AvgValue.push(values[39]);
           SoilTemp60cm60_AvgValue.push(values[40]);
-          //   console.log("This station is Alt-Madlitz: Syntropic");
+        } else if (
+          station === "Alt-Madlitz: Natural_succession_dynamics" &&
+          fileName.includes("Natural Succession")
+        ) {
+          TIMESTAMPValues.push(values[0]);
+          RECORDValue.push(values[1]);
+          AirTC_AvgValue.push(values[2]);
+          RH_MaxValue.push(values[3]);
+          RH_MinValue.push(values[4]);
+          SlrW_AvgValue.push(values[5]);
+          SlrMJ_TotValue.push(values[6]);
+          RawData10cm_AvgValue.push(values[7]);
+          Permitivity10cm_AvgValue.push(values[8]);
+          Watercont10cm_AvgValue.push(values[9]);
+          SoilTemp10cm_AvgValue.push(values[10]);
+          RawData30cm_AvgValue.push(values[11]);
+          Permitivity30cm_AvgValue.push(values[12]);
+          WaterCont30cm_AvgValue.push(values[13]);
+          SoilTemp30cm_AvgValue.push(values[14]);
+          RawData60cm_AvgValue.push(values[15]);
+          Permitivity60cm_AvgValue.push(values[16]);
+          WaterCont60cm_AvgValue.push(values[17]);
+          SoilTemp60cm_AvgValue.push(values[18]);
+          RawData10cm_C3_AvgValue.push(values[19]);
+          Pemitivity10cm_C3_AvgValue.push(values[20]);
+          WaterCont10cm_C3_AvgValue.push(values[21]);
+          SoilTemp10cm_C3_AvgValue.push(values[22]);
+          RawData30cm_C3_AvgValue.push(values[23]);
+          Permitivity30cm_C3_AvgValue.push(values[24]);
+          WaterCont30cm_C3_AvgValue.push(values[25]);
+          SoilTemp30cm_C3_AvgValue.push(values[26]);
+          RawData60cm_C3_AvgValue.push(values[27]);
+          Pemitivity60cm_C3_AvgValue.push(values[28]);
+          WaterCont60cm_C3_AvgValue.push(values[29]);
+          SoilTemp60cm_C3_AvgValue.push(values[30]);
         } else {
-          console.log("The station and dataset are not matched!");
+          console.log(`The station and dataset are not matched!`);
+          setErrorMessage("The station and dataset are not matched!");
+          setTimeout(() => {
+            setErrorMessage("");
+          }, 5000);
         }
       });
       setTIMESTAMP(TIMESTAMPValues);
@@ -370,57 +410,194 @@ const AdminDataSender = () => {
     }
   }, [importedData]);
 
-  //   console.log(TIMESTAMP);
-  //   console.log(RECORD);
-  //   console.log(AirTC_Avg);
-  //   console.log(PAR_Den_Avg);
-  //   console.log(RH_Max);
-  //   console.log(RH_Min);
-  //   console.log(SlrW_Avg);
-  //   console.log(SlrMJ_Tot);
-  //   console.log(RawData10cm_Avg);
-  //   console.log(Permitivity10cm_Avg);
-  //   console.log(Watercont10cm_Avg);
-  //   console.log(SoilTemp10cm_Avg);
-  //   console.log(RawData30cm_Avg);
-  //   console.log(Permitivity30cm_Avg);
-  //   console.log(WaterCont30cm_Avg);
-  //   console.log(SoilTemp30cm_Avg);
-  //   console.log(RawData60cm_Avg);
-  //   console.log(Permitivity60cm_Avg);
-  //   console.log(WaterCont60cm_Avg);
-  //   console.log(SoilTemp60cm_Avg);
-  //   console.log(RawData10cm_C3_Avg);
-  //   console.log(Pemitivity10cm_C3_Avg);
-  //   console.log(WaterCont10cm_C3_Avg);
-  //   console.log(SoilTemp10cm_C3_Avg);
-  //   console.log(RawData30cm_C3_Avg);
-  //   console.log(Permitivity30cm_C3_Avg);
-  //   console.log(WaterCont30cm_C3_Avg);
-  //   console.log(SoilTemp30cm_C3_Avg);
-  //   console.log(RawData60cm_C3_Avg);
-  //   console.log(Pemitivity60cm_C3_Avg);
-  //   console.log(WaterCont60cm_C3_Avg);
-  //   console.log(SoilTemp60cm_C3_Avg);
-  //   console.log(SoilTemp60cm60_Avg);
-
   const cancelDataHandler = () => {
     setFileContent();
     window.location.reload();
-    // console.log(1234);
   };
 
   const handleChange = (event) => {
     setStation(event.target.value);
   };
-  //   console.log(station);
   const [lastIndex, setLastIndex] = useState(0);
   useEffect(() => {
     setLastIndex(importedData.length);
   }, [importedData]);
-  console.log(lastIndex);
+
+  //................
+  const [soilAttributeIds, setSoilAttributeIds] = useState([]);
+  const [SoilTempArrays, setSoilTempArrays] = useState([]);
+  const [climateAttributeIds, setClimateAttributeIds] = useState([]);
+  const [ClimateArrays, setClimateArrays] = useState([]);
+  const [station_id, setStationId] = useState(null);
+
+  useEffect(() => {
+    if (station === "Alt-Madlitz: Conventional") {
+      setSoilAttributeIds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+      setSoilTempArrays([
+        RawData10cm_Avg,
+        Permitivity10cm_Avg,
+        Watercont10cm_Avg,
+        SoilTemp10cm_Avg,
+        RawData30cm_Avg,
+        Permitivity30cm_Avg,
+        WaterCont30cm_Avg,
+        SoilTemp30cm_Avg,
+        RawData60cm_Avg,
+        Permitivity60cm_Avg,
+        WaterCont60cm_Avg,
+        SoilTemp60cm_Avg,
+      ]);
+      setClimateAttributeIds([1, 4]);
+      setClimateArrays([AirTC_Avg, SlrW_Avg]);
+      setStationId(10);
+    } else if (station === "Alt-Madlitz: Clear_cut") {
+      setSoilAttributeIds([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24,
+      ]);
+      setSoilTempArrays([
+        RawData10cm_Avg,
+        Permitivity10cm_Avg,
+        Watercont10cm_Avg,
+        SoilTemp10cm_Avg,
+        RawData30cm_Avg,
+        Permitivity30cm_Avg,
+        WaterCont30cm_Avg,
+        SoilTemp30cm_Avg,
+        RawData60cm_Avg,
+        Permitivity60cm_Avg,
+        WaterCont60cm_Avg,
+        SoilTemp60cm_Avg,
+        RawData10cm_C3_Avg,
+        Pemitivity10cm_C3_Avg,
+        WaterCont10cm_C3_Avg,
+        SoilTemp10cm_C3_Avg,
+        RawData30cm_C3_Avg,
+        Permitivity30cm_C3_Avg,
+        WaterCont30cm_C3_Avg,
+        SoilTemp30cm_C3_Avg,
+        RawData60cm_C3_Avg,
+        Pemitivity60cm_C3_Avg,
+        WaterCont60cm_C3_Avg,
+        SoilTemp60cm_C3_Avg,
+      ]);
+      setClimateAttributeIds([1, 2, 3, 4, 5]);
+      setClimateArrays([AirTC_Avg, RH_Max, RH_Min, SlrW_Avg, SlrMJ_Tot]);
+      setStationId(11);
+    } else if (station === "Alt-Madlitz: Mikado") {
+      setSoilAttributeIds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+      setSoilTempArrays([
+        RawData10cm_Avg,
+        Permitivity10cm_Avg,
+        Watercont10cm_Avg,
+        SoilTemp10cm_Avg,
+        RawData30cm_Avg,
+        Permitivity30cm_Avg,
+        WaterCont30cm_Avg,
+        SoilTemp30cm_Avg,
+        RawData60cm_Avg,
+        Permitivity60cm_Avg,
+        WaterCont60cm_Avg,
+        SoilTemp60cm_Avg,
+      ]);
+      setClimateAttributeIds([1, 4]);
+      setClimateArrays([AirTC_Avg, SlrW_Avg]);
+      setStationId(12);
+    } else if (station === "Alt-Madlitz: Natural_succession_dynamics") {
+      setSoilAttributeIds([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24,
+      ]);
+      setSoilTempArrays([
+        RawData10cm_Avg,
+        Permitivity10cm_Avg,
+        Watercont10cm_Avg,
+        SoilTemp10cm_Avg,
+        RawData30cm_Avg,
+        Permitivity30cm_Avg,
+        WaterCont30cm_Avg,
+        SoilTemp30cm_Avg,
+        RawData60cm_Avg,
+        Permitivity60cm_Avg,
+        WaterCont60cm_Avg,
+        SoilTemp60cm_Avg,
+        RawData10cm_C3_Avg,
+        Pemitivity10cm_C3_Avg,
+        WaterCont10cm_C3_Avg,
+        SoilTemp10cm_C3_Avg,
+        RawData30cm_C3_Avg,
+        Permitivity30cm_C3_Avg,
+        WaterCont30cm_C3_Avg,
+        SoilTemp30cm_C3_Avg,
+        RawData60cm_C3_Avg,
+        Pemitivity60cm_C3_Avg,
+        WaterCont60cm_C3_Avg,
+        SoilTemp60cm_C3_Avg,
+      ]);
+      setClimateAttributeIds([1, 2, 3, 4, 5]);
+      setClimateArrays([AirTC_Avg, RH_Max, RH_Min, SlrW_Avg, SlrMJ_Tot]);
+      setStationId(14);
+    } else if (station === "Alt-Madlitz: Syntropic") {
+      setSoilAttributeIds([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 25, 26, 27, 28, 29, 30, 31, 32,
+        33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
+      ]);
+      setSoilTempArrays([
+        RawData10cm_Avg,
+        Permitivity10cm_Avg,
+        Watercont10cm_Avg,
+        SoilTemp10cm_Avg,
+        RawData30cm_Avg,
+        Permitivity30cm_Avg,
+        WaterCont30cm_Avg,
+        SoilTemp30cm_Avg,
+        RawData60cm_Avg,
+        Permitivity60cm_Avg,
+        WaterCont60cm_Avg,
+        SoilTemp60cm_Avg,
+        RawData10cm100_Avg,
+        Permitivity10cm100_Avg,
+        WaterCont10cm100_Avg,
+        SoilTemp10cm100_Avg,
+        RawData30cm100_Avg,
+        Permitivity30cm100_Avg,
+        WaterCont30cm100_Avg,
+        SoilTemp30cm100_Avg,
+        RawData60cm100_Avg,
+        Permitivity60cm100_Avg,
+        WaterCont60cm100_Avg,
+        SoilTemp60cm100_Avg,
+        RawData10cm60_Avg,
+        Permitivity10cm60_Avg,
+        WaterCont10cm60_Avg,
+        SoilTemp10cm60_Avg,
+        RawData30cm60_Avg,
+        Permitivity30cm60_Avg,
+        WaterCont30cm60_Avg,
+        SoilTemp30cm60_Avg,
+        RawData60cm60_Avg,
+        Permitivity60cm60_Avg,
+        WaterCont60cm60_Avg,
+        SoilTemp60cm60_Avg,
+      ]);
+      setClimateAttributeIds([1, 6, 4]);
+      setClimateArrays([AirTC_Avg, PAR_Den_Avg, SlrW_Avg]);
+      setStationId(13);
+    } else {
+      console.log("selrct station");
+    }
+  }, [
+    station,
+    SoilTemp10cm_Avg,
+    SoilTemp30cm_Avg,
+    SoilTemp60cm_Avg,
+    AirTC_Avg,
+    RH_Max,
+    RH_Min,
+  ]);
+
   return (
-    <div className="flex items-center relative flex-col h-screen">
+    <div className="flex items-center relative flex-col min-h-screen pt-16 pb-28">
       {loading ? (
         <LoadingData />
       ) : (
@@ -431,11 +608,21 @@ const AdminDataSender = () => {
               border: "1px solid lightgray",
               maxWidth: "1300px",
               fontFamily: "serif",
-
-              padding: 5,
+              paddingBottom: 5,
+              paddingX: 5,
+              paddingTop: 3,
               marginY: 3,
             }}
           >
+            <Box sx={{ display: "flex", justifyContent: "end", mb: 2 }}>
+              <Link to="/">
+                <Close
+                  sx={{
+                    ":hover": { bgcolor: "lightgray" },
+                  }}
+                />
+              </Link>
+            </Box>
             <Box
               sx={{
                 width: "100%",
@@ -472,7 +659,6 @@ const AdminDataSender = () => {
                   label="Stations"
                   onChange={handleChange}
                 >
-                  {/* <MenuItem value={10}>Ten</MenuItem> */}
                   <MenuItem
                     value={"Alt-Madlitz: Conventional"}
                     sx={{ fontFamily: "serif" }}
@@ -515,9 +701,26 @@ const AdminDataSender = () => {
               )}
               <input type="file" className="m-12" onChange={handleFileChange} />
             </Box>
+            {errorMessage && (
+              <Typography sx={{ color: "red", textAlign: "center" }}>
+                {errorMessage}
+              </Typography>
+            )}
           </Box>
           {TIMESTAMP.length > 0 && (
             <Box sx={{ boxShadow: 3, maxWidth: "1300px", padding: 5 }}>
+              <Typography
+                variant="h5"
+                sx={{
+                  fontFamily: "serif",
+                  width: "1200px",
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  mb: 2,
+                }}
+              >
+                Selected file: {fileName}
+              </Typography>
               <Typography
                 variant="h6"
                 sx={{
@@ -545,82 +748,34 @@ const AdminDataSender = () => {
               <Box
                 sx={{
                   marginTop: 2,
-                  gap: 2,
+                  gap: 1,
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "start",
-                  height: 300,
+                  height: 600,
                   width: 1220,
                   border: "1px solid lightgray",
                   boxShadow: 3,
                   paddingTop: 0,
                   overflow: "hidden",
-                  overflowY: "scroll",
-                  overflowX: "scroll",
                   whiteSpace: "nowrap",
                 }}
               >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    textAlign: "start",
-                    bgcolor: "lightgray",
-                    width: "120%",
-                    height: 50,
-                    pt: 1,
-                    pl: 5,
-                    display: "inline-block",
-                    fontFamily: "serif",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Recordings captured by sensors
-                  {/* <span>(Recording numbers: {lastIndex})</span> */}
-                </Typography>
                 {title && (
-                  <Typography
-                    sx={{
-                      textAlign: "start",
-                      bgcolor: "#f6f6f6",
-                      width: "120%",
-                      height: 50,
-
-                      pl: 3,
-                      display: "inline-block",
-                      fontFamily: "serif",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    0:{title}
-                  </Typography>
+                  <ShowDataBeforeSend
+                    title={title}
+                    importedData={importedData}
+                  />
                 )}
-                <List sx={{ columnCount: 1, gap: 3 }}>
-                  {importedData.map((el, index) => (
-                    <ListItem
-                      sx={{ display: "list-item", fontFamily: "serif" }}
-                      key={index}
-                    >
-                      {index + 1}: {el}
-                    </ListItem>
-                  ))}
-                </List>
               </Box>
-              <Button
-                variant="button"
-                sx={{
-                  mt: 3,
-                  width: 600,
-                  height: 60,
-                  bgcolor: "green",
-                  color: "white",
-                  fontWeight: "bold",
-                  fontFamily: "serif",
-                  fontSize: 20,
-                  ":hover": { bgcolor: "#2E8B57" },
-                }}
-              >
-                Submit
-              </Button>
+              <DataSender
+                soilAttributeIds={soilAttributeIds}
+                SoilTempArrays={SoilTempArrays}
+                climateAttributeIds={climateAttributeIds}
+                ClimateArrays={ClimateArrays}
+                TIMESTAMP={TIMESTAMP}
+                station_id={station_id}
+              />
               <Button
                 onClick={cancelDataHandler}
                 variant="button"
