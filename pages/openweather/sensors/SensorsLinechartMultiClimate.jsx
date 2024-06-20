@@ -9,7 +9,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
-const SensorsLinechartMulti = ({
+const SensorsLinechartMultiClimate = ({
   title,
   paragraph,
   mainData,
@@ -25,7 +25,7 @@ const SensorsLinechartMulti = ({
   const [year, setYear] = useState("");
   const [month, setMonth] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [availableYears, setAvailableYears] = useState([]);
+  const [years, setYears] = useState([]);
 
   const handleYearChange = (event) => {
     setYear(event.target.value);
@@ -41,6 +41,12 @@ const SensorsLinechartMulti = ({
       return;
     }
 
+    // Extract unique years from the dataset
+    const uniqueYears = [
+      ...new Set(mainData.map((el) => new Date(el.date_time).getFullYear())),
+    ];
+    setYears(uniqueYears);
+
     let filteredDates = mainData;
 
     // Apply year filter
@@ -50,7 +56,6 @@ const SensorsLinechartMulti = ({
         return newYear === parseInt(year);
       });
     }
-
     // Apply month filter
     if (month !== "") {
       const monthIndex = new Date(`${month} 1, 2000`).getMonth();
@@ -68,15 +73,6 @@ const SensorsLinechartMulti = ({
 
     setFilteredData(noonData);
   }, [year, month, mainData]);
-
-  useEffect(() => {
-    if (mainData && mainData.length > 0) {
-      const years = Array.from(
-        new Set(mainData.map((el) => new Date(el.date_time).getFullYear()))
-      );
-      setAvailableYears(years);
-    }
-  }, [mainData]);
 
   const monthNames = [
     "January",
@@ -107,11 +103,14 @@ const SensorsLinechartMulti = ({
         variableThree: null,
       };
     }
-    if (el.soil_attribute_id === attribute_id_One) {
+    if (el.climate_attribute_id === attribute_id_One) {
       dataMap[dateLabel].variableOne = el.value;
-    } else if (el.soil_attribute_id === attribute_id_Two) {
+    } else if (el.climate_attribute_id === attribute_id_Two) {
       dataMap[dateLabel].variableTwo = el.value;
-    } else if (el.soil_attribute_id === attribute_id_Three) {
+    } else if (
+      attribute_id_Three &&
+      el.climate_attribute_id === attribute_id_Three
+    ) {
       dataMap[dateLabel].variableThree = el.value;
     }
   });
@@ -122,7 +121,7 @@ const SensorsLinechartMulti = ({
   const variableTwo = dateLabels.map((label) => dataMap[label].variableTwo);
   const variableThree = dateLabels.map((label) => dataMap[label].variableThree);
 
-  // Check if there is any data to display
+  // Check if at least one value is not null for any variable
   const hasData =
     variableOne.some((value) => value !== null) ||
     variableTwo.some((value) => value !== null) ||
@@ -130,17 +129,16 @@ const SensorsLinechartMulti = ({
 
   // Create datasets based on the presence of data
   const datasets = [];
+
   if (hasData) {
-    if (variableOne.some((value) => value !== null)) {
-      datasets.push({
-        label: VariableOne,
-        data: variableOne,
-        fill: true,
-        borderColor: "rgba(75,192,192,1)",
-        tension: 0.4,
-      });
-    }
-    if (variableTwo.some((value) => value !== null)) {
+    datasets.push({
+      label: VariableOne,
+      data: variableOne,
+      fill: true,
+      borderColor: "rgba(75,192,192,1)",
+      tension: 0.4,
+    });
+    if (VariableTwo) {
       datasets.push({
         label: VariableTwo,
         data: variableTwo,
@@ -148,7 +146,7 @@ const SensorsLinechartMulti = ({
         borderColor: "#742774",
       });
     }
-    if (variableThree.some((value) => value !== null)) {
+    if (VariableThree) {
       datasets.push({
         label: VariableThree,
         data: variableThree,
@@ -158,7 +156,7 @@ const SensorsLinechartMulti = ({
     }
   }
 
-  const dataToDisplay = {
+  const data = {
     labels: dateLabels,
     datasets,
   };
@@ -224,21 +222,19 @@ const SensorsLinechartMulti = ({
             mb: 5,
           }}
         >
-          {title && (
-            <Box
-              sx={{
-                mt: 5,
-                display: "flex",
-                justifyContent: "center",
-                alignContent: "center",
-                width: "100%",
-              }}
-            >
-              <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                {title}
-              </Typography>
-            </Box>
-          )}
+          <Box
+            sx={{
+              mt: 5,
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+              width: "100%",
+            }}
+          >
+            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              {title}
+            </Typography>
+          </Box>
           <Box
             sx={{
               maxWidth: "full",
@@ -257,7 +253,7 @@ const SensorsLinechartMulti = ({
               </InputLabel>
               <Select value={year} onChange={handleYearChange}>
                 <MenuItem value="">Select Year</MenuItem>
-                {availableYears.map((year) => (
+                {years.map((year) => (
                   <MenuItem key={year} value={year}>
                     {year}
                   </MenuItem>
@@ -280,20 +276,16 @@ const SensorsLinechartMulti = ({
             </FormControl>
           </Box>
 
-          <Line data={dataToDisplay} options={options} />
-          {XCaption && (
-            <Typography
-              variant="body1"
-              sx={{ fontWeight: "bold", fontStyle: "italic" }}
-            >
-              {XCaption}
-            </Typography>
-          )}
-          {paragraph && (
-            <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              {paragraph}
-            </Typography>
-          )}
+          <Line data={data} options={options} />
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: "bold", fontStyle: "italic" }}
+          >
+            {XCaption}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: "justify" }}>
+            {paragraph}
+          </Typography>
         </Box>
       ) : (
         <Typography variant="body1" sx={{ textAlign: "center", color: "red" }}>
@@ -304,4 +296,4 @@ const SensorsLinechartMulti = ({
   );
 };
 
-export default SensorsLinechartMulti;
+export default SensorsLinechartMultiClimate;

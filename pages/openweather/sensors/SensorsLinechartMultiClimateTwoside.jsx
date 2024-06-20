@@ -9,14 +9,15 @@ import {
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
-const SensorsLinechartMulti = ({
+const SensorsLinechartMultiClimateTwoside = ({
   title,
   paragraph,
-  mainData,
+  climateData,
   attribute_id_One,
   attribute_id_Two,
   attribute_id_Three,
   Ylabel,
+  YlabelTwo,
   VariableOne,
   VariableTwo,
   VariableThree,
@@ -36,12 +37,12 @@ const SensorsLinechartMulti = ({
   };
 
   useEffect(() => {
-    if (!mainData || mainData.length === 0) {
+    if (!climateData || climateData.length === 0) {
       setFilteredData([]);
       return;
     }
 
-    let filteredDates = mainData;
+    let filteredDates = climateData;
 
     // Apply year filter
     if (year !== "") {
@@ -67,16 +68,16 @@ const SensorsLinechartMulti = ({
     });
 
     setFilteredData(noonData);
-  }, [year, month, mainData]);
+  }, [year, month, climateData]);
 
   useEffect(() => {
-    if (mainData && mainData.length > 0) {
+    if (climateData && climateData.length > 0) {
       const years = Array.from(
-        new Set(mainData.map((el) => new Date(el.date_time).getFullYear()))
+        new Set(climateData.map((el) => new Date(el.date_time).getFullYear()))
       );
       setAvailableYears(years);
     }
-  }, [mainData]);
+  }, [climateData]);
 
   const monthNames = [
     "January",
@@ -107,11 +108,14 @@ const SensorsLinechartMulti = ({
         variableThree: null,
       };
     }
-    if (el.soil_attribute_id === attribute_id_One) {
+    if (el.climate_attribute_id === attribute_id_One) {
       dataMap[dateLabel].variableOne = el.value;
-    } else if (el.soil_attribute_id === attribute_id_Two) {
+    } else if (el.climate_attribute_id === attribute_id_Two) {
       dataMap[dateLabel].variableTwo = el.value;
-    } else if (el.soil_attribute_id === attribute_id_Three) {
+    } else if (
+      attribute_id_Three &&
+      el.climate_attribute_id === attribute_id_Three
+    ) {
       dataMap[dateLabel].variableThree = el.value;
     }
   });
@@ -122,43 +126,44 @@ const SensorsLinechartMulti = ({
   const variableTwo = dateLabels.map((label) => dataMap[label].variableTwo);
   const variableThree = dateLabels.map((label) => dataMap[label].variableThree);
 
-  // Check if there is any data to display
+  // Check if at least one value is not null for any variable
   const hasData =
     variableOne.some((value) => value !== null) ||
     variableTwo.some((value) => value !== null) ||
     variableThree.some((value) => value !== null);
 
-  // Create datasets based on the presence of data
-  const datasets = [];
-  if (hasData) {
-    if (variableOne.some((value) => value !== null)) {
-      datasets.push({
-        label: VariableOne,
-        data: variableOne,
-        fill: true,
-        borderColor: "rgba(75,192,192,1)",
-        tension: 0.4,
-      });
-    }
-    if (variableTwo.some((value) => value !== null)) {
-      datasets.push({
-        label: VariableTwo,
-        data: variableTwo,
-        fill: false,
-        borderColor: "#742774",
-      });
-    }
-    if (variableThree.some((value) => value !== null)) {
-      datasets.push({
-        label: VariableThree,
-        data: variableThree,
-        fill: false,
-        borderColor: "#122774",
-      });
-    }
+  // Conditionally include the third dataset if it has valid data points
+  const datasets = [
+    {
+      label: VariableOne,
+      data: variableOne,
+      fill: true,
+      borderColor: "rgba(75,192,192,1)",
+      tension: 0.4,
+      yAxisID: "y",
+    },
+  ];
+
+  if (VariableTwo && variableTwo.some((value) => value !== null)) {
+    datasets.push({
+      label: VariableTwo,
+      data: variableTwo,
+      fill: false,
+      borderColor: "#742774",
+      yAxisID: "percentage",
+    });
+  }
+  if (VariableThree && variableThree.some((value) => value !== null)) {
+    datasets.push({
+      label: VariableThree,
+      data: variableThree,
+      fill: false,
+      borderColor: "#122774",
+      yAxisID: "percentage",
+    });
   }
 
-  const dataToDisplay = {
+  const data = {
     labels: dateLabels,
     datasets,
   };
@@ -202,6 +207,22 @@ const SensorsLinechartMulti = ({
           tickColor: "grey",
         },
       },
+      percentage: {
+        position: "right",
+        title: {
+          display: true,
+          text: YlabelTwo,
+          font: {
+            size: 16,
+            weight: "bold",
+          },
+        },
+        grid: {
+          color: "#BDBDBD",
+          borderColor: "grey",
+          tickColor: "grey",
+        },
+      },
     },
   };
 
@@ -224,21 +245,19 @@ const SensorsLinechartMulti = ({
             mb: 5,
           }}
         >
-          {title && (
-            <Box
-              sx={{
-                mt: 5,
-                display: "flex",
-                justifyContent: "center",
-                alignContent: "center",
-                width: "100%",
-              }}
-            >
-              <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                {title}
-              </Typography>
-            </Box>
-          )}
+          <Box
+            sx={{
+              mt: 5,
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+              width: "100%",
+            }}
+          >
+            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              {title}
+            </Typography>
+          </Box>
           <Box
             sx={{
               maxWidth: "full",
@@ -279,29 +298,24 @@ const SensorsLinechartMulti = ({
               </Select>
             </FormControl>
           </Box>
-
-          <Line data={dataToDisplay} options={options} />
-          {XCaption && (
-            <Typography
-              variant="body1"
-              sx={{ fontWeight: "bold", fontStyle: "italic" }}
-            >
-              {XCaption}
-            </Typography>
-          )}
-          {paragraph && (
-            <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              {paragraph}
-            </Typography>
-          )}
+          <Line data={data} options={options} />
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: "bold", fontStyle: "italic" }}
+          >
+            {XCaption}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: "justify" }}>
+            {paragraph}
+          </Typography>
         </Box>
       ) : (
         <Typography variant="body1" sx={{ textAlign: "center", color: "red" }}>
-          No data is available at this station for {title}.
+          No data available for the {title}.
         </Typography>
       )}
     </>
   );
 };
 
-export default SensorsLinechartMulti;
+export default SensorsLinechartMultiClimateTwoside;

@@ -1,52 +1,26 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Linechart from "../Linechart";
 import AirPollutionToDatabase from "./AirPollutionToDatabase";
-
 import { localize } from "../../../Translation.jsx";
 import { CartContext } from "../../../App";
-import { useContext } from "react";
 import { Box, Typography } from "@mui/material";
 
 const AirPollutionForecast = () => {
-  let { language } = useContext(CartContext);
-
+  const { language } = useContext(CartContext);
   const location = useLocation();
   const { state } = location;
 
-  if (!state) {
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100vh",
-          gap: "15px",
-        }}
-      >
-        <Typography>At the moment this page is not available.</Typography>
-        <Link to="/">
-          <Typography
-            sx={{
-              color: "blue",
-              fontWeight: "bold",
-              ":hover": { color: "lightblue", textDecoration: "underline" },
-            }}
-          >
-            Tap to back home!
-          </Typography>
-        </Link>
-      </Box>
-    );
-  }
-  const { name, infoOne, infoTwo, infoThree, stlocation } = state;
+  // Provide default values if state is not available
+  const effectiveName = state?.name || "Unknown Station";
+  const effectiveInfoOne = state?.infoOne || "No Info";
+  const effectiveInfoTwo = state?.infoTwo || "No Info";
+  const effectiveInfoThree = state?.infoThree || "No Info";
+  const effectiveStlocation = state?.stlocation || [52.52, 13.405];
 
-  const lat = stlocation[0];
-  const lon = stlocation[1];
+  const lat = effectiveStlocation[0];
+  const lon = effectiveStlocation[1];
 
   const [data, setData] = useState({});
   const [airPloObject, setAirPloObject] = useState([]);
@@ -64,12 +38,10 @@ const AirPollutionForecast = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [lat, lon]);
 
   useEffect(() => {
-    // This useEffect will trigger whenever 'data' changes
     if (data?.list) {
-      // console.log(data.list);
       setAirPloObject(data.list);
     }
   }, [data]);
@@ -79,9 +51,9 @@ const AirPollutionForecast = () => {
   let allData = [];
 
   airPloObject.map((el, index) => {
-    days.push(index),
-      newData.push(el.components.co),
-      allData.push(el.components);
+    days.push(index);
+    newData.push(el.components.co);
+    allData.push(el.components);
   });
 
   const customWidth = {
@@ -102,14 +74,13 @@ const AirPollutionForecast = () => {
       }}
     >
       <AirPollutionToDatabase
-        allData={allData}
-        stlocation={stlocation}
-        stName={name}
+        stlocation={effectiveStlocation}
+        stName={effectiveName}
         customWidth={customWidth}
-      ></AirPollutionToDatabase>
+      />
 
       <Typography
-        variant="p"
+        variant="body1"
         sx={{
           maxWidth: "1450px",
           display: "block",
@@ -120,9 +91,9 @@ const AirPollutionForecast = () => {
         }}
       >
         {localize(language, "pollutingGasesOne")}
-        <br></br>
+        <br />
         {localize(language, "pollutingGasesTwo")}
-        <br></br>
+        <br />
         {localize(language, "pollutingGasesThree")}
       </Typography>
       <Linechart
@@ -130,49 +101,49 @@ const AirPollutionForecast = () => {
         newData={allData.map((el) => el.co)}
         componentName={"Co (μg/m3)"}
         fullName={"Carbon monoxide (Co)"}
-      ></Linechart>
+      />
       <Linechart
         days={days}
         newData={allData.map((el) => el.no)}
         componentName={"NO (μg/m3)"}
         fullName={"Nitrogen monoxide (No)"}
-      ></Linechart>
+      />
       <Linechart
         days={days}
         newData={allData.map((el) => el.no2)}
         componentName={"NO2 (μg/m3)"}
         fullName={"Nitrogen dioxide (NO2)"}
-      ></Linechart>
+      />
       <Linechart
         days={days}
         newData={allData.map((el) => el.nh3)}
         componentName={"NH3 (μg/m3)"}
         fullName={"Ammonia (NH3)"}
-      ></Linechart>
+      />
       <Linechart
         days={days}
         newData={allData.map((el) => el.o3)}
         componentName={"O3 (μg/m3)"}
         fullName={"Ozone (O3)"}
-      ></Linechart>
+      />
       <Linechart
         days={days}
         newData={allData.map((el) => el.so2)}
         componentName={"SO2 (μg/m3)"}
         fullName={"Sulphur dioxide (SO2)"}
-      ></Linechart>
+      />
       <Linechart
         days={days}
         newData={allData.map((el) => el.pm10)}
         componentName={"PM10 (μg/m3)"}
         fullName={"particulat (PM10)"}
-      ></Linechart>
+      />
       <Linechart
         days={days}
         newData={allData.map((el) => el.pm2_5)}
         componentName={"PM2.5 (μg/m3)"}
         fullName={"particulat (PM2.5)"}
-      ></Linechart>
+      />
     </Box>
   );
 };

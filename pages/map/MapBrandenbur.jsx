@@ -8,14 +8,14 @@ import { CartContext } from "../../App";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-import StationsInfo from "../../data/Locations";
+// import StationsInfo from "../../data/Locations";
 import TextInBody from "../panorama/TextInBody.jsx";
 import { Box, Typography } from "@mui/material";
 
 const MapBrandenbur = () => {
   const position = [52.52, 13.405];
   const Brandenburgboundaries = Brandenburgboundary;
-  const stationInformation = StationsInfo;
+  // const stationInformation = StationsInfo;
   const limeColor = { color: "darkGreen" };
 
   let { language } = useContext(CartContext);
@@ -24,35 +24,28 @@ const MapBrandenbur = () => {
   const [lngInMap, setLngInMap] = useState(13.405);
   const [cityName, setCityName] = useState("");
 
-  //opnAirPollution
-  // const [data, setData] = useState([]);
-  // const getData = async () => {
-  //   const { data } = await axios.get(
-  //     `https://api.openweathermap.org/data/2.5/air_pollution?lat=30.489772&lon=-99.771335&appid=ae1f24cd90993757247d8601739d2cf8`
-  //   );
-  //   setData(data);
-  // };
+  const [stationInformation, setStationInformation] = useState([]);
 
-  // useEffect(() => {
-  //   getData();
-  //   console.log(JSON.stringify(data));
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8800/station");
+        setStationInformation(response.data);
+        // setAllStationData(response.data);
+        // console.log(stationInformation);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-  //
+    fetchData();
+  }, []);
 
   const titleStyle = {
     paddingY: "1%",
     fontWeight: "bold",
   };
   const paragraphStyle = {
-    // width: {
-    //   xs: "400px",
-    //   sm: "450px",
-    //   md: "600px",
-    //   lg: "1000px",
-    //   xl: "1400px",
-    // },
-
     fontWeight: "normal",
     paddingTop: "22px",
   };
@@ -106,13 +99,6 @@ const MapBrandenbur = () => {
         <Box sx={{ maxWidth: "1450px" }}>
           <Box
             sx={{
-              // width: {
-              //   xs: "400px",
-              //   sm: "450px",
-              //   md: "600px",
-              //   lg: "1000px",
-              //   xl: "1400px",
-              // },
               display: "flex",
               flexDirection: "column",
               alignContent: "center",
@@ -170,15 +156,19 @@ const MapBrandenbur = () => {
                 chunkedLoading
               >
                 {stationInformation.map((el) => {
+                  const location =
+                    el.latitude && el.longitude
+                      ? [el.longitude, el.latitude]
+                      : [52.52, 13.405];
                   return (
                     <StationsLocation
-                      key={el.id}
-                      name={el.name}
-                      stlocation={el.location}
-                      panorama={el.panorama}
-                      infoOne={el.infoOne}
-                      infoTwo={el.infoTwo}
-                      infoThree={el.infoThree}
+                      key={el.station_id}
+                      name={el.station_name}
+                      stlocation={location}
+                      panorama={"el.panorama"}
+                      infoOne={"el.infoOne"}
+                      infoTwo={"el.infoTwo"}
+                      infoThree={"el.infoThree"}
                     ></StationsLocation>
                   );
                 })}

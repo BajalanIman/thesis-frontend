@@ -5,28 +5,16 @@ import { useState } from "react";
 import CustomButton from "./CustomButton";
 import OpenweatherMobile from "./OpenweatherMobile";
 import Sensors from "./sensors/Sensors";
+import { useLocation } from "react-router-dom";
 
 const Openweather = () => {
-  const [changePollution, setChangePollution] = useState(true);
-  const [changeWeather, setChangeWeather] = useState(false);
-  const [changeSensors, setChangeSensors] = useState(false);
+  const location = useLocation();
+  const { state } = location;
 
-  const weatherHandler = () => {
-    setChangePollution(false);
-    setChangeWeather(true);
-    setChangeSensors(false);
-  };
+  const [currentView, setCurrentView] = useState("sensors");
 
-  const airPolutionHandler = () => {
-    setChangePollution(true);
-    setChangeWeather(false);
-    setChangeSensors(false);
-  };
-
-  const sensorHandler = () => {
-    setChangePollution(false);
-    setChangeWeather(false);
-    setChangeSensors(true);
+  const changeView = (view) => {
+    setCurrentView(view);
   };
 
   return (
@@ -48,21 +36,29 @@ const Openweather = () => {
       >
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: "20px" }}>
           <CustomButton
-            handler={airPolutionHandler}
-            name={"Air pollution variables"}
-          ></CustomButton>
-          <CustomButton
-            handler={weatherHandler}
+            handler={() => changeView("weather")}
             name={"Climate variables"}
-          ></CustomButton>
+          />
           <CustomButton
-            handler={sensorHandler}
+            handler={() => changeView("sensors")}
             name={"Sensors variables"}
-          ></CustomButton>
+          />
+          <CustomButton
+            handler={() => changeView("pollution")}
+            name={"Air pollution variables"}
+          />
         </Box>
-        {changeWeather && <Weather></Weather>}
-        {changePollution && <AirPollutionForecast></AirPollutionForecast>}
-        {changeSensors && <Sensors></Sensors>}
+        {currentView === "weather" && <Weather />}
+        {currentView === "pollution" && state && (
+          <AirPollutionForecast
+            name={state.name}
+            infoOne={state.infoOne}
+            infoTwo={state.infoTwo}
+            infoThree={state.infoThree}
+            stlocation={state.stlocation}
+          />
+        )}
+        {currentView === "sensors" && <Sensors />}
       </Box>
 
       <Box
@@ -70,7 +66,6 @@ const Openweather = () => {
           paddingX: 2,
           width: "100%",
           zIndex: 9999, // Adjust the z-index if needed
-
           display: { xs: "flex", md: "none" },
         }}
       >

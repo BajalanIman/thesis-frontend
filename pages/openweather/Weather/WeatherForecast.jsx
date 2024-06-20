@@ -82,7 +82,7 @@ const WeatherForecast = () => {
     allData.push(el.main);
     date.push(el.dt_txt);
     windSpeed.push(el.wind);
-    console.log(allData);
+    // console.log(allData);
   });
 
   return (
