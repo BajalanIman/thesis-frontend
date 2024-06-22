@@ -1,9 +1,7 @@
-import AboutParagraphs from "./AboutParagraphs.jsx";
-import { Box, Divider } from "@mui/material";
-import { localize } from "../../../Translation.jsx";
-import { CartContext } from "../../../App.jsx";
-
 import React, { useContext } from "react";
+import { CartContext } from "../../../App.jsx";
+import { Box, Divider, Typography } from "@mui/material";
+import { localize } from "../../../Translation.jsx";
 
 const About = () => {
   let { language } = useContext(CartContext);
@@ -12,139 +10,93 @@ const About = () => {
     <div className="flex justify-center relative flex-col items-center">
       <Box
         sx={{
-          // width: customizedWidth,
           maxWidth: "1450px",
           position: "relative",
           paddingX: { xs: 2, md: 0 },
-          zIndex: 10,
+          textAlign: "justify",
         }}
       >
-        <AboutParagraphs
-          variant={"h4"}
-          marginTop={8}
-          marginBottom={3}
-          fontWeight={"bold"}
-          text={localize(language, "aboutApplication")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={5}
-          text={localize(language, "aboutApplicationP1")}
-        />
-
-        <AboutParagraphs
-          variant={"h4"}
-          marginTop={8}
-          marginBottom={3}
-          fontWeight={"bold"}
-          text={localize(language, "ourMission")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          text={localize(language, "ourMissionP1")}
-        />
-
+        <Typography
+          variant="h4"
+          sx={{
+            mt: 8,
+            mb: 3,
+            fontFamily: "Abril Fatface",
+            fontWeight: 300,
+            textAlign: { xs: "start", md: "justify" },
+          }}
+        >
+          {localize(language, "aboutApplication")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 5 }}>
+          {localize(language, "aboutApplicationP1")}
+        </Typography>
+        <Typography variant="h5" sx={{ mt: 8, mb: 3, fontWeight: "bold" }}>
+          {localize(language, "ourMission")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "ourMissionP1")}
+        </Typography>
         <Divider sx={{ padding: 2 }}></Divider>
-        <AboutParagraphs
-          variant={"h4"}
-          marginTop={8}
-          marginBottom={3}
-          fontWeight={"bold"}
-          text={localize(language, "keyFeatures")}
-        />
-        <AboutParagraphs
-          variant={"h5"}
-          marginTop={4}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "interactiveMaps")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "interactiveMapsP1")}
-        />
-        <AboutParagraphs
-          variant={"h5"}
-          marginTop={4}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "comprehensiveData")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "comprehensiveDataP1")}
-        />
-        <AboutParagraphs
-          variant={"h5"}
-          marginTop={4}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "historicalInsights")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "historicalInsightsP1")}
-        />
-        <AboutParagraphs
-          variant={"h5"}
-          marginTop={4}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "focusOnForests")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "focusOnForestsP1")}
-        />
-
+        <Typography variant="h5" sx={{ mt: 5, mb: 3, fontWeight: "bold" }}>
+          {localize(language, "keyFeatures")}
+        </Typography>
+        <Typography variant="h6" sx={{ mt: 4, mb: 2, fontWeight: "bold" }}>
+          {localize(language, "interactiveMaps")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "interactiveMapsP1")}
+        </Typography>
+        <Typography variant="h6" sx={{ mt: 4, mb: 2, fontWeight: "bold" }}>
+          {localize(language, "comprehensiveData")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "comprehensiveDataP1")}
+        </Typography>
+        <Typography variant="h6" sx={{ mt: 4, mb: 2, fontWeight: "bold" }}>
+          {localize(language, "historicalInsights")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "historicalInsightsP1")}
+        </Typography>
+        <Typography variant="h6" sx={{ mt: 4, mb: 2, fontWeight: "bold" }}>
+          {localize(language, "focusOnForests")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "focusOnForestsP1")}
+        </Typography>
         <Divider sx={{ padding: 2 }}></Divider>
-        <AboutParagraphs
-          variant={"h4"}
-          marginTop={6}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "ourCommitment")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "ourCommitmentp1")}
-        />
+        <Typography
+          variant="h5"
+          sx={{
+            mt: 5,
+            mb: 3,
+            fontWeight: "bold",
+            textAlign: { xs: "start", md: "justify" },
+          }}
+        >
+          {localize(language, "ourCommitment")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "ourCommitmentp1")}
+        </Typography>
         <Divider sx={{ padding: 2 }}></Divider>
-        <AboutParagraphs
-          variant={"h4"}
-          marginTop={6}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "getInvolved")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "getInvolvedP1")}
-        />
+        <Typography variant="h5" sx={{ mt: 5, mb: 3, fontWeight: "bold" }}>
+          {localize(language, "getInvolved")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "getInvolvedP1")}
+        </Typography>
         <Divider sx={{ padding: 2 }}></Divider>
-        <AboutParagraphs
-          variant={"h4"}
-          marginTop={6}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "contactUs")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "contactUsP1")}
-        />
-        <AboutParagraphs
-          variant={"h6"}
-          marginBottom={8}
-          text={localize(language, "contactUsP2")}
-        />
+        <Typography variant="h5" sx={{ mt: 5, mb: 3, fontWeight: "bold" }}>
+          {localize(language, "contactUs")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 1 }}>
+          {localize(language, "contactUsP1")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 8 }}>
+          {localize(language, "contactUsP2")}
+        </Typography>
       </Box>
     </div>
   );

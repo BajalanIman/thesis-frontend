@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { Divider, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 
 import { localize } from "../../../Translation.jsx";
 import { CartContext } from "../../../App";
@@ -99,98 +99,104 @@ const Sensors = () => {
     }
   }, [soilMeasurements, climateMeasurements, stationId]);
 
-  console.log("clim data", climateData);
-  console.log("soil data", soilData);
-
+  console.log(stationId);
   return (
-    <div className="mt-16 h-full mb-28 flex-cols gap-4">
-      <Typography variant="h5" sx={{ fontWeight: "bold", textAlign: "center" }}>
-        Station: {stationName}
-      </Typography>
-      <Typography variant="body1" mt={4}>
-        On this page, only a selection of the variables collected from the
-        station is shown. For more detailed information about additional
-        variables and data points collected by the station, please contact the
-        administrator. They can provide comprehensive insights and access to the
-        full dataset.
-      </Typography>
-      <SensorsLinechartMulti
-        title={"Soil temperature"}
-        attribute_id_One={4}
-        attribute_id_Two={8}
-        attribute_id_Three={12}
-        paragraph={localize(language, "soilDifferentDeep")}
-        Ylabel={"Soil temperature (°C)"}
-        VariableOne={"10 cm"}
-        VariableTwo={"30 cm"}
-        VariableThree={"60 cm"}
-        mainData={soilData}
-        XCaption={
-          "The chart above shows soil temperature daily at 12:00 at different depths."
-        }
-      />
-      <Divider />
-      <SensorsLinechartMulti
-        title={"Water content"}
-        attribute_id_One={3}
-        attribute_id_Two={7}
-        attribute_id_Three={11}
-        paragraph={localize(language, "waterDifferentDeep")}
-        Ylabel={"Water content (%)"}
-        VariableOne={"10 cm"}
-        VariableTwo={"30 cm"}
-        VariableThree={"60 cm"}
-        mainData={soilData}
-        XCaption={
-          "The chart above shows water content daily at 12:00 at different depths."
-        }
-      />
-      <Divider />
-      <SensorsLinechartMulti
-        title={"Permittivity"}
-        attribute_id_One={2}
-        attribute_id_Two={6}
-        attribute_id_Three={10}
-        paragraph={`Permittivity in soil, also known as the dielectric constant, is a measure of how much the soil can store electrical energy in an electric field, reflecting its ability to transmit an electric field. This property is crucial in fields such as agriculture, hydrology, and environmental science, as it affects soil moisture content measurements and soil behavior under electrical fields. Defined as a material property indicating how an electric field affects and is affected by a dielectric medium, soil permittivity refers to the soil's ability to hold and transmit electrical charges. Typically measured using dielectric sensors, which send an electrical signal through the soil and measure the response, this measurement can estimate soil moisture content since water has a high permittivity compared to dry soil components. Water significantly increases soil permittivity because polar water molecules align with the electric field, making permittivity a proxy for soil moisture content. Applications include optimizing irrigation practices in agriculture, understanding soil properties for construction and land management in geotechnical engineering, and studying water movement and soil health in environmental science. Factors such as soil type, density, temperature, and salinity influence soil permittivity, making it a valuable parameter for improving irrigation efficiency, managing water resources, and studying environmental changes.`}
-        Ylabel={"Permittivity (ε)"}
-        VariableOne={"10 cm"}
-        VariableTwo={"30 cm"}
-        VariableThree={"60 cm"}
-        mainData={soilData}
-        XCaption={
-          "The chart above shows the permittivity daily at 12:00 at different depths."
-        }
-      />
-      <Divider />
-      <SensorsLinechartMultiClimate
-        title={"Relative humidity"}
-        attribute_id_One={2}
-        attribute_id_Two={3}
-        paragraph={
-          "Relative humidity (RH) is a measure of the amount of moisture in the air compared to the maximum amount of moisture the air can hold at a given temperature. Maximum relative humidity represents the highest relative humidity recorded over a specific period, typically within a day. This value indicates the point at which the air is most saturated with moisture. Minimum relative humidity represents the lowest relative humidity recorded over the same period, indicating the driest point of the air. Monitoring these values helps in understanding humidity trends, assessing comfort levels, predicting dew points, and managing agricultural and industrial processes. High relative humidity can affect human comfort and health, as well as influence weather patterns and precipitation."
-        }
-        Ylabel={"Relative humidity (%)"}
-        VariableOne={"Maximum relative humidity"}
-        VariableTwo={"Minimum relative humidity"}
-        mainData={climateData}
-        XCaption={
-          "The chart above shows the maximum and minimum relative humidity daily at 12:00."
-        }
-      />{" "}
-      <Divider />
-      <SensorsLinechartMultiClimate
-        title={"Air temperature"}
-        attribute_id_One={1}
-        paragraph={
-          "Air temperature (AirTC), with its unit being degrees Celsius (°C) is a fundamental meteorological parameter essential for weather forecasting, climate monitoring, and various environmental and agricultural applications. Accurate air temperature readings help in understanding and predicting weather patterns, managing heating and cooling needs, and studying the effects of temperature on ecosystems. This data is typically collected using thermometers or temperature sensors, which provide precise and reliable information about the ambient air temperature."
-        }
-        Ylabel={"Air temperature (°C)"}
-        VariableOne={"Air temperature"}
-        mainData={climateData}
-        XCaption={"The chart above shows the air temperature daily at 12:00."}
-      />
-      <Divider />
-      {/* <SensorsLinechartMultiClimate
+    <div className="mt-6 lg:mb-28 flex-cols gap-4 min-h-screen">
+      {(stationId === 10 ||
+        stationId === 11 ||
+        stationId === 12 ||
+        stationId === 13 ||
+        stationId === 14) && (
+        <Box>
+          <Typography
+            variant="body1"
+            sx={{ mt: 4, paddingX: { xs: 2, md: 0 }, textAlign: "justify" }}
+          >
+            On this page, only a selection of the variables collected from the
+            station is shown. For more detailed information about additional
+            variables and data points collected by the station, please contact
+            the administrator. They can provide comprehensive insights and
+            access to the full dataset.
+          </Typography>
+          <SensorsLinechartMulti
+            title={"Soil temperature"}
+            attribute_id_One={4}
+            attribute_id_Two={8}
+            attribute_id_Three={12}
+            paragraph={localize(language, "soilDifferentDeep")}
+            Ylabel={"Soil temperature (°C)"}
+            VariableOne={"10 cm"}
+            VariableTwo={"30 cm"}
+            VariableThree={"60 cm"}
+            mainData={soilData}
+            XCaption={
+              "The chart above shows soil temperature daily at 12:00 at different depths."
+            }
+          />
+          <Divider />
+          <SensorsLinechartMulti
+            title={"Water content"}
+            attribute_id_One={3}
+            attribute_id_Two={7}
+            attribute_id_Three={11}
+            paragraph={localize(language, "waterDifferentDeep")}
+            Ylabel={"Water content (%)"}
+            VariableOne={"10 cm"}
+            VariableTwo={"30 cm"}
+            VariableThree={"60 cm"}
+            mainData={soilData}
+            XCaption={
+              "The chart above shows water content daily at 12:00 at different depths."
+            }
+          />
+          <Divider />
+          <SensorsLinechartMulti
+            title={"Permittivity"}
+            attribute_id_One={2}
+            attribute_id_Two={6}
+            attribute_id_Three={10}
+            paragraph={`Permittivity in soil, also known as the dielectric constant, is a measure of how much the soil can store electrical energy in an electric field, reflecting its ability to transmit an electric field. This property is crucial in fields such as agriculture, hydrology, and environmental science, as it affects soil moisture content measurements and soil behavior under electrical fields. Defined as a material property indicating how an electric field affects and is affected by a dielectric medium, soil permittivity refers to the soil's ability to hold and transmit electrical charges. Typically measured using dielectric sensors, which send an electrical signal through the soil and measure the response, this measurement can estimate soil moisture content since water has a high permittivity compared to dry soil components. Water significantly increases soil permittivity because polar water molecules align with the electric field, making permittivity a proxy for soil moisture content. Applications include optimizing irrigation practices in agriculture, understanding soil properties for construction and land management in geotechnical engineering, and studying water movement and soil health in environmental science. Factors such as soil type, density, temperature, and salinity influence soil permittivity, making it a valuable parameter for improving irrigation efficiency, managing water resources, and studying environmental changes.`}
+            Ylabel={"Permittivity (ε)"}
+            VariableOne={"10 cm"}
+            VariableTwo={"30 cm"}
+            VariableThree={"60 cm"}
+            mainData={soilData}
+            XCaption={
+              "The chart above shows the permittivity daily at 12:00 at different depths."
+            }
+          />
+          <Divider />
+          <SensorsLinechartMultiClimate
+            title={"Relative humidity"}
+            attribute_id_One={2}
+            attribute_id_Two={3}
+            paragraph={
+              "Relative humidity (RH) is a measure of the amount of moisture in the air compared to the maximum amount of moisture the air can hold at a given temperature. Maximum relative humidity represents the highest relative humidity recorded over a specific period, typically within a day. This value indicates the point at which the air is most saturated with moisture. Minimum relative humidity represents the lowest relative humidity recorded over the same period, indicating the driest point of the air. Monitoring these values helps in understanding humidity trends, assessing comfort levels, predicting dew points, and managing agricultural and industrial processes. High relative humidity can affect human comfort and health, as well as influence weather patterns and precipitation."
+            }
+            Ylabel={"Relative humidity (%)"}
+            VariableOne={"Maximum relative humidity"}
+            VariableTwo={"Minimum relative humidity"}
+            mainData={climateData}
+            XCaption={
+              "The chart above shows the maximum and minimum relative humidity daily at 12:00."
+            }
+          />{" "}
+          <Divider />
+          <SensorsLinechartMultiClimate
+            title={"Air temperature"}
+            attribute_id_One={1}
+            paragraph={
+              "Air temperature (AirTC), with its unit being degrees Celsius (°C) is a fundamental meteorological parameter essential for weather forecasting, climate monitoring, and various environmental and agricultural applications. Accurate air temperature readings help in understanding and predicting weather patterns, managing heating and cooling needs, and studying the effects of temperature on ecosystems. This data is typically collected using thermometers or temperature sensors, which provide precise and reliable information about the ambient air temperature."
+            }
+            Ylabel={"Air temperature (°C)"}
+            VariableOne={"Air temperature"}
+            mainData={climateData}
+            XCaption={
+              "The chart above shows the air temperature daily at 12:00."
+            }
+          />
+          <Divider />
+          {/* <SensorsLinechartMultiClimate
         title={"Average Solar Radiation"}
         attribute_id_One={4}
         // attribute_id_Two={5}
@@ -217,22 +223,51 @@ const Sensors = () => {
           "The chart above shows the Total Solar Radiation (SlrMJ) daily at 12:00."
         }
       /> */}
-      <SensorsLinechartMultiClimateTwoside
-        title={"Solar Radiation"}
-        attribute_id_One={4}
-        attribute_id_Two={5}
-        paragraph={
-          "Solar Radiation Total (SlrMJ), measured in megajoules per square meter (MJ/m²), and Average Solar Radiation (SlrW), measured in watts per square meter (W/m²), are critical for understanding solar energy inputs in various fields such as environmental and agricultural studies and solar power generation. SlrMJ represents the total solar energy received on a horizontal surface per unit area over a given period, typically a day, and is crucial for analyzing plant growth patterns, crop yields, solar panel efficiency, and climate modeling. On the other hand, SlrW represents the average solar power received on a horizontal surface per unit area over a specific time interval, typically an hour or a day, and is vital for understanding the intensity and consistency of solar energy available for processes like photosynthesis and optimizing solar panel performance. Both measurements are typically collected using instruments such as pyranometers or silicon photodiode sensors at weather stations, providing insights into the temporal and spatial variations of solar energy, which are essential for planning agricultural activities, analyzing environmental conditions, and assessing solar energy potential throughout the year."
-        }
-        Ylabel={"Average Solar Radiation (W/m^2)"}
-        YlabelTwo={"Total Solar Radiation (MJ/m^2)"}
-        VariableOne={"Average Solar Radiation"}
-        VariableTwo={"Total Solar Radiation"}
-        climateData={climateData}
-        XCaption={
-          "The chart above shows the solar radiation (average and total) daily at 12:00."
-        }
-      />
+          <SensorsLinechartMultiClimateTwoside
+            title={"Solar Radiation"}
+            attribute_id_One={4}
+            attribute_id_Two={5}
+            paragraph={
+              "Solar Radiation Total (SlrMJ), measured in megajoules per square meter (MJ/m²), and Average Solar Radiation (SlrW), measured in watts per square meter (W/m²), are critical for understanding solar energy inputs in various fields such as environmental and agricultural studies and solar power generation. SlrMJ represents the total solar energy received on a horizontal surface per unit area over a given period, typically a day, and is crucial for analyzing plant growth patterns, crop yields, solar panel efficiency, and climate modeling. On the other hand, SlrW represents the average solar power received on a horizontal surface per unit area over a specific time interval, typically an hour or a day, and is vital for understanding the intensity and consistency of solar energy available for processes like photosynthesis and optimizing solar panel performance. Both measurements are typically collected using instruments such as pyranometers or silicon photodiode sensors at weather stations, providing insights into the temporal and spatial variations of solar energy, which are essential for planning agricultural activities, analyzing environmental conditions, and assessing solar energy potential throughout the year."
+            }
+            Ylabel={"Average Solar Radiation (W/m^2)"}
+            YlabelTwo={"Total Solar Radiation (MJ/m^2)"}
+            VariableOne={"Average Solar Radiation"}
+            VariableTwo={"Total Solar Radiation"}
+            climateData={climateData}
+            XCaption={
+              "The chart above shows the solar radiation (average and total) daily at 12:00."
+            }
+          />
+        </Box>
+      )}
+
+      {(stationId === 6 ||
+        stationId === 8 ||
+        stationId === 9 ||
+        stationId === 15 ||
+        stationId === 16 ||
+        stationId === 17 ||
+        stationId === 18) && (
+        <Box sx={{ mt: 5 }}>
+          <Typography
+            variant="body1"
+            sx={{ px: 2, color: "darkslateblue", fontWeight: "bold" }}
+          >
+            No data is available for this station at the moment.
+          </Typography>
+        </Box>
+      )}
+      {stationId === 7 && (
+        <Box sx={{ mt: 5 }}>
+          <Typography
+            variant="body1"
+            sx={{ px: 2, color: "darkslateblue", fontWeight: "bold" }}
+          >
+            This is the Buche station.
+          </Typography>
+        </Box>
+      )}
     </div>
   );
 };

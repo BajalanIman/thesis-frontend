@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Pannellum } from "pannellum-react";
 import { Box, Typography } from "@mui/material";
 // I used useLocation to recieve data that was sent by Link
@@ -7,11 +7,13 @@ import { localize } from "../../Translation.jsx";
 import { CartContext } from "../../App";
 import { useContext } from "react";
 
-import TextInBody from "./TextInBody.jsx";
-
 import ImageViewerCustom from "./ImageViewerCustom.jsx";
+import axios from "axios";
 
 const Panoramas = () => {
+  const [mainPhotos, setMainPhotos] = useState([]);
+  const [photoData, setPhotoData] = useState([]);
+
   let { language } = useContext(CartContext);
 
   const location = useLocation();
@@ -20,45 +22,76 @@ const Panoramas = () => {
   if (!state) {
     return <p>{localize(language, "DataNotAvailable")}</p>;
   }
+  const { name } = state;
+  const stationName = state?.name || "";
 
-  const { name, infoOne, infoTwo, infoThree } = state;
-
-  let translation = localize(language, "icon");
-
-  let infoOneTr = "";
-  let infoTwoTr = "";
-  let infoThreeTr = [];
-
-  if (translation === "De") {
-    infoOneTr = infoOne.De;
-    infoTwoTr = infoTwo.De;
-    if (infoThree.De.length) {
-      infoThreeTr.push(infoThree.De);
+  const getStationId = (name) => {
+    switch (name) {
+      case "Haselberg: Digital forest lab":
+        return 6;
+      case "Eberswalde: Buche":
+        return 7;
+      case "Eberswalde: Clear cut station":
+        return 8;
+      case "Eberswalde: Pure pine station":
+        return 9;
+      case "Alt-Madlitz: Conventional":
+        return 10;
+      case "Alt-Madlitz: Clear cut":
+        return 11;
+      case "Alt-Madlitz: Mikado":
+        return 12;
+      case "Alt-Madlitz: Syntropic":
+        return 13;
+      case "Alt-Madlitz: Natural succession dynamics":
+        return 14;
+      case "Agroforst (1)":
+        return 15;
+      case "Agroforst (2)":
+        return 16;
+      case "Agroforst (3)":
+        return 17;
+      case "Agroforst (4)":
+        return 18;
+      default:
+        return null;
     }
-  }
-  if (translation === "Fr") {
-    infoOneTr = infoOne.Fr;
-    infoTwoTr = infoTwo.Fr;
-    if (infoThree.Fr.length) {
-      infoThreeTr.push(infoThree.Fr);
-    }
-  }
-  if (translation === "en") {
-    infoOneTr = infoOne.En;
-    infoTwoTr = infoTwo.En;
-    if (infoThree.En.length) {
-      infoThreeTr.push(infoThree.En);
-    }
-  }
-  const titleStyle = {
-    fontWeight: "bold",
   };
+
+  console.log(stationName);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8800/photos");
+        setMainPhotos(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const stationId = getStationId(stationName);
+
+  useEffect(() => {
+    if (stationId !== null) {
+      const filteredClimateData = mainPhotos.filter(
+        (el) => el.station_id === stationId
+      );
+      setPhotoData(filteredClimateData);
+    }
+  }, [mainPhotos, stationId]);
+
+  console.log(stationId);
 
   useEffect(() => {
     window.pannellum.viewer("panorama", {
       type: "equirectangular",
-      panorama: "/images/Eberwalde_FBG_PurePine_360 (1).jpg",
+      panorama: `/images/${stationId}.jpg`,
+      // panorama: "https://photos.apppanonumber.goo.gl/c4iVXGaio1XywW8p6",
       autoLoad: true,
+      autoRotate: 2,
     });
   }, []);
 
@@ -93,15 +126,17 @@ const Panoramas = () => {
           }}
         >
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
+              mt: 2,
               textAlign: "center",
               fontWeight: "bold",
               justifyContent: "center",
               paddingY: { xs: "20px", md: "34px" },
+              fontFamily: "Abril Fatface",
+              fontWeight: 300,
             }}
           >
-            {/* {localize(language, "Station")}:  */}
             {name}
           </Typography>
           <Typography
@@ -123,9 +158,10 @@ const Panoramas = () => {
             width: customWidth,
           }}
         >
-          <div id="panorama" className="max-w-[1400px] w-[100vh] h-[60vh]">
-            {/* The panorama will be displayed here */}
-          </div>
+          <div
+            id="panorama"
+            className="max-w-[1400px] w-[100vh] h-[60vh]"
+          ></div>
         </Box>
         <Box
           sx={{
@@ -145,24 +181,6 @@ const Panoramas = () => {
               paddingTop: "20px",
             }}
           >
-            {infoOneTr.length && (
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  width: customWidth,
-                }}
-              >
-                <Typography
-                  variant={`h4`}
-                  sx={{ fontWeight: "bold", textAlign: "center", marginY: 3 }}
-                >
-                  {localize(language, "Description")}
-                </Typography>
-                <TextInBody variant={`h6`} text={infoOneTr} />
-              </Box>
-            )}
             <Box
               sx={{
                 display: "flex",
@@ -172,38 +190,8 @@ const Panoramas = () => {
                 textAlign: "center",
                 width: customWidth,
               }}
-            >
-              <Typography
-                variant="h4"
-                sx={{
-                  marginTop: 8,
-                  fontWeight: "bold",
-                }}
-              >
-                Photo gallery
-              </Typography>
-            </Box>
-            <ImageViewerCustom />
-            {/* The below code should be removed */}
-            {infoOneTr.length && <TextInBody variant={`h6`} text={infoTwoTr} />}
-            {infoThreeTr.length && (
-              <TextInBody
-                variant={`h5`}
-                text={localize(language, "Equipment")}
-                titleStyle={titleStyle}
-              />
-            )}
-            {infoThreeTr.length && (
-              <Box sx={{ paddingX: 2 }}>
-                {infoThreeTr.map((el) =>
-                  el.map((e) => (
-                    <Typography variant={`h6`} key={e}>
-                      {e}
-                    </Typography>
-                  ))
-                )}
-              </Box>
-            )}
+            ></Box>
+            <ImageViewerCustom photoData={photoData} />
           </Box>
         </Box>
       </Box>

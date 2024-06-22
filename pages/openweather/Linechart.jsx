@@ -106,13 +106,14 @@ function Linechart({ days, newData, componentName, fullName }) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "20px",
+        gap: 2,
+        paddingX: { xs: 2, lg: 0 },
         paddingBottom: { lg: "120px" },
       }}
     >
       <Line data={data} options={options}></Line>
       <Typography
-        variant="p"
+        variant="body1"
         sx={{
           width: "65%",
           fontWeight: "bold",

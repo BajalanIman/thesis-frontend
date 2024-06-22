@@ -1,4 +1,3 @@
-import HelpParagraphs from "./HelpParagraphs.jsx";
 import { Box, Divider, Typography } from "@mui/material";
 import { localize } from "../../../Translation.jsx";
 import { CartContext } from "../../../App.jsx";
@@ -12,126 +11,100 @@ const Help = () => {
     <div className="flex justify-center  relative items-center flex-col ">
       <Box
         sx={{
-          // width: {
-          //   xs: "400px",
-          //   sm: "450px",
-          //   md: "600px",
-          //   lg: "1000px",
-          //   xl: "1450px",
-          // },
           maxWidth: "1450px",
           position: "relative",
           paddingX: { xs: 2, md: 0 },
-          zIndex: 10,
+          textAlign: "justify",
         }}
       >
-        <HelpParagraphs
-          variant={"h4"}
-          marginTop={8}
-          marginBottom={3}
-          fontWeight={"bold"}
-          text={localize(language, "helpNavigating")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "helpNavigatingP")}
-        />
-        <HelpParagraphs
-          variant={"h4"}
-          marginTop={8}
-          marginBottom={3}
-          fontWeight={"bold"}
-          text={localize(language, "gettingStarted")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          text={localize(language, "gettingStartedP")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          no={"1: "}
-          textTwo={localize(language, "exploreFeatures")}
-          textThree={localize(language, "exploreFeaturesP")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          no={"2: "}
-          textTwo={localize(language, "navigatingDashboard")}
-          textThree={localize(language, "navigatingDashboardP")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          no={"3: "}
-          textTwo={localize(language, "interactiveMapsHelp")}
-          textThree={localize(language, "interactiveMapsHelpP1")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={3}
-          no={"4: "}
-          textTwo={localize(language, "accessingData")}
-          textThree={localize(language, "accessingDataP1")}
-        />
-        <HelpParagraphs
-          variant={"h4"}
-          marginTop={8}
-          marginBottom={3}
-          fontWeight={"bold"}
-          text={localize(language, "frequentlyAskedQuestions")}
-        />
-        <HelpParagraphs
-          variant={"h5"}
-          marginTop={4}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "howFrequentlyUpdated")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={5}
-          text={localize(language, "howFrequentlyUpdatedP1")}
-        />
-        <HelpParagraphs
-          variant={"h5"}
-          marginTop={4}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "canAccessHistoricalData")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={5}
-          text={localize(language, "canAccessHistoricalDataP1")}
-        />
-        <HelpParagraphs
-          variant={"h5"}
-          marginTop={4}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "HowCanInterpretDat")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={5}
-          text={localize(language, "HowCanInterpretDatP1")}
-        />
-        <HelpParagraphs
-          variant={"h5"}
-          marginTop={4}
-          marginBottom={2}
-          fontWeight={"bold"}
-          text={localize(language, "accessibleMobileDevices")}
-        />
-        <HelpParagraphs
-          variant={"h6"}
-          marginBottom={5}
-          text={localize(language, "accessibleMobileDevicesP1")}
-        />
+        <Typography
+          variant="h4"
+          sx={{
+            mt: 8,
+            mb: 3,
+            fontFamily: "Abril Fatface",
+            fontWeight: 300,
+            textAlign: { xs: "start", md: "justify" },
+          }}
+        >
+          {localize(language, "helpNavigating")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 5 }}>
+          {localize(language, "helpNavigatingP")}
+        </Typography>
+        <Typography variant="h5" sx={{ mt: 4, mb: 2, fontWeight: "bold" }}>
+          {localize(language, "gettingStarted")}
+        </Typography>
+
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "gettingStartedP")}
+        </Typography>
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          {"1: "} {localize(language, "exploreFeatures")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "exploreFeaturesP")}
+        </Typography>
+
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          {"2: "} {localize(language, "navigatingDashboard")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "navigatingDashboardP")}
+        </Typography>
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          {"3: "} {localize(language, "interactiveMapsHelp")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "interactiveMapsHelpP1")}
+        </Typography>
+
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          {"4: "} {localize(language, "accessingData")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "accessingDataP1")}
+        </Typography>
+        <Divider sx={{ padding: 2 }}></Divider>
+        <Typography variant="h5" sx={{ mt: 5, mb: 3, fontWeight: "bold" }}>
+          {localize(language, "frequentlyAskedQuestions")}
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: "bold", textAlign: { xs: "start", md: "justify" } }}
+        >
+          {localize(language, "howFrequentlyUpdated")}{" "}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "howFrequentlyUpdatedP1")}{" "}
+        </Typography>
+
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          {localize(language, "canAccessHistoricalData")}{" "}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "canAccessHistoricalDataP1")}
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: "bold", textAlign: { xs: "start", md: "justify" } }}
+        >
+          {localize(language, "HowCanInterpretDat")}{" "}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 3 }}>
+          {localize(language, "HowCanInterpretDatP1")}
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: "bold", textAlign: { xs: "start", md: "justify" } }}
+        >
+          {localize(language, "accessibleMobileDevices")}
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 8 }}>
+          {localize(language, "accessibleMobileDevicesP1")}{" "}
+        </Typography>
       </Box>
     </div>
   );

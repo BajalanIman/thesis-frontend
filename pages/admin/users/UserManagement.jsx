@@ -33,8 +33,13 @@ const UserManagement = () => {
     <div className="flex w-full h-screen  justify-center">
       <Box sx={{ width: "1450px" }}>
         <Typography
-          variant="h3"
-          sx={{ textAlign: "center", fontWeight: "bold", marginY: "30px" }}
+          variant="h4"
+          sx={{
+            fontFamily: "Abril Fatface",
+            fontWeight: 400,
+            textAlign: "center",
+            marginY: "30px",
+          }}
         >
           List of users in the database
         </Typography>

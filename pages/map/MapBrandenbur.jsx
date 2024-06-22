@@ -90,11 +90,19 @@ const MapBrandenbur = () => {
         }}
       >
         <Box sx={{ width: "100%" }}>
-          <TextInBody
-            variant={`h4`}
-            text={localize(language, "WelcomeText")}
-            titleStyle={titleStyle}
-          ></TextInBody>
+          <TextInBody></TextInBody>
+
+          <Typography
+            variant="h4"
+            sx={{
+              fontFamily: "Yeseva One",
+              fontWeight: 700,
+              color: "black",
+              mt: 3,
+            }}
+          >
+            {localize(language, "WelcomeText")}
+          </Typography>
         </Box>
         <Box sx={{ maxWidth: "1450px" }}>
           <Box
@@ -165,7 +173,7 @@ const MapBrandenbur = () => {
                       key={el.station_id}
                       name={el.station_name}
                       stlocation={location}
-                      panorama={"el.panorama"}
+                      panorama={"Panorama"}
                       infoOne={"el.infoOne"}
                       infoTwo={"el.infoTwo"}
                       infoThree={"el.infoThree"}
@@ -175,24 +183,16 @@ const MapBrandenbur = () => {
               </MarkerClusterGroup>
             </MapContainer>
             <Box>
-              <TextInBody
-                variant={`h6`}
-                text={localize(language, "InfoHomePage")}
-                titleStyle={paragraphStyle}
-              ></TextInBody>
-              <TextInBody
-                variant={`h5`}
-                text={localize(language, "KeyFeatures")}
-                titleStyle={titleInParagraphStyle}
-              ></TextInBody>
-
+              <Typography variant="body1" sx={{ mt: 3 }}>
+                {localize(language, "InfoHomePage")}
+              </Typography>
+              <Typography variant="h5" sx={{ my: 3, fontWeight: "bold" }}>
+                {localize(language, "KeyFeatures")}
+              </Typography>
               {informations.map((e, index) => (
-                <TextInBody
-                  variant={`h6`}
-                  key={index}
-                  text={e}
-                  titleStyle={paragraphStyleTwo}
-                ></TextInBody>
+                <Typography variant="body1" key={index} sx={{ mt: 1 }}>
+                  {e}
+                </Typography>
               ))}
             </Box>
             {/* <p>{localize(language, "AppCreator")}</p> */}

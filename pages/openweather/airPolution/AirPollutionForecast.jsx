@@ -70,7 +70,7 @@ const AirPollutionForecast = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "50px",
+        gap: 2,
       }}
     >
       <AirPollutionToDatabase
@@ -85,9 +85,8 @@ const AirPollutionForecast = () => {
           maxWidth: "1450px",
           display: "block",
           paddingY: "24px",
-          font: "Arial",
           textAlign: "justify",
-          paddingX: { xs: "3px", lg: "0px" },
+          paddingX: 2,
         }}
       >
         {localize(language, "pollutingGasesOne")}

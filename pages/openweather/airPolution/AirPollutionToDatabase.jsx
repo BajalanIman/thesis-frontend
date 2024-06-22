@@ -20,8 +20,8 @@ const AirPollutionToDatabase = ({ stlocation, stName, customWidth }) => {
         `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=ae1f24cd90993757247d8601739d2cf8`
       );
       setAirPloObject(response.data?.list || []);
-      setOpenWeaterLat(response.data.coord.lat);
-      setOpenWeaterLon(response.data.coord.lon);
+      setOpenWeaterLat(response.data.coord.lon);
+      setOpenWeaterLon(response.data.coord.lat);
       setOpenWeaterAll(response.data.list[0].components);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -45,7 +45,6 @@ const AirPollutionToDatabase = ({ stlocation, stName, customWidth }) => {
       <Box
         sx={{
           marginTop: "40px",
-          maxWidth: "1450px",
           display: "flex",
         }}
       >
@@ -54,6 +53,7 @@ const AirPollutionToDatabase = ({ stlocation, stName, customWidth }) => {
             width: customWidth,
             display: { xs: "inline", lg: "flex" },
             justifyContent: "center",
+            paddingX: { xs: 2, lg: 0 },
           }}
         >
           <Typography

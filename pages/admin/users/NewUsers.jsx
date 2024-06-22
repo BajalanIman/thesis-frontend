@@ -154,7 +154,12 @@ const NewUsers = () => {
       <div className="w-full h-screen justify-center items-center flex flex-col mt-14 mb-32">
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold", marginBottom: "15px" }}
+          sx={{
+            fontWeight: "bold",
+            marginBottom: "15px",
+            fontFamily: "Abril Fatface",
+            fontWeight: 300,
+          }}
         >
           Create account
         </Typography>

@@ -5,9 +5,11 @@ import PopupLogout from "./PopupLogout";
 
 const Dashboard = () => {
   const [defineValues, setDefineValues] = useState("");
+  const [selectOpen, setSelectOpen] = useState(false);
 
   const handleChange = (event) => {
     setDefineValues(event.target.value);
+    setSelectOpen(false); // Ensure the Select box closes on change
   };
 
   const [usernameChecker, setUsernameChecker] = useState("");
@@ -25,15 +27,11 @@ const Dashboard = () => {
 
   const [open, setOpen] = useState(false);
   const logoutHandler = () => {
-    // localStorage.removeItem("name");
-    // localStorage.removeItem("username");
-    // localStorage.removeItem("password");
-    // window.location.reload();
     console.log(123);
     setOpen(true);
   };
 
-  const handleClose = (value) => {
+  const handleClose = () => {
     setOpen(false);
   };
 
@@ -43,7 +41,7 @@ const Dashboard = () => {
         <Link className="w-18" to={"/"} />
         <FormControl sx={{ width: "200px" }} fullWidth>
           <InputLabel id="demo-simple-select-label" sx={{ color: "white" }}>
-            Daschboard
+            Dashboard
           </InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -51,41 +49,70 @@ const Dashboard = () => {
             value={defineValues}
             label="Stations"
             onChange={handleChange}
+            open={selectOpen}
+            onClose={() => setSelectOpen(false)}
+            onOpen={() => setSelectOpen(true)}
           >
             {usernameChecker && passwordChecker && (
               <MenuItem value={"Username"}>Hi {nameChecker}</MenuItem>
             )}
 
             {usernameChecker && passwordChecker && (
-              <MenuItem onClick={logoutHandler} value={"logout"}>
+              <MenuItem
+                onClick={() => {
+                  logoutHandler();
+                  setSelectOpen(false);
+                }}
+                value={"logout"}
+              >
                 Log out
               </MenuItem>
             )}
             {!usernameChecker && !passwordChecker && (
-              <Link to={"/login"}>
-                <MenuItem value={"login"}>Log in</MenuItem>
-              </Link>
+              <MenuItem
+                component={Link}
+                to="/login"
+                onClick={() => setSelectOpen(false)}
+                value={"login"}
+              >
+                Log in
+              </MenuItem>
             )}
             {!usernameChecker && !passwordChecker && (
-              <Link to="/newuser">
-                <MenuItem value={"Creat account"}>Creat account</MenuItem>
-              </Link>
+              <MenuItem
+                component={Link}
+                to="/newuser"
+                onClick={() => setSelectOpen(false)}
+                value={"create_account"}
+              >
+                Create account
+              </MenuItem>
             )}
             {usernameChecker &&
               passwordChecker &&
               role &&
               role.length === 5 && (
-                <Link to="/admin-data-sender">
-                  <MenuItem value={"Send Data"}>Send data</MenuItem>
-                </Link>
+                <MenuItem
+                  component={Link}
+                  to="/admin-data-sender"
+                  onClick={() => setSelectOpen(false)}
+                  value={"send_data"}
+                >
+                  Send data
+                </MenuItem>
               )}
             {usernameChecker &&
               passwordChecker &&
               role &&
               role.length === 5 && (
-                <Link to="/usermanagement">
-                  <MenuItem value={"User management"}>User managment</MenuItem>
-                </Link>
+                <MenuItem
+                  component={Link}
+                  to="/usermanagement"
+                  onClick={() => setSelectOpen(false)}
+                  value={"user_management"}
+                >
+                  User management
+                </MenuItem>
               )}
           </Select>
         </FormControl>
@@ -98,4 +125,5 @@ const Dashboard = () => {
     </>
   );
 };
+
 export default Dashboard;

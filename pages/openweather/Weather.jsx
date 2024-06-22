@@ -107,12 +107,13 @@ const Weather = () => {
   });
 
   return (
-    <Box sx={{ paddingX: { xs: 2, md: 0 } }}>
+    <Box>
       <Typography
-        variant="h6"
+        variant="body1"
         sx={{
           marginTop: 7,
           textAlign: "justify",
+          paddingX: { xs: 2, lg: 0 },
         }}
       >
         {localize(language, "weatherInsights")}
@@ -120,9 +121,10 @@ const Weather = () => {
 
       <Divider sx={{ marginY: { xs: 3, lg: 7 } }} />
       <Typography
-        variant="h6"
+        variant="body1"
         sx={{
           marginY: { xs: 3, lg: 7 },
+          paddingX: { xs: 2, lg: 0 },
         }}
       >
         {localize(language, "onlineInformation")}

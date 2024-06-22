@@ -8,7 +8,6 @@ import MapBrandenbur from "./pages/map/MapBrandenbur";
 import Panoramas from "./pages/panorama/Panoramas";
 import Openweather from "./pages/openweather/Openweather";
 // import TestDatabase from "./TestDatabase";
-import StationsAdmin from "./pages/admin/StationsAdmin";
 import Login from "./pages/admin/users/Login";
 import NewUsers from "./pages/admin/users/NewUsers";
 import UserManagement from "./pages/admin/users/UserManagement";
@@ -30,7 +29,6 @@ const router = createBrowserRouter([
       { path: "/openweather", element: <Openweather /> },
       { path: "/login", element: <Login /> },
       { path: "/newuser", element: <NewUsers /> },
-      { path: "/stationsadmin", element: <StationsAdmin /> },
       { path: "/usermanagement", element: <UserManagement /> },
       { path: "/about", element: <About /> },
       { path: "/help", element: <Help /> },
@@ -49,7 +47,6 @@ function App() {
 
   return (
     <>
-      {/* <StationsAdmin></StationsAdmin> */}
       <CartContext.Provider
         value={{
           language,

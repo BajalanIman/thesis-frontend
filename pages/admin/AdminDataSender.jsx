@@ -181,173 +181,175 @@ const AdminDataSender = () => {
       const SoilTemp60cm60_AvgValue = [];
 
       importedData.forEach((line) => {
-        let values = [];
-        values = line.split(",");
-        if (
-          station === "Alt-Madlitz: Conventional" &&
-          fileName.includes("Conventional")
-          // && values.length == 16
-        ) {
-          TIMESTAMPValues.push(values[0]);
-          RECORDValue.push(values[1]);
-          AirTC_AvgValue.push(values[2]);
-          SlrW_AvgValue.push(values[3]);
-          RawData10cm_AvgValue.push(values[4]);
-          Permitivity10cm_AvgValue.push(values[5]);
-          Watercont10cm_AvgValue.push(values[6]);
-          SoilTemp10cm_AvgValue.push(values[7]);
-          RawData30cm_AvgValue.push(values[8]);
-          Permitivity30cm_AvgValue.push(values[9]);
-          WaterCont30cm_AvgValue.push(values[10]);
-          SoilTemp30cm_AvgValue.push(values[11]);
-          RawData60cm_AvgValue.push(values[12]);
-          Permitivity60cm_AvgValue.push(values[13]);
-          WaterCont60cm_AvgValue.push(values[14]);
-          SoilTemp60cm_AvgValue.push(values[15]);
-        } else if (
-          station === "Alt-Madlitz: Clear_cut" &&
-          fileName.includes("Clear")
-          // && values.length == 31
-        ) {
-          TIMESTAMPValues.push(values[0]);
-          RECORDValue.push(values[1]);
-          AirTC_AvgValue.push(values[2]);
-          RH_MaxValue.push(values[3]);
-          RH_MinValue.push(values[4]);
-          SlrW_AvgValue.push(values[5]);
-          SlrMJ_TotValue.push(values[6]);
-          RawData10cm_AvgValue.push(values[7]);
-          Permitivity10cm_AvgValue.push(values[8]);
-          Watercont10cm_AvgValue.push(values[9]);
-          SoilTemp10cm_AvgValue.push(values[10]);
-          RawData30cm_AvgValue.push(values[11]);
-          Permitivity30cm_AvgValue.push(values[12]);
-          WaterCont30cm_AvgValue.push(values[13]);
-          SoilTemp30cm_AvgValue.push(values[14]);
-          RawData60cm_AvgValue.push(values[15]);
-          Permitivity60cm_AvgValue.push(values[16]);
-          WaterCont60cm_AvgValue.push(values[17]);
-          SoilTemp60cm_AvgValue.push(values[18]);
-          RawData10cm_C3_AvgValue.push(values[19]);
-          Pemitivity10cm_C3_AvgValue.push(values[20]);
-          WaterCont10cm_C3_AvgValue.push(values[21]);
-          SoilTemp10cm_C3_AvgValue.push(values[22]);
-          RawData30cm_C3_AvgValue.push(values[23]);
-          Permitivity30cm_C3_AvgValue.push(values[24]);
-          WaterCont30cm_C3_AvgValue.push(values[25]);
-          SoilTemp30cm_C3_AvgValue.push(values[26]);
-          RawData60cm_C3_AvgValue.push(values[27]);
-          Pemitivity60cm_C3_AvgValue.push(values[28]);
-          WaterCont60cm_C3_AvgValue.push(values[29]);
-          SoilTemp60cm_C3_AvgValue.push(values[30]);
-        } else if (
-          station === "Alt-Madlitz: Mikado" &&
-          fileName.includes("Mikado")
-          // && values.length == 16
-        ) {
-          TIMESTAMPValues.push(values[0]);
-          RECORDValue.push(values[1]);
-          AirTC_AvgValue.push(values[2]);
-          SlrW_AvgValue.push(values[3]);
-          RawData10cm_AvgValue.push(values[4]);
-          Permitivity10cm_AvgValue.push(values[5]);
-          Watercont10cm_AvgValue.push(values[6]);
-          SoilTemp10cm_AvgValue.push(values[7]);
-          RawData30cm_AvgValue.push(values[8]);
-          Permitivity30cm_AvgValue.push(values[9]);
-          WaterCont30cm_AvgValue.push(values[10]);
-          SoilTemp30cm_AvgValue.push(values[11]);
-          RawData60cm_AvgValue.push(values[12]);
-          Permitivity60cm_AvgValue.push(values[13]);
-          WaterCont60cm_AvgValue.push(values[14]);
-          SoilTemp60cm_AvgValue.push(values[15]);
-        } else if (
-          station === "Alt-Madlitz: Syntropic" &&
-          fileName.includes("Syntropic")
-          // && values.length == 41
-        ) {
-          TIMESTAMPValues.push(values[0]);
-          RECORDValue.push(values[1]);
-          AirTC_AvgValue.push(values[2]);
-          PAR_Den_AvgValue.push(values[3]);
-          SlrW_AvgValue.push(values[4]);
-          RawData10cm_AvgValue.push(values[5]);
-          Permitivity10cm_AvgValue.push(values[6]);
-          Watercont10cm_AvgValue.push(values[7]);
-          SoilTemp10cm_AvgValue.push(values[8]);
-          RawData30cm_AvgValue.push(values[9]);
-          Permitivity30cm_AvgValue.push(values[10]);
-          WaterCont30cm_AvgValue.push(values[11]);
-          SoilTemp30cm_AvgValue.push(values[12]);
-          RawData60cm_AvgValue.push(values[13]);
-          Permitivity60cm_AvgValue.push(values[14]);
-          WaterCont60cm_AvgValue.push(values[15]);
-          SoilTemp60cm_AvgValue.push(values[16]);
-          RawData10cm100_AvgValue.push(values[17]);
-          Permitivity10cm100_AvgValue.push(values[18]);
-          WaterCont10cm100_AvgValue.push(values[19]);
-          SoilTemp10cm100_AvgValue.push(values[20]);
-          RawData30cm100_AvgValue.push(values[21]);
-          Permitivity30cm100_AvgValue.push(values[22]);
-          WaterCont30cm100_AvgValue.push(values[23]);
-          SoilTemp30cm100_AvgValue.push(values[24]);
-          RawData60cm100_AvgValue.push(values[25]);
-          Permitivity60cm100_AvgValue.push(values[26]);
-          WaterCont60cm100_AvgValue.push(values[27]);
-          SoilTemp60cm100_AvgValue.push(values[28]);
-          RawData10cm60_AvgValue.push(values[29]);
-          Permitivity10cm60_AvgValue.push(values[30]);
-          WaterCont10cm60_AvgValue.push(values[31]);
-          SoilTemp10cm60_AvgValue.push(values[32]);
-          RawData30cm60_AvgValue.push(values[33]);
-          Permitivity30cm60_AvgValue.push(values[34]);
-          WaterCont30cm60_AvgValue.push(values[35]);
-          SoilTemp30cm60_AvgValue.push(values[36]);
-          RawData60cm60_AvgValue.push(values[37]);
-          Permitivity60cm60_AvgValue.push(values[38]);
-          WaterCont60cm60_AvgValue.push(values[39]);
-          SoilTemp60cm60_AvgValue.push(values[40]);
-        } else if (
-          station === "Alt-Madlitz: Natural_succession_dynamics" &&
-          fileName.includes("Natural Succession")
-        ) {
-          TIMESTAMPValues.push(values[0]);
-          RECORDValue.push(values[1]);
-          AirTC_AvgValue.push(values[2]);
-          RH_MaxValue.push(values[3]);
-          RH_MinValue.push(values[4]);
-          SlrW_AvgValue.push(values[5]);
-          SlrMJ_TotValue.push(values[6]);
-          RawData10cm_AvgValue.push(values[7]);
-          Permitivity10cm_AvgValue.push(values[8]);
-          Watercont10cm_AvgValue.push(values[9]);
-          SoilTemp10cm_AvgValue.push(values[10]);
-          RawData30cm_AvgValue.push(values[11]);
-          Permitivity30cm_AvgValue.push(values[12]);
-          WaterCont30cm_AvgValue.push(values[13]);
-          SoilTemp30cm_AvgValue.push(values[14]);
-          RawData60cm_AvgValue.push(values[15]);
-          Permitivity60cm_AvgValue.push(values[16]);
-          WaterCont60cm_AvgValue.push(values[17]);
-          SoilTemp60cm_AvgValue.push(values[18]);
-          RawData10cm_C3_AvgValue.push(values[19]);
-          Pemitivity10cm_C3_AvgValue.push(values[20]);
-          WaterCont10cm_C3_AvgValue.push(values[21]);
-          SoilTemp10cm_C3_AvgValue.push(values[22]);
-          RawData30cm_C3_AvgValue.push(values[23]);
-          Permitivity30cm_C3_AvgValue.push(values[24]);
-          WaterCont30cm_C3_AvgValue.push(values[25]);
-          SoilTemp30cm_C3_AvgValue.push(values[26]);
-          RawData60cm_C3_AvgValue.push(values[27]);
-          Pemitivity60cm_C3_AvgValue.push(values[28]);
-          WaterCont60cm_C3_AvgValue.push(values[29]);
-          SoilTemp60cm_C3_AvgValue.push(values[30]);
-        } else {
-          console.log(`The station and dataset are not matched!`);
-          setErrorMessage("The station and dataset are not matched!");
-          setTimeout(() => {
-            setErrorMessage("");
-          }, 5000);
+        if (line.includes(":00:00")) {
+          let values = [];
+          values = line.split(",");
+          if (
+            station === "Alt-Madlitz: Conventional" &&
+            fileName.includes("Conventional")
+            // && values.length == 16
+          ) {
+            TIMESTAMPValues.push(values[0]);
+            RECORDValue.push(values[1]);
+            AirTC_AvgValue.push(values[2]);
+            SlrW_AvgValue.push(values[3]);
+            RawData10cm_AvgValue.push(values[4]);
+            Permitivity10cm_AvgValue.push(values[5]);
+            Watercont10cm_AvgValue.push(values[6]);
+            SoilTemp10cm_AvgValue.push(values[7]);
+            RawData30cm_AvgValue.push(values[8]);
+            Permitivity30cm_AvgValue.push(values[9]);
+            WaterCont30cm_AvgValue.push(values[10]);
+            SoilTemp30cm_AvgValue.push(values[11]);
+            RawData60cm_AvgValue.push(values[12]);
+            Permitivity60cm_AvgValue.push(values[13]);
+            WaterCont60cm_AvgValue.push(values[14]);
+            SoilTemp60cm_AvgValue.push(values[15]);
+          } else if (
+            station === "Alt-Madlitz: Clear_cut" &&
+            fileName.includes("Clear")
+            // && values.length == 31
+          ) {
+            TIMESTAMPValues.push(values[0]);
+            RECORDValue.push(values[1]);
+            AirTC_AvgValue.push(values[2]);
+            RH_MaxValue.push(values[3]);
+            RH_MinValue.push(values[4]);
+            SlrW_AvgValue.push(values[5]);
+            SlrMJ_TotValue.push(values[6]);
+            RawData10cm_AvgValue.push(values[7]);
+            Permitivity10cm_AvgValue.push(values[8]);
+            Watercont10cm_AvgValue.push(values[9]);
+            SoilTemp10cm_AvgValue.push(values[10]);
+            RawData30cm_AvgValue.push(values[11]);
+            Permitivity30cm_AvgValue.push(values[12]);
+            WaterCont30cm_AvgValue.push(values[13]);
+            SoilTemp30cm_AvgValue.push(values[14]);
+            RawData60cm_AvgValue.push(values[15]);
+            Permitivity60cm_AvgValue.push(values[16]);
+            WaterCont60cm_AvgValue.push(values[17]);
+            SoilTemp60cm_AvgValue.push(values[18]);
+            RawData10cm_C3_AvgValue.push(values[19]);
+            Pemitivity10cm_C3_AvgValue.push(values[20]);
+            WaterCont10cm_C3_AvgValue.push(values[21]);
+            SoilTemp10cm_C3_AvgValue.push(values[22]);
+            RawData30cm_C3_AvgValue.push(values[23]);
+            Permitivity30cm_C3_AvgValue.push(values[24]);
+            WaterCont30cm_C3_AvgValue.push(values[25]);
+            SoilTemp30cm_C3_AvgValue.push(values[26]);
+            RawData60cm_C3_AvgValue.push(values[27]);
+            Pemitivity60cm_C3_AvgValue.push(values[28]);
+            WaterCont60cm_C3_AvgValue.push(values[29]);
+            SoilTemp60cm_C3_AvgValue.push(values[30]);
+          } else if (
+            station === "Alt-Madlitz: Mikado" &&
+            fileName.includes("Mikado")
+            // && values.length == 16
+          ) {
+            TIMESTAMPValues.push(values[0]);
+            RECORDValue.push(values[1]);
+            AirTC_AvgValue.push(values[2]);
+            SlrW_AvgValue.push(values[3]);
+            RawData10cm_AvgValue.push(values[4]);
+            Permitivity10cm_AvgValue.push(values[5]);
+            Watercont10cm_AvgValue.push(values[6]);
+            SoilTemp10cm_AvgValue.push(values[7]);
+            RawData30cm_AvgValue.push(values[8]);
+            Permitivity30cm_AvgValue.push(values[9]);
+            WaterCont30cm_AvgValue.push(values[10]);
+            SoilTemp30cm_AvgValue.push(values[11]);
+            RawData60cm_AvgValue.push(values[12]);
+            Permitivity60cm_AvgValue.push(values[13]);
+            WaterCont60cm_AvgValue.push(values[14]);
+            SoilTemp60cm_AvgValue.push(values[15]);
+          } else if (
+            station === "Alt-Madlitz: Syntropic" &&
+            fileName.includes("Syntropic")
+            // && values.length == 41
+          ) {
+            TIMESTAMPValues.push(values[0]);
+            RECORDValue.push(values[1]);
+            AirTC_AvgValue.push(values[2]);
+            PAR_Den_AvgValue.push(values[3]);
+            SlrW_AvgValue.push(values[4]);
+            RawData10cm_AvgValue.push(values[5]);
+            Permitivity10cm_AvgValue.push(values[6]);
+            Watercont10cm_AvgValue.push(values[7]);
+            SoilTemp10cm_AvgValue.push(values[8]);
+            RawData30cm_AvgValue.push(values[9]);
+            Permitivity30cm_AvgValue.push(values[10]);
+            WaterCont30cm_AvgValue.push(values[11]);
+            SoilTemp30cm_AvgValue.push(values[12]);
+            RawData60cm_AvgValue.push(values[13]);
+            Permitivity60cm_AvgValue.push(values[14]);
+            WaterCont60cm_AvgValue.push(values[15]);
+            SoilTemp60cm_AvgValue.push(values[16]);
+            RawData10cm100_AvgValue.push(values[17]);
+            Permitivity10cm100_AvgValue.push(values[18]);
+            WaterCont10cm100_AvgValue.push(values[19]);
+            SoilTemp10cm100_AvgValue.push(values[20]);
+            RawData30cm100_AvgValue.push(values[21]);
+            Permitivity30cm100_AvgValue.push(values[22]);
+            WaterCont30cm100_AvgValue.push(values[23]);
+            SoilTemp30cm100_AvgValue.push(values[24]);
+            RawData60cm100_AvgValue.push(values[25]);
+            Permitivity60cm100_AvgValue.push(values[26]);
+            WaterCont60cm100_AvgValue.push(values[27]);
+            SoilTemp60cm100_AvgValue.push(values[28]);
+            RawData10cm60_AvgValue.push(values[29]);
+            Permitivity10cm60_AvgValue.push(values[30]);
+            WaterCont10cm60_AvgValue.push(values[31]);
+            SoilTemp10cm60_AvgValue.push(values[32]);
+            RawData30cm60_AvgValue.push(values[33]);
+            Permitivity30cm60_AvgValue.push(values[34]);
+            WaterCont30cm60_AvgValue.push(values[35]);
+            SoilTemp30cm60_AvgValue.push(values[36]);
+            RawData60cm60_AvgValue.push(values[37]);
+            Permitivity60cm60_AvgValue.push(values[38]);
+            WaterCont60cm60_AvgValue.push(values[39]);
+            SoilTemp60cm60_AvgValue.push(values[40]);
+          } else if (
+            station === "Alt-Madlitz: Natural_succession_dynamics" &&
+            fileName.includes("Natural Succession")
+          ) {
+            TIMESTAMPValues.push(values[0]);
+            RECORDValue.push(values[1]);
+            AirTC_AvgValue.push(values[2]);
+            RH_MaxValue.push(values[3]);
+            RH_MinValue.push(values[4]);
+            SlrW_AvgValue.push(values[5]);
+            SlrMJ_TotValue.push(values[6]);
+            RawData10cm_AvgValue.push(values[7]);
+            Permitivity10cm_AvgValue.push(values[8]);
+            Watercont10cm_AvgValue.push(values[9]);
+            SoilTemp10cm_AvgValue.push(values[10]);
+            RawData30cm_AvgValue.push(values[11]);
+            Permitivity30cm_AvgValue.push(values[12]);
+            WaterCont30cm_AvgValue.push(values[13]);
+            SoilTemp30cm_AvgValue.push(values[14]);
+            RawData60cm_AvgValue.push(values[15]);
+            Permitivity60cm_AvgValue.push(values[16]);
+            WaterCont60cm_AvgValue.push(values[17]);
+            SoilTemp60cm_AvgValue.push(values[18]);
+            RawData10cm_C3_AvgValue.push(values[19]);
+            Pemitivity10cm_C3_AvgValue.push(values[20]);
+            WaterCont10cm_C3_AvgValue.push(values[21]);
+            SoilTemp10cm_C3_AvgValue.push(values[22]);
+            RawData30cm_C3_AvgValue.push(values[23]);
+            Permitivity30cm_C3_AvgValue.push(values[24]);
+            WaterCont30cm_C3_AvgValue.push(values[25]);
+            SoilTemp30cm_C3_AvgValue.push(values[26]);
+            RawData60cm_C3_AvgValue.push(values[27]);
+            Pemitivity60cm_C3_AvgValue.push(values[28]);
+            WaterCont60cm_C3_AvgValue.push(values[29]);
+            SoilTemp60cm_C3_AvgValue.push(values[30]);
+          } else {
+            console.log(`The station and dataset are not matched!`);
+            setErrorMessage("The station and dataset are not matched!");
+            setTimeout(() => {
+              setErrorMessage("");
+            }, 5000);
+          }
         }
       });
       setTIMESTAMP(TIMESTAMPValues);

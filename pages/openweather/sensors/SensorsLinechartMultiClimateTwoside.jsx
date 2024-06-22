@@ -67,6 +67,9 @@ const SensorsLinechartMultiClimateTwoside = ({
       return time === "12:00:00.000Z";
     });
 
+    // Sort the filtered data by date
+    noonData.sort((a, b) => new Date(a.date_time) - new Date(b.date_time));
+
     setFilteredData(noonData);
   }, [year, month, climateData]);
 
@@ -125,12 +128,6 @@ const SensorsLinechartMultiClimateTwoside = ({
   const variableOne = dateLabels.map((label) => dataMap[label].variableOne);
   const variableTwo = dateLabels.map((label) => dataMap[label].variableTwo);
   const variableThree = dateLabels.map((label) => dataMap[label].variableThree);
-
-  // Check if at least one value is not null for any variable
-  const hasData =
-    variableOne.some((value) => value !== null) ||
-    variableTwo.some((value) => value !== null) ||
-    variableThree.some((value) => value !== null);
 
   // Conditionally include the third dataset if it has valid data points
   const datasets = [
@@ -226,18 +223,16 @@ const SensorsLinechartMultiClimateTwoside = ({
     },
   };
 
+  // Check if there is any data in the filteredData
+  const noDataForSelection = filteredData.length === 0;
+  // Check if there is no data at all
+  const noDataAtAll = !climateData || climateData.length === 0;
+
   return (
     <>
-      {hasData ? (
+      {!noDataAtAll ? (
         <Box
           sx={{
-            maxWidth: {
-              xs: "400px",
-              sm: "450px",
-              md: "600px",
-              lg: "1000px",
-              xl: "1400px",
-            },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -254,7 +249,10 @@ const SensorsLinechartMultiClimateTwoside = ({
               width: "100%",
             }}
           >
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: "bold", paddingX: { xs: 2, md: 0 } }}
+            >
               {title}
             </Typography>
           </Box>
@@ -268,7 +266,15 @@ const SensorsLinechartMultiClimateTwoside = ({
               marginY: 2,
             }}
           ></Box>
-          <Box sx={{ minWidth: { xs: 170, md: 600 } }}>
+          <Box
+            sx={{
+              minWidth: { xs: 300, md: 600 },
+              display: { xs: "flex", lg: "inline" },
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+            }}
+          >
             {/* Year */}
             <FormControl fullWidth>
               <InputLabel sx={{ color: "green" }} id="demo-simple-select-label">
@@ -284,7 +290,7 @@ const SensorsLinechartMultiClimateTwoside = ({
               </Select>
             </FormControl>
             {/* Months */}
-            <FormControl fullWidth sx={{ marginTop: 5 }}>
+            <FormControl fullWidth sx={{ marginTop: { lg: 5 } }}>
               <InputLabel sx={{ color: "green" }} id="demo-simple-select-label">
                 Month
               </InputLabel>
@@ -301,16 +307,34 @@ const SensorsLinechartMultiClimateTwoside = ({
           <Line data={data} options={options} />
           <Typography
             variant="body1"
-            sx={{ fontWeight: "bold", fontStyle: "italic" }}
+            sx={{
+              fontWeight: "bold",
+              fontStyle: "italic",
+              paddingX: { xs: 2, md: 0 },
+            }}
           >
             {XCaption}
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: "justify" }}>
+          <Typography
+            variant="body1"
+            sx={{ textAlign: "justify", paddingX: { xs: 2, md: 0 } }}
+          >
             {paragraph}
           </Typography>
+          {noDataForSelection && (
+            <Typography
+              variant="body1"
+              sx={{ textAlign: "center", color: "gray" }}
+            >
+              No data for the selected year and month.
+            </Typography>
+          )}
         </Box>
       ) : (
-        <Typography variant="body1" sx={{ textAlign: "center", color: "red" }}>
+        <Typography
+          variant="body1"
+          sx={{ textAlign: "center", color: "red", paddingX: { xs: 2, md: 0 } }}
+        >
           No data available for the {title}.
         </Typography>
       )}

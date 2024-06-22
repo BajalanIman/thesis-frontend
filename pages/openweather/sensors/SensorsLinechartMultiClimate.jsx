@@ -71,6 +71,9 @@ const SensorsLinechartMultiClimate = ({
       return time === "12:00:00.000Z";
     });
 
+    // Sort the data by date
+    noonData.sort((a, b) => new Date(a.date_time) - new Date(b.date_time));
+
     setFilteredData(noonData);
   }, [year, month, mainData]);
 
@@ -205,16 +208,9 @@ const SensorsLinechartMultiClimate = ({
 
   return (
     <>
-      {hasData ? (
+      {mainData && mainData.length > 0 ? (
         <Box
           sx={{
-            maxWidth: {
-              xs: "400px",
-              sm: "450px",
-              md: "600px",
-              lg: "1000px",
-              xl: "1400px",
-            },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -231,7 +227,10 @@ const SensorsLinechartMultiClimate = ({
               width: "100%",
             }}
           >
-            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: "bold", paddingX: { xs: 2, md: 0 } }}
+            >
               {title}
             </Typography>
           </Box>
@@ -245,7 +244,15 @@ const SensorsLinechartMultiClimate = ({
               marginY: 2,
             }}
           ></Box>
-          <Box sx={{ minWidth: { xs: 170, md: 600 } }}>
+          <Box
+            sx={{
+              minWidth: { xs: 300, md: 600 },
+              display: { xs: "flex", lg: "inline" },
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+            }}
+          >
             {/* Year */}
             <FormControl fullWidth>
               <InputLabel sx={{ color: "green" }} id="demo-simple-select-label">
@@ -261,7 +268,7 @@ const SensorsLinechartMultiClimate = ({
               </Select>
             </FormControl>
             {/* Months */}
-            <FormControl fullWidth sx={{ marginTop: 5 }}>
+            <FormControl fullWidth sx={{ marginTop: { lg: 5 } }}>
               <InputLabel sx={{ color: "green" }} id="demo-simple-select-label">
                 Month
               </InputLabel>
@@ -279,16 +286,26 @@ const SensorsLinechartMultiClimate = ({
           <Line data={data} options={options} />
           <Typography
             variant="body1"
-            sx={{ fontWeight: "bold", fontStyle: "italic" }}
+            sx={{
+              fontWeight: "bold",
+              fontStyle: "italic",
+              paddingX: { xs: 2, md: 0 },
+            }}
           >
             {XCaption}
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: "justify" }}>
+          <Typography
+            variant="body1"
+            sx={{ textAlign: "justify", paddingX: { xs: 2, md: 0 } }}
+          >
             {paragraph}
           </Typography>
         </Box>
       ) : (
-        <Typography variant="body1" sx={{ textAlign: "center", color: "red" }}>
+        <Typography
+          variant="body1"
+          sx={{ textAlign: "center", color: "red", paddingX: { xs: 2, md: 0 } }}
+        >
           No data is available at this station for {title}.
         </Typography>
       )}

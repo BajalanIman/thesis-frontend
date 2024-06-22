@@ -17,6 +17,7 @@ const PopupLogout = (props) => {
 
   const logOut = () => {
     localStorage.removeItem("name");
+    localStorage.removeItem("role");
     localStorage.removeItem("username");
     localStorage.removeItem("password");
     navigate("/");

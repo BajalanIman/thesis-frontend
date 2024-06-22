@@ -72,7 +72,7 @@ export default {
     "Have questions or feedback? We'd love to hear from you! Reach out to us via bajalaniman@gmail.com to share your thoughts, suggestions, or inquiries.",
   contactUsP2:
     "Thank you for visiting our platform and joining us in our journey towards a greener, more sustainable future for Brandenburg!",
-  helpNavigating: "Help: Navigating Our Application",
+  helpNavigating: "Navigating Our Application",
   helpNavigatingP:
     "Welcome to the help section of our application! Whether you're new to our platform or seeking assistance with specific features, this guide aims to provide you with comprehensive support to enhance your user experience.",
   gettingStarted: "Getting Started:",

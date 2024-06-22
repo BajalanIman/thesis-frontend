@@ -88,44 +88,27 @@ const WeatherForecast = () => {
   return (
     <div>
       <Typography
-        variant="h6"
+        variant="body1"
         sx={{
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1400px",
-          },
           paddingBottom: 5,
           textAlign: "justify",
+          paddingX: { xs: 2, lg: 0 },
         }}
       >
         {localize(language, "temperatureForecasts")}
       </Typography>
-      <LineChartMulti
+      <Linechart
         days={date}
-        newDataOne={allData.map((el) => el.temp)}
-        newDataTwo={allData.map((el) => el.temp_max)}
-        newDataThree={allData.map((el) => el.temp_min)}
-        labelOne={"Temperature (°C)"}
-        labelTwo={"Max (°C)"}
-        labelThree={"Min (°C)"}
-        yText={"Temperature (°C)"}
-        fullName={"temperature"}
+        newData={allData.map((el) => el.temp)}
+        componentName={"Temperature (°C)"}
+        fullName={"Temperature"}
       />
       <Typography
-        variant="h6"
+        variant="body1"
         sx={{
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1400px",
-          },
           paddingBottom: 5,
           textAlign: "justify",
+          paddingX: { xs: 2, lg: 0 },
         }}
       >
         {localize(language, "humidityForecasts")}
@@ -137,17 +120,11 @@ const WeatherForecast = () => {
         fullName={"Humidity"}
       />
       <Typography
-        variant="h6"
+        variant="body1"
         sx={{
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1400px",
-          },
           paddingBottom: 5,
           textAlign: "justify",
+          paddingX: { xs: 2, lg: 0 },
         }}
       >
         {localize(language, "pressureForecasts")}
@@ -159,17 +136,11 @@ const WeatherForecast = () => {
         fullName={"Pressure"}
       />
       <Typography
-        variant="h6"
+        variant="body1"
         sx={{
-          width: {
-            xs: "400px",
-            sm: "450px",
-            md: "600px",
-            lg: "1000px",
-            xl: "1400px",
-          },
           paddingBottom: 5,
           textAlign: "justify",
+          paddingX: { xs: 2, lg: 0 },
         }}
       >
         {localize(language, "windSpeed")}

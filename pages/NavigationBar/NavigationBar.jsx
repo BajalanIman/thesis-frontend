@@ -49,25 +49,26 @@ const NavigationBar = ({ darkModeHandler }) => {
         }}
       >
         <Toolbar sx={{ display: "flex", gap: "20px" }}>
-          <Link className="w-18" to={"/"}>
-            {localize(language, "Home")}
-          </Link>
+          <p
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            <Link className="w-18" to={"/"}>
+              {localize(language, "Home")}
+            </Link>
+          </p>
           <Link className="w-18" to="/about">
             {localize(language, "About")}
           </Link>
           <Link className="w-18" to="/help">
             {localize(language, "Help")}
           </Link>
-          <Link className="w-18" to="/admin-data-sender">
-            Data
-          </Link>
         </Toolbar>
 
         <Toolbar sx={{ width: "700px" }}>
           <AllStations />
-          {/* <Search /> */}
         </Toolbar>
-
         <div className="my-1">
           <ChangeLanguage />
         </div>

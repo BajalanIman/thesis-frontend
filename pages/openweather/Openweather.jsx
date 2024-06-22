@@ -1,9 +1,8 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import AirPollutionForecast from "./airPolution/AirPollutionForecast";
 import Weather from "./Weather";
 import { useState } from "react";
 import CustomButton from "./CustomButton";
-import OpenweatherMobile from "./OpenweatherMobile";
 import Sensors from "./sensors/Sensors";
 import { useLocation } from "react-router-dom";
 
@@ -27,14 +26,20 @@ const Openweather = () => {
       <Box
         sx={{
           flexGrow: 1,
-          display: { xs: "none", md: "flex" },
+          display: { xs: "flex", md: "flex" },
           flexDirection: "column",
           alignItems: "center",
           position: "relative",
           maxWidth: "1450px",
         }}
       >
-        <Box sx={{ display: { xs: "none", md: "flex" }, gap: "20px" }}>
+        <Box
+          sx={{
+            display: { xs: "inline", md: "flex" },
+            gap: { xs: 2, md: 10 },
+            paddingX: { xs: 2, md: 0 },
+          }}
+        >
           <CustomButton
             handler={() => changeView("weather")}
             name={"Climate variables"}
@@ -48,6 +53,17 @@ const Openweather = () => {
             name={"Air pollution variables"}
           />
         </Box>
+        <Typography
+          variant="h4"
+          sx={{
+            fontFamily: "Abril Fatface",
+            fontWeight: 400,
+            textAlign: "center",
+            mt: { xs: 2, md: 7 },
+          }}
+        >
+          Station: {state.name}
+        </Typography>
         {currentView === "weather" && <Weather />}
         {currentView === "pollution" && state && (
           <AirPollutionForecast
@@ -59,17 +75,6 @@ const Openweather = () => {
           />
         )}
         {currentView === "sensors" && <Sensors />}
-      </Box>
-
-      <Box
-        sx={{
-          paddingX: 2,
-          width: "100%",
-          zIndex: 9999, // Adjust the z-index if needed
-          display: { xs: "flex", md: "none" },
-        }}
-      >
-        <OpenweatherMobile />
       </Box>
     </Box>
   );

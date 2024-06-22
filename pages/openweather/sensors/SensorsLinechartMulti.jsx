@@ -29,6 +29,7 @@ const SensorsLinechartMulti = ({
 
   const handleYearChange = (event) => {
     setYear(event.target.value);
+    setMonth(""); // Reset the month when year is changed
   };
 
   const handleMonthChange = (event) => {
@@ -47,7 +48,7 @@ const SensorsLinechartMulti = ({
     if (year !== "") {
       filteredDates = filteredDates.filter((el) => {
         const newYear = new Date(el.date_time).getFullYear();
-        return newYear === parseInt(year);
+        return newYear === parseInt(year, 10);
       });
     }
 
@@ -65,6 +66,9 @@ const SensorsLinechartMulti = ({
       const time = new Date(el.date_time).toISOString().split("T")[1];
       return time === "12:00:00.000Z";
     });
+
+    // Sort data by date
+    noonData.sort((a, b) => new Date(a.date_time) - new Date(b.date_time));
 
     setFilteredData(noonData);
   }, [year, month, mainData]);
@@ -117,7 +121,11 @@ const SensorsLinechartMulti = ({
   });
 
   // Extract labels and datasets from the dataMap
-  const dateLabels = Object.keys(dataMap);
+  const dateLabels = Object.keys(dataMap).sort((a, b) => {
+    const dateA = new Date(`${a} 2020`); // Year 2020 is arbitrary for sorting purposes
+    const dateB = new Date(`${b} 2020`);
+    return dateA - dateB;
+  });
   const variableOne = dateLabels.map((label) => dataMap[label].variableOne);
   const variableTwo = dateLabels.map((label) => dataMap[label].variableTwo);
   const variableThree = dateLabels.map((label) => dataMap[label].variableThree);
@@ -130,37 +138,35 @@ const SensorsLinechartMulti = ({
 
   // Create datasets based on the presence of data
   const datasets = [];
-  if (hasData) {
-    if (variableOne.some((value) => value !== null)) {
-      datasets.push({
-        label: VariableOne,
-        data: variableOne,
-        fill: true,
-        borderColor: "rgba(75,192,192,1)",
-        tension: 0.4,
-      });
-    }
-    if (variableTwo.some((value) => value !== null)) {
-      datasets.push({
-        label: VariableTwo,
-        data: variableTwo,
-        fill: false,
-        borderColor: "#742774",
-      });
-    }
-    if (variableThree.some((value) => value !== null)) {
-      datasets.push({
-        label: VariableThree,
-        data: variableThree,
-        fill: false,
-        borderColor: "#122774",
-      });
-    }
+  if (variableOne.some((value) => value !== null)) {
+    datasets.push({
+      label: VariableOne,
+      data: variableOne,
+      fill: true,
+      borderColor: "rgba(75,192,192,1)",
+      tension: 0.4,
+    });
+  }
+  if (variableTwo.some((value) => value !== null)) {
+    datasets.push({
+      label: VariableTwo,
+      data: variableTwo,
+      fill: false,
+      borderColor: "#742774",
+    });
+  }
+  if (variableThree.some((value) => value !== null)) {
+    datasets.push({
+      label: VariableThree,
+      data: variableThree,
+      fill: false,
+      borderColor: "#122774",
+    });
   }
 
   const dataToDisplay = {
     labels: dateLabels,
-    datasets,
+    datasets: hasData ? datasets : [],
   };
 
   const options = {
@@ -207,16 +213,16 @@ const SensorsLinechartMulti = ({
 
   return (
     <>
-      {hasData ? (
+      {mainData.length > 0 ? (
         <Box
           sx={{
-            maxWidth: {
-              xs: "400px",
-              sm: "450px",
-              md: "600px",
-              lg: "1000px",
-              xl: "1400px",
-            },
+            // maxWidth: {
+            //   xs: "400px",
+            //   sm: "450px",
+            //   md: "600px",
+            //   lg: "1000px",
+            //   xl: "1400px",
+            // },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -234,22 +240,27 @@ const SensorsLinechartMulti = ({
                 width: "100%",
               }}
             >
-              <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: "bold",
+                  paddingX: { xs: 2, md: 0 },
+                }}
+              >
                 {title}
               </Typography>
             </Box>
           )}
+
           <Box
             sx={{
-              maxWidth: "full",
-              display: "flex",
-              flexDirection: "column",
-              paddingX: { xs: 2, md: 0 },
+              minWidth: { xs: 300, md: 600 },
+              display: { xs: "flex", lg: "inline" },
+              justifyContent: "center",
+              alignItems: "center",
               gap: 2,
-              marginY: 2,
             }}
-          ></Box>
-          <Box sx={{ minWidth: { xs: 170, md: 600 } }}>
+          >
             {/* Year */}
             <FormControl fullWidth>
               <InputLabel sx={{ color: "green" }} id="demo-simple-select-label">
@@ -265,7 +276,7 @@ const SensorsLinechartMulti = ({
               </Select>
             </FormControl>
             {/* Months */}
-            <FormControl fullWidth sx={{ marginTop: 5 }}>
+            <FormControl fullWidth sx={{ marginTop: { lg: 5 } }}>
               <InputLabel sx={{ color: "green" }} id="demo-simple-select-label">
                 Month
               </InputLabel>
@@ -284,19 +295,29 @@ const SensorsLinechartMulti = ({
           {XCaption && (
             <Typography
               variant="body1"
-              sx={{ fontWeight: "bold", fontStyle: "italic" }}
+              sx={{
+                fontWeight: "bold",
+                fontStyle: "italic",
+                paddingX: { xs: 2, md: 0 },
+              }}
             >
               {XCaption}
             </Typography>
           )}
           {paragraph && (
-            <Typography variant="body1" sx={{ textAlign: "justify" }}>
+            <Typography
+              variant="body1"
+              sx={{ textAlign: "justify", paddingX: { xs: 2, md: 0 } }}
+            >
               {paragraph}
             </Typography>
           )}
         </Box>
       ) : (
-        <Typography variant="body1" sx={{ textAlign: "center", color: "red" }}>
+        <Typography
+          variant="body1"
+          sx={{ textAlign: "center", color: "red", paddingX: { xs: 2, md: 0 } }}
+        >
           No data is available at this station for {title}.
         </Typography>
       )}
