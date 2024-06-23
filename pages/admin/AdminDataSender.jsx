@@ -19,6 +19,7 @@ import LoadingData from "./LoadingData";
 import DataSender from "./users/sendDataToDatabase/DataSender";
 import ShowDataBeforeSend from "./users/sendDataToDatabase/ShowDataBeforeSend";
 import { Close } from "@mui/icons-material";
+import BucheStation from "./users/sendDataToDatabase/BucheStation";
 
 const AdminDataSender = () => {
   const [station, setStation] = useState("");
@@ -691,9 +692,15 @@ const AdminDataSender = () => {
                   >
                     Alt-Madlitz: Natural succession dynamics
                   </MenuItem>
+                  <MenuItem
+                    value={"Eberswalde: Buche"}
+                    sx={{ fontFamily: "serif" }}
+                  >
+                    Eberswalde: Buche
+                  </MenuItem>
                 </Select>
               </FormControl>
-              {station && (
+              {station && station !== "Eberswalde: Buche" && (
                 <Typography
                   variant="p"
                   sx={{ color: "green", fontFamily: "serif" }}
@@ -701,7 +708,24 @@ const AdminDataSender = () => {
                   Station {station} is selected. Choose your file!{" "}
                 </Typography>
               )}
-              <input type="file" className="m-12" onChange={handleFileChange} />
+              {station && station === "Eberswalde: Buche" && (
+                <Typography
+                  variant="body1"
+                  sx={{ color: "blue", fontFamily: "serif", marginTop: 5 }}
+                >
+                  Station {station} is selected. Use the submit button to update
+                  the data.
+                </Typography>
+              )}
+              {station && station === "Eberswalde: Buche" && <BucheStation />}
+
+              {station && station !== "Eberswalde: Buche" && (
+                <input
+                  type="file"
+                  className="m-12"
+                  onChange={handleFileChange}
+                />
+              )}
             </Box>
             {errorMessage && (
               <Typography sx={{ color: "red", textAlign: "center" }}>

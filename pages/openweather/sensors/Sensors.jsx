@@ -260,12 +260,88 @@ const Sensors = () => {
       )}
       {stationId === 7 && (
         <Box sx={{ mt: 5 }}>
-          <Typography
+          <SensorsLinechartMulti
+            title={"Soil temperature"}
+            attribute_id_One={53}
+            attribute_id_Two={54}
+            attribute_id_Three={55}
+            paragraph={localize(language, "soilDifferentDeep")}
+            Ylabel={"Soil temperature (°C)"}
+            VariableOne={"10 cm"}
+            VariableTwo={"25 cm"}
+            VariableThree={"55 cm"}
+            mainData={soilData}
+            XCaption={
+              "The chart above shows soil temperature daily at 12:00 at different depths."
+            }
+          />
+          <Divider />
+          <SensorsLinechartMulti
+            title={"Capillary potential"}
+            attribute_id_One={57}
+            attribute_id_Two={58}
+            attribute_id_Three={59}
+            paragraph={`Capillary potential, also known as capillary action or soil water potential, refers to the ability of water to move through small spaces in porous materials, such as soil or plant roots, due to adhesive and cohesive forces. It is a critical concept in understanding how water is held and moves within the soil-plant-atmosphere continuum. Capillary potential plays a significant role in soil moisture dynamics, affecting plant growth and the availability of water to roots. In forestry, the distribution of vegetation across landscapes is influenced by capillary potential, which varies depending on the root systems of different plants and the soil's capillary properties. Monitoring and managing capillary potential are essential for assessing soil fertility, optimizing irrigation practices, and mitigating the impacts of drought on forest ecosystems. Understanding these dynamics is crucial for sustainable forestry practices and maintaining the health and productivity of forested areas.              `}
+            Ylabel={"Capillary potential (pF)"}
+            VariableOne={"10 cm"}
+            VariableTwo={"25 cm"}
+            VariableThree={"55 cm"}
+            mainData={soilData}
+            XCaption={
+              "The chart above shows capillary potential (pF) daily at 12:00 at different depths."
+            }
+          />
+          <Divider />
+          <SensorsLinechartMultiClimate
+            title={"Air humidity"}
+            attribute_id_One={11}
+            attribute_id_Two={12}
+            paragraph={
+              "Air humidity refers to the amount of water vapor present in the atmosphere, playing a critical role in weather patterns, and the overall climate system. High humidity levels can make temperatures feel warmer than they actually are, while low humidity can lead to dryness and discomfort. In forestry, humidity is particularly important as it affects tree growth, forest health, and the prevalence of pests and diseases. Trees and other vegetation transpire water, which increases local humidity levels and can influence microclimates within forests. This interplay between air humidity and forest ecosystems underscores the importance of monitoring humidity levels for sustainable forest management and understanding environmental changes."
+            }
+            Ylabel={"Air humidity (%rF)"}
+            VariableOne={"Air humidity (200 cm)"}
+            VariableTwo={"Air humidity (10 cm)"}
+            mainData={climateData}
+            XCaption={
+              "The chart above shows the air humidity (%rF) at two different depths (200 and 10 cm) daily at 12:00 for Buche station."
+            }
+          />{" "}
+          <Divider />
+          <SensorsLinechartMultiClimate
+            title={"Rainfall"}
+            attribute_id_One={13}
+            paragraph={
+              "Rainfall represents a pivotal element within the hydrological cycle, whereby precipitation replenishes freshwater resources and sustains a diverse array of ecosystems. The occurrence of rainfall is subject to a number of influences, including the geographic location of the area in question, the prevailing atmospheric conditions, and the fluctuations that occur throughout the year. In the context of forestry, rainfall is of paramount importance, as it provides the essential moisture for tree growth and sustains the health of forest ecosystems. Adequate rainfall is essential for soil hydration, nutrient cycling, and the overall productivity of forests. However, variations in rainfall, such as droughts or excessive precipitation, can significantly impact forest health, affecting tree growth, increasing the risk of wildfires, or causing flooding and soil erosion. Therefore, understanding rainfall patterns is crucial for managing water resources, planning agricultural activities, and predicting environmental changes in forested regions."
+            }
+            Ylabel={"Rainfall (mm)"}
+            VariableOne={"Rainfall (100 cm)"}
+            mainData={climateData}
+            XCaption={
+              "The chart above shows the rainfall (mm) at 100 cm daily at 12:00 for Buche station."
+            }
+          />{" "}
+          <Divider />
+          <SensorsLinechartMultiClimate
+            title={"Wind speed"}
+            attribute_id_One={14}
+            paragraph={
+              "The speed of wind has a significant impact on weather patterns, climate, and environmental processes. In the context of forestry, wind speed is of paramount importance, as it exerts a profound influence on tree growth, forest structure, and the distribution of seeds and pollen. High wind speeds can cause physical damage to trees, leading to broken branches or uprooting, which can alter forest landscapes and increase the risk of wildfires by spreading flames and embers. Additionally, wind speed influences the rate of evaporation and transpiration, impacting soil moisture and humidity levels within forest ecosystems. An understanding of wind speed patterns is therefore beneficial for forest management, the prediction of storm impacts, and the planning of sustainable forestry practices."
+            }
+            Ylabel={"Wind speed (m/s)"}
+            VariableOne={"Wind speed (200cm)"}
+            mainData={climateData}
+            XCaption={
+              "The chart above shows the wind speed (m/s) at 200 cm daily at 12:00 for Buche station."
+            }
+          />{" "}
+          <Divider />
+          {/* <Typography
             variant="body1"
             sx={{ px: 2, color: "darkslateblue", fontWeight: "bold" }}
           >
             This is the Buche station.
-          </Typography>
+          </Typography> */}
         </Box>
       )}
     </div>

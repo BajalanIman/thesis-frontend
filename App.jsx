@@ -1,7 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useState, createContext, useEffect } from "react";
-// import ImportData from "./pages/importInDatabase/ImportData";
-// import ImportFromAPI from "./pages/importFromAPI/ImportFromAPI";
 import RootLayout from "./pages/Root";
 import Home from "./pages/Home";
 import MapBrandenbur from "./pages/map/MapBrandenbur";
@@ -57,9 +55,6 @@ function App() {
           <RouterProvider router={router}></RouterProvider>
         </div>
       </CartContext.Provider>
-      {/* 
-      <ImportData />
-      <ImportFromAPI /> */}
       <div className="w-full flex justify-center bg-red-500"></div>
     </>
   );

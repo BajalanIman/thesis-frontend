@@ -1,5 +1,4 @@
 import MapBrandenbur from "./map/MapBrandenbur";
-
 const Home = () => {
   return (
     <div>
