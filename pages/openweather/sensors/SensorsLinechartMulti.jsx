@@ -16,10 +16,12 @@ const SensorsLinechartMulti = ({
   attribute_id_One,
   attribute_id_Two,
   attribute_id_Three,
+  attribute_id_Four,
   Ylabel,
   VariableOne,
   VariableTwo,
   VariableThree,
+  VariableFour,
   XCaption,
 }) => {
   const [year, setYear] = useState("");
@@ -77,7 +79,7 @@ const SensorsLinechartMulti = ({
     if (mainData && mainData.length > 0) {
       const years = Array.from(
         new Set(mainData.map((el) => new Date(el.date_time).getFullYear()))
-      );
+      ).sort((a, b) => a - b); // Sort years in ascending order
       setAvailableYears(years);
     }
   }, [mainData]);
@@ -109,6 +111,7 @@ const SensorsLinechartMulti = ({
         variableOne: null,
         variableTwo: null,
         variableThree: null,
+        variableFour: null,
       };
     }
     if (el.soil_attribute_id === attribute_id_One) {
@@ -117,6 +120,8 @@ const SensorsLinechartMulti = ({
       dataMap[dateLabel].variableTwo = el.value;
     } else if (el.soil_attribute_id === attribute_id_Three) {
       dataMap[dateLabel].variableThree = el.value;
+    } else if (el.soil_attribute_id === attribute_id_Four) {
+      dataMap[dateLabel].variableFour = el.value;
     }
   });
 
@@ -129,12 +134,14 @@ const SensorsLinechartMulti = ({
   const variableOne = dateLabels.map((label) => dataMap[label].variableOne);
   const variableTwo = dateLabels.map((label) => dataMap[label].variableTwo);
   const variableThree = dateLabels.map((label) => dataMap[label].variableThree);
+  const variableFour = dateLabels.map((label) => dataMap[label].variableFour);
 
   // Check if there is any data to display
   const hasData =
     variableOne.some((value) => value !== null) ||
     variableTwo.some((value) => value !== null) ||
-    variableThree.some((value) => value !== null);
+    variableThree.some((value) => value !== null) ||
+    variableFour.some((value) => value !== null);
 
   // Create datasets based on the presence of data
   const datasets = [];
@@ -161,6 +168,14 @@ const SensorsLinechartMulti = ({
       data: variableThree,
       fill: false,
       borderColor: "#122774",
+    });
+  }
+  if (variableFour.some((value) => value !== null)) {
+    datasets.push({
+      label: VariableFour,
+      data: variableFour,
+      fill: false,
+      borderColor: "#FF5733",
     });
   }
 

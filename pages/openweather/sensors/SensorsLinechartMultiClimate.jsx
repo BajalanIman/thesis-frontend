@@ -44,7 +44,7 @@ const SensorsLinechartMultiClimate = ({
     // Extract unique years from the dataset
     const uniqueYears = [
       ...new Set(mainData.map((el) => new Date(el.date_time).getFullYear())),
-    ];
+    ].sort((a, b) => a - b); // Sort years in ascending order
     setYears(uniqueYears);
 
     let filteredDates = mainData;

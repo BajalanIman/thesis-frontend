@@ -265,11 +265,13 @@ const Sensors = () => {
             attribute_id_One={53}
             attribute_id_Two={54}
             attribute_id_Three={55}
+            attribute_id_Four={56}
             paragraph={localize(language, "soilDifferentDeep")}
             Ylabel={"Soil temperature (°C)"}
             VariableOne={"10 cm"}
             VariableTwo={"25 cm"}
             VariableThree={"55 cm"}
+            VariableFour={"110 cm"}
             mainData={soilData}
             XCaption={
               "The chart above shows soil temperature daily at 12:00 at different depths."
@@ -281,11 +283,13 @@ const Sensors = () => {
             attribute_id_One={57}
             attribute_id_Two={58}
             attribute_id_Three={59}
+            attribute_id_Four={60}
             paragraph={`Capillary potential, also known as capillary action or soil water potential, refers to the ability of water to move through small spaces in porous materials, such as soil or plant roots, due to adhesive and cohesive forces. It is a critical concept in understanding how water is held and moves within the soil-plant-atmosphere continuum. Capillary potential plays a significant role in soil moisture dynamics, affecting plant growth and the availability of water to roots. In forestry, the distribution of vegetation across landscapes is influenced by capillary potential, which varies depending on the root systems of different plants and the soil's capillary properties. Monitoring and managing capillary potential are essential for assessing soil fertility, optimizing irrigation practices, and mitigating the impacts of drought on forest ecosystems. Understanding these dynamics is crucial for sustainable forestry practices and maintaining the health and productivity of forested areas.              `}
             Ylabel={"Capillary potential (pF)"}
             VariableOne={"10 cm"}
             VariableTwo={"25 cm"}
             VariableThree={"55 cm"}
+            VariableFour={"110 cm"}
             mainData={soilData}
             XCaption={
               "The chart above shows capillary potential (pF) daily at 12:00 at different depths."
